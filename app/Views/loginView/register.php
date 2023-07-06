@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="widt h=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.css' integrity='sha512-lp6wLpq/o3UVdgb9txVgXUTsvs0Fj1YfelAbza2Kl/aQHbNnfTYPMLiQRvy3i+3IigMby34mtcvcrh31U50nRw==' crossorigin='anonymous'/>
+   
+
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-4 mt-5" >
+                <h4>Sign Up</h4><hr>
+                <form action="<?= base_url('Login/Auth/saveUser') ?>" method="POST"> 
+                <?= csrf_field() ?>
+                <div class="form-group">
+                        <label for="">First Name</label>
+                        <input type="text" class="form-control" name="firstname">
+                        <span class="text-danger"><?= isset($validation) ? display_error($validation, 'firstname'):'' ?></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Last Name</label>
+                        <input type="text" class="form-control" name="lastname">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Username</label>
+                        <input type="text" class="form-control" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Password</label>
+                        <input type="text" class="form-control" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Confirm Password</label>
+                        <input type="text" class="form-control" name="cpassword">
+                    </div>
+                    <br>
+                    <a href="<?= base_url('viewLogin') ?>">Already Registered? Log in</a>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary  offset-5 mt-3" type="submit" value="Register">
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
