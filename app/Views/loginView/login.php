@@ -26,7 +26,7 @@
                     <br>
                     <a href="<?= base_url('viewRegister') ?>">No account? Register</a>
                     <div class="form-group">
-                        <input type="text" class="btn btn-primary btn-block offset-3 mt-3" type="submit" value="log in">
+                        <input type="submit" class="btn btn-primary btn-block offset-5 mt-3" type="submit" value="log in">
                     </div>
                 </form>
             </div>

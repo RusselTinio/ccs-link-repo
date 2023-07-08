@@ -15,26 +15,40 @@
                 <h4>Sign Up</h4><hr>
                 <form action="<?= base_url('Login/Auth/saveUser') ?>" method="POST"> 
                 <?= csrf_field() ?>
-                <div class="form-group">
-                        <label for="">First Name</label>
-                        <input type="text" class="form-control" name="firstname">
-                        <span class="text-danger"><?= isset($validation) ? display_error($validation, 'firstname'):'' ?></span>
+                    <div class="form-group mb-6">
+                        <label for="">First name</label>
+                        <input type="text" class="form-control" name="firstname" value="<?= set_value('firstname') ?>">
+                        <span class="text-danger text-sm">
+                            <?= isset($validation) ? display_error($validation, 'firstname'):'' ?>       
+                        </span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-6">
                         <label for="">Last Name</label>
-                        <input type="text" class="form-control" name="lastname">
+                        <input type="text" class="form-control" name="lastname" value="<?= set_value('lastname') ?>">
+                        <span class="text-danger text-sm">
+                            <?= isset($validation) ? display_error($validation, 'lastname'):'' ?>       
+                        </span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-6">
                         <label for="">Username</label>
-                        <input type="text" class="form-control" name="username">
+                        <input type="text" class="form-control" name="username" value="<?= set_value('username') ?>">
+                        <span class="text-danger text-sm">
+                            <?= isset($validation) ? display_error($validation, 'username'):'' ?>       
+                        </span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-6">
                         <label for="">Password</label>
-                        <input type="text" class="form-control" name="password">
+                        <input type="password" class="form-control" name="password" value="<?= set_value('password') ?>">
+                        <span class="text-danger text-sm">
+                            <?= isset($validation) ? display_error($validation, 'password'):'' ?>       
+                        </span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-6">
                         <label for="">Confirm Password</label>
-                        <input type="text" class="form-control" name="cpassword">
+                        <input type="password" class="form-control" name="cpassword" value="<?= set_value('cpassword') ?>">
+                        <span class="text-danger text-sm">
+                            <?= isset($validation) ? display_error($validation, 'cpassword'):'' ?>       
+                        </span>
                     </div>
                     <br>
                     <a href="<?= base_url('viewLogin') ?>">Already Registered? Log in</a>
