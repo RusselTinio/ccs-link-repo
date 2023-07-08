@@ -31,8 +31,16 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Login\Auth::index');
 
-$routes->get('viewLogin','Login\Auth::index');
-$routes->get('viewRegister','Login\Auth::viewRegister');
+
+$routes->group('',['filter' =>'AuthCheck'], function($routes){
+    $routes->get('/Dash/Dash', 'Dash\Dash::index');
+    $routes->get('Dash/Dash/profile', 'Dash\Dash::profile');
+});
+
+$routes->group('',['filter' =>'LogFilter'], function($routes){
+    $routes->get('Login/Auth/','Login\Auth::index');
+   $routes->get('Login/Auth/viewRegister','Login\Auth::viewRegister');    
+});
 
 /*
  * --------------------------------------------------------------------

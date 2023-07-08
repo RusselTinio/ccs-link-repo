@@ -4,6 +4,7 @@ namespace App\Controllers\Login;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
+use App\Libraries\Hash;
 
 class Auth extends BaseController
 {
@@ -70,14 +71,74 @@ class Auth extends BaseController
                 $password = $this->request->getPost('password');
 
                 $data = [
-                    'firstname' => $firstname,
-                    'lastname' => $lastname,
+                    'first_name' => $firstname,
+                    'last_name' => $lastname,
                     'username' => $username,
+                    'password' => Hash::encrypt($password),
                     
                 ];
+
+                $query = $userModel->insert($data);
+                if(!$query){
+                    return redirect()->back()->with('fail','Something went wrong');
+                } else {
+                        //return redirect()->to('viewRegister')->with('success','User registered successfully');
+                    $lastId = $userModel->insertID();
+                    session()->set('loggedUser', $lastId);
+                    return redirect()->to('Dash/Dash');
+                }
+                
+                
 
                
             }
         
+    }
+
+    public function check(){
+        $validation = $this->validate([
+            'username' => [
+                'rules' => 'required|is_not_unique[users.username]',
+                'errors' => ['required' => 'Username required',
+                            'is_not_unique' => 'No Account exists'
+            
+                ],
+            ],
+            'password' => [
+                'rules' => 'required|min_length[5]',
+                'errors' => ['required' => 'Password required',
+                            'min_length' => 'minimum of 5 characters',
+                ],
+            ],
+           
+        ]);
+
+        if(!$validation){
+            return view('loginView/login', ['validation'=>$this->validator]);
+        } else{
+            $username = $this->request->getPost('username');
+            $password = $this->request->getPost('password');
+            $userModel = new userModel();
+
+            $userInfo = $userModel->where('username', $username)->first();
+            $checkpassword = Hash::verify($password, $userInfo['password']);
+
+            if(!$checkpassword){
+                session()->setFlashdata('fail','Incorrect password');
+                return redirect()->to('Login/Auth/index');
+                
+            }   else{
+                $userId = $userInfo['user_id'];
+                session()->set('loggedUser', $userId);
+                return redirect()->to('Dash/Dash');
+            }
+        }
+    }
+
+    public function logout(){
+        if(session()->has('loggedUser')){
+            session()->remove('loggedUser');
+            return redirect()->to('Login/Auth/index?access=out')->with('fail','You are logged out');
+        }
     }
 }

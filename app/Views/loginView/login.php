@@ -13,18 +13,27 @@
         <div class="row">
             <div class="col-md-4 offset-4 mt-5" >
                 <h4>Log In</h4><hr>
-                <form action="" method="POST"> 
+                <form action="<?= base_url('Login/Auth/check') ?>" method="POST"> 
                 <?= csrf_field() ?>
+                <?php if(!empty(session()->getFlashdata('fail'))):?>
+                    <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+                <?php endif?>
                     <div class="form-group">
                         <label for="">Username</label>
-                        <input type="text" class="form-control" name="username">
+                        <input type="text" class="form-control" name="username" value="<?= set_value('username') ?>">
+                        <span class="text-danger text-sm">
+                            <?= isset($validation) ? display_error($validation, 'username'):'' ?>       
+                        </span>
                     </div>
                     <div class="form-group">
                         <label for="">Password</label>
-                        <input type="text" class="form-control" name="password">
+                        <input type="password" class="form-control" name="password" >
+                        <span class="text-danger text-sm">
+                            <?= isset($validation) ? display_error($validation, 'password'):'' ?>       
+                        </span>
                     </div>
                     <br>
-                    <a href="<?= base_url('viewRegister') ?>">No account? Register</a>
+                    <a href="<?= base_url('Login/Auth/viewRegister') ?>">No account? Register</a>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary btn-block offset-5 mt-3" type="submit" value="log in">
                     </div>

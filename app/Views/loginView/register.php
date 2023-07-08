@@ -15,6 +15,16 @@
                 <h4>Sign Up</h4><hr>
                 <form action="<?= base_url('Login/Auth/saveUser') ?>" method="POST"> 
                 <?= csrf_field() ?>
+
+                <?php if(!empty(session()->getFlashdata('fail'))):?>
+                    <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+                <?php endif?>
+
+                <?php if(!empty(session()->getFlashdata('success'))):?>
+                    <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
+                <?php endif?>
+
+
                     <div class="form-group mb-6">
                         <label for="">First name</label>
                         <input type="text" class="form-control" name="firstname" value="<?= set_value('firstname') ?>">
@@ -51,7 +61,7 @@
                         </span>
                     </div>
                     <br>
-                    <a href="<?= base_url('viewLogin') ?>">Already Registered? Log in</a>
+                    <a href="<?= base_url('Login/Auth') ?>">Already Registered? Log in</a>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary  offset-5 mt-3" type="submit" value="Register">
                     </div>
