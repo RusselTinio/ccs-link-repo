@@ -18,7 +18,7 @@
                         <tr>
                             <td><a href="<?= base_url('Login/Auth/index'); ?>" class="btn  btn-outline-primary btn-lg  d-flex justify-content-center">Log In</a></td>
                             <td><a href="<?= base_url('Login/Auth/viewRegister'); ?>" class="btn btn-outline-success btn-lg  d-flex justify-content-center">Register</a></td>
-                            <td><a href="" class="btn btn-outline-info btn-lg  d-flex justify-content-center">Admin</a></td>
+                            <td><a href="<?= base_url('AdminController/Admin'); ?>" class="btn btn-outline-info btn-lg  d-flex justify-content-center">Admin</a></td>
                         </tr>
                     </tbody>
                     

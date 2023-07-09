@@ -23,6 +23,7 @@ class Filters extends BaseConfig
         'secureheaders' => SecureHeaders::class,
         'AuthCheck'     => \App\Filters\AuthCheckFilter::class, 
         'LogFilter'     => \App\Filters\LogFilter::class,
+        'AdminCheckFilter' => \App\Filters\AdminCheckFilter::class,
     ];
 
     /**

@@ -42,7 +42,7 @@
                         <h3>Log out</h3>
                     </div>
                     <div class="card-body">
-                        <a href="" class="btn btn-danger">Log out</a>
+                        <a href="<?= base_url('Login/Auth/logout') ?>" class="btn btn-danger">Log out</a>
                     </div>
                 </div>
             </div>

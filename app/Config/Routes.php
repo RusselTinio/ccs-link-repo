@@ -42,6 +42,13 @@ $routes->group('',['filter' =>'LogFilter'], function($routes){
    $routes->get('Login/Auth/viewRegister','Login\Auth::viewRegister');    
 });
 
+
+//for admin filter
+$routes->group('',['filter' =>'AdminCheckFilter'], function($routes){
+    $routes->get('AdminController/Admin/adminView', 'AdminController\Admin::adminView');
+    $routes->get('adminController/Admin/superAdminView', 'AdminController\Admin::superAdminView');
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
