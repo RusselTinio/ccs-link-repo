@@ -48,7 +48,7 @@ class Auth extends BaseController
                     'errors' => ['required' => 'Password required',
                                 'min_length' => 'minimum of 5 characters',
                     ],
-                ],
+                ],  
                 'cpassword' => [
                     'rules' => 'required|min_length[5]|matches[password]',
                     'errors' => ['required' => 'Password need confirmation',

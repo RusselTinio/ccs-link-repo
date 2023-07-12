@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1><?= $adminInfo['username'] ?></h1>
+    <a href="<?= base_url('AdminController/Admin/announcement') ?>" class="btn btn-primary">Announcements</a>
     <a href="<?= base_url('AdminController/Admin/logout') ?>" class="btn btn-danger">Logout</a>
 </body>
 </html>

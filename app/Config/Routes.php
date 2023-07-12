@@ -47,6 +47,7 @@ $routes->group('',['filter' =>'LogFilter'], function($routes){
 $routes->group('',['filter' =>'AdminCheckFilter'], function($routes){
     $routes->get('AdminController/Admin/adminView', 'AdminController\Admin::adminView');
     $routes->get('adminController/Admin/superAdminView', 'AdminController\Admin::superAdminView');
+    $routes->get('adminController/Admin/addAdmin', 'AdminController\Admin::addAdmin');
 });
 
 /*
