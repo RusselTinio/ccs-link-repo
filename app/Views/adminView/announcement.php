@@ -12,7 +12,7 @@
        <div class="col-md-12">
             <div class="card mt-5">
                 <div class="card-header">
-                    New Announcements
+                   <h4 class="offset-5">New Announcements</h4>
                 </div>        
                 <div class="card-body">
                     <form action="" method="post" enctype="multipart/form-data" >
@@ -33,7 +33,11 @@
                             <textarea name="content" id=""  rows="10" class="form-control"></textarea>
                         </div>
                         <div class="form-group col-md-12 mt-3 ">
-                            <input type="submit" value="Submit" class="btn btn-primary float-end">
+                            <div class="btn float-end">
+                            <a href="" class="btn btn-danger ">Back</a>
+                            <input type="submit" value="Submit" class="btn btn-primary ">
+                            </div>
+                            
                         </div>
 
                     </form>
