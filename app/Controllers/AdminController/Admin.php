@@ -92,12 +92,14 @@ class Admin extends BaseController
         $userModel = new UserModel(); 
         $loggedUser = session()->get('loggedAdmin');
         $adminInfo = $adminModel->find($loggedUser);
-        $userInfo = $userModel->findAll();
+        $activeUser = $userModel->where('status','active')->findAll();
+        $disabledUser = $userModel->where('status','disabled')->findAll();
         $data = [
             'title' => ' Super Admin',
             'adminInfo' => $adminInfo,
             'admin' => $adminModel->where('role','admin')->findAll(),
-            'userInfo' => $userInfo
+            'userInfo' => $activeUser,
+            'disabled' =>  $disabledUser
         ];
 
         return view('adminView/superAdminPage',$data);
@@ -221,7 +223,7 @@ class Admin extends BaseController
     public function update($acc_num){
         $adminModel = new AdminModel();
        
-        $accInfo = $adminModel->find($acc_num);
+       // $accInfo = $adminModel->find($acc_num);
         $firstname = $this->request->getPost('firstname');
         $lastname = $this->request->getPost('lastname');
         $username = $this->request->getPost('username');

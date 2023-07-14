@@ -18,6 +18,7 @@ class UserModel extends Model
         'lastname',
         'username',
         'password',
+        'status'
     ];
 
     // Dates
