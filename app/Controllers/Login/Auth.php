@@ -135,6 +135,11 @@ class Auth extends BaseController
         }
     }
 
+    public function edit($id){
+        echo $id;
+
+    }
+
     public function logout(){
         if(session()->has('loggedUser')){
             session()->remove('loggedUser');

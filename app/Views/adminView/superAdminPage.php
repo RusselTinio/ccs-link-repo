@@ -155,7 +155,7 @@
                                 <td><?= $row['username'] ?></td>
                                 <td><?= $row['status'] ?></td>
                                 <td>
-                                    <a href="<?= base_url('AdminController/Admin/editView/'.$row['id']) ?>" class=" btn btn-success btn-sm">Edit</a>
+                                    <a href="<?= base_url('Login/Auth/edit/'.$row['id']) ?>" class=" btn btn-success btn-sm">Edit</a>
                                     <form action="<?= base_url('AdminController/Admin/delete/'.$row['id']) ?>" method="POST">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="submit" class="btn btn-danger btn-sm" value="Delete">
