@@ -4,6 +4,7 @@ namespace App\Controllers\Login;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
+use App\Models\Predata;
 use App\Libraries\Hash;
 
 class Auth extends BaseController
@@ -22,24 +23,30 @@ class Auth extends BaseController
 
     public function saveUser(){
         $userModel = new UserModel();
+        $preData = new Predata();
 
         $validation =  $this->validate(
             [
 
                 'firstname' => [
-                    'rules' => 'required',
-                    'errors' => ['required' => 'First name required',],
+                    'rules' => 'required|is_not_unique[predata.firstname]',
+                    'errors' => ['required' => 'First name required',
+                                 'is_not_unique' => 'First Name not found'
+                                ],
 
                 ],
                 'lastname' => [
-                    'rules' => 'required',
-                    'errors' => ['required' => 'Last name required',],
+                    'rules' => 'required|is_not_unique[predata.lastname]',
+                    'errors' => ['required' => 'Last name required',
+                                 'is_not_unique' => 'Last Name not found'
+                ],
 
                 ],
                 'username' => [
-                    'rules' => 'required|is_unique[users.username]',
+                    'rules' => 'required|is_unique[users.username]|is_not_unique[predata.studentId]',
                     'errors' => ['required' => 'Username required',
-                                'is_unique' => 'Username already taken'
+                                'is_unique' => 'Username already taken',
+                                'is_not_unique' => 'Student Id not found'
                 
                     ],
                 ],
