@@ -59,7 +59,7 @@ class Admin extends BaseController
                 return redirect()->to('AdminController/Admin');
                 
             }   else{
-                $adminId = $adminInfo['acc_num'];
+                $adminId = $adminInfo['id'];
                 $role = $adminInfo['role'];
                 session()->set('loggedAdmin', $adminId);
                 if($role=='superadmin'){
@@ -104,6 +104,17 @@ class Admin extends BaseController
 
         $validation =  $this->validate(
             [
+                'firstname' => [
+                    'rules' => 'required',
+                    'errors' => ['required' => 'First name required',
+                    ],
+                ], 
+
+                'lastname' => [
+                    'rules' => 'required',
+                    'errors' => ['required' => 'Last name required',
+                    ],
+                ],
 
                 'username' => [
                     'rules' => 'required|is_unique[users.username]',
@@ -148,10 +159,15 @@ class Admin extends BaseController
                 $role = $this->request->getPost('role');
                 $username = $this->request->getPost('username');
                 $password = $this->request->getPost('password');
+                $firstname = $this->request->getPost('firstname');
+                $lastname = $this->request->getPost('lastname');
+
 
                 $data = [
                     'username' => $username,
                     'password' => Hash::encrypt($password),
+                    'firstname' => $firstname,
+                    'lastname' => $lastname,
                     'role' => $role,
                     
                 ];
@@ -199,10 +215,14 @@ class Admin extends BaseController
         $adminModel = new AdminModel();
        
         $accInfo = $adminModel->find($acc_num);
+        $firstname = $this->request->getPost('firstname');
+        $lastname = $this->request->getPost('lastname');
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
         $role = $this->request->getPost('role');
         $data = [
+            'firstname' => $firstname,
+            'lastname' => $lastname,
             'username' => $username,
             'password' => Hash::encrypt($password),
             'role' => $role,

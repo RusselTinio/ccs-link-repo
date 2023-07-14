@@ -32,7 +32,20 @@
                     <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
                 <?php endif?>
 
-
+                    <div class="form-group mb-6">
+                        <label for="">First name</label>
+                        <input type="text" class="form-control" name="firstname" value="<?= set_value('firstname') ?>">
+                        <span class="text-danger text-sm">
+                            <?= isset($validation) ? display_error($validation, 'firstname'):'' ?>       
+                        </span>
+                    </div>
+                    <div class="form-group mb-6">
+                        <label for="">Last Name</label>
+                        <input type="text" class="form-control" name="lastname" value="<?= set_value('lastname') ?>">
+                        <span class="text-danger text-sm">
+                            <?= isset($validation) ? display_error($validation, 'lastname'):'' ?>       
+                        </span>
+                    </div>
                     <div class="form-group mb-6">
                         <label for="">Username</label>
                         <input type="text" class="form-control" name="username" value="<?= set_value('username') ?>">
@@ -87,6 +100,8 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
                                     <th>Username</th>
                                     <th>Role</th>
                                     <th>Action</th>
@@ -95,11 +110,13 @@
                             <tbody>
                                 <?php foreach($admin as $row):?>
                                     <tr>
+                                        <td><?= $row['firstname'] ?></td>
+                                        <td><?= $row['lastname'] ?></td>
                                 <td><?= $row['username'] ?></td>
                                 <td><?= $row['role'] ?></td>
                                 <td>
-                                    <a href="<?= base_url('AdminController/Admin/editView/'.$row['acc_num']) ?>" class=" btn btn-success btn-sm">Edit</a>
-                                    <form action="<?= base_url('AdminController/Admin/delete/'.$row['acc_num']) ?>" method="POST">
+                                    <a href="<?= base_url('AdminController/Admin/editView/'.$row['id']) ?>" class=" btn btn-success btn-sm">Edit</a>
+                                    <form action="<?= base_url('AdminController/Admin/delete/'.$row['id']) ?>" method="POST">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="submit" class="btn btn-danger btn-sm" value="Delete">
                                     </form>
@@ -110,7 +127,46 @@
                         </table>
                     </div>
             </div>
+
         </div>
+    </div>
+    <div class="row">
+    <div class="col-md mt-2">
+                <div class="card">
+                <div class="card-header">
+                        Alumni
+                    </div>
+                    <div class="class-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Username</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($admin as $row):?>
+                                    <tr>
+                                        <td><?= $row['firstname'] ?></td>
+                                        <td><?= $row['lastname'] ?></td>
+                                <td><?= $row['username'] ?></td>
+                                <td><?= $row['role'] ?></td>
+                                <td>
+                                    <a href="<?= base_url('AdminController/Admin/editView/'.$row['id']) ?>" class=" btn btn-success btn-sm">Edit</a>
+                                    <form action="<?= base_url('AdminController/Admin/delete/'.$row['id']) ?>" method="POST">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                                    </form>
+                                </td>
+                            </tr>
+                                <?php endforeach;?>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
     </div>
 </body>
 </html>

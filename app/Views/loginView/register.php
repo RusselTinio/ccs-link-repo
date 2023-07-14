@@ -68,6 +68,9 @@
                     
                 </form>
             </div>
+            <div class="col-md-4 offset-4 mt-5" >
+                <a href="<?= base_url('/') ?>" class="btn btn-dark">Index</a>
+            </div>
         </div>
     </div>
 </body>

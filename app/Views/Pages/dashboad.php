@@ -18,8 +18,8 @@
                     </div>
                     <div class="card-body">
                     <div class="card-text d-flex justify-content-center">
-                        <h5>First Name: <?= $userInfo['first_name'] ?></h5>
-                        <h5>Last Name: <?= $userInfo['last_name'] ?></h5>
+                        <h5>First Name: <?= $userInfo['firstname'] ?></h5>
+                        <h5>Last Name: <?= $userInfo['lastname'] ?></h5>
                         <h5>Username:  <?= $userInfo['username'] ?></h5>
                          </div>
                     </div>         

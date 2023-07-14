@@ -71,8 +71,8 @@ class Auth extends BaseController
                 $password = $this->request->getPost('password');
 
                 $data = [
-                    'first_name' => $firstname,
-                    'last_name' => $lastname,
+                    'firstname' => $firstname,
+                    'lastname' => $lastname,
                     'username' => $username,
                     'password' => Hash::encrypt($password),
                     
@@ -128,7 +128,7 @@ class Auth extends BaseController
                 return redirect()->to('Login/Auth/index');
                 
             }   else{
-                $userId = $userInfo['user_id'];
+                $userId = $userInfo['id'];
                 session()->set('loggedUser', $userId);
                 return redirect()->to('Dash/Dash');
             }

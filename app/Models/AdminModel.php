@@ -8,12 +8,14 @@ class AdminModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'admin';
-    protected $primaryKey       = 'acc_num';
+    protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
+        'firstname', 
+        'lastname',
         'username',
         'password',
         'role'

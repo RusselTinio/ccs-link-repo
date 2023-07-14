@@ -17,8 +17,22 @@
                     <div class="card-body">
                         
                         <div class="col-md-12  mt-5" >
-                            <form action="<?= base_url('AdminController/Admin/update/'.$admin['acc_num']) ?>" method="POST"> 
+                            <form action="<?= base_url('AdminController/Admin/update/'.$admin['id']) ?>" method="POST"> 
                         <?= csrf_field() ?>
+                        <div class="form-group mb-6">
+                            <label for="">First Name</label>
+                            <input type="text" class="form-control" name="firstname" value="<?= $admin['firstname']?>">
+                            <span class="text-danger text-sm">
+                                <?= isset($validation) ? display_error($validation, 'firstname'):'' ?>       
+                            </span>
+                        </div>
+                        <div class="form-group mb-6">
+                            <label for="">last Name</label>
+                            <input type="text" class="form-control" name="lastname" value="<?= $admin['lastname']?>">
+                            <span class="text-danger text-sm">
+                                <?= isset($validation) ? display_error($validation, 'lastname'):'' ?>       
+                            </span>
+                        </div>
                         <div class="form-group mb-6">
                             <label for="">Username</label>
                             <input type="text" class="form-control" name="username" value="<?= $admin['username']?>">
