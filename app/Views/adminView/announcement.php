@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group col-md-12 mt-3 ">
                             <div class="btn float-end">
-                            <a href="" class="btn btn-danger ">Back</a>
+                            <a href="adminView" class="btn btn-danger ">Back</a>
                             <input type="submit" value="Submit" class="btn btn-primary ">
                             </div>
                             
@@ -56,7 +56,7 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>Date</th>
-                                    <th>Photo</th>
+                                    <th>Image</th>
                                     <th>Content</th>
                                 </tr>
                             </thead>
