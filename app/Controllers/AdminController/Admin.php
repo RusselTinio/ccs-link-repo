@@ -5,6 +5,7 @@ namespace App\Controllers\AdminController;
 use App\Controllers\BaseController;
 use App\Libraries\Hash;
 use App\Models\AdminModel;
+use App\Models\UserModel;
 
 class Admin extends BaseController
 {
@@ -73,24 +74,30 @@ class Admin extends BaseController
 
     public function adminView(){
         $adminModel = new AdminModel();
+        $userModel = new UserModel();
         $loggedUser = session()->get('loggedAdmin');
         $adminInfo = $adminModel->find($loggedUser);
+        $userInfo = $userModel->findAll();
         $data = [
             'title' => 'Admin',
-            'adminInfo' => $adminInfo
+            'adminInfo' => $adminInfo,
+            'userInfo' => $userInfo
         ];
 
         return view('adminView/adminPage',$data);
     }
 
     public function superAdminView(){
-        $adminModel = new AdminModel(); 
+        $adminModel = new AdminModel();
+        $userModel = new UserModel(); 
         $loggedUser = session()->get('loggedAdmin');
         $adminInfo = $adminModel->find($loggedUser);
+        $userInfo = $userModel->findAll();
         $data = [
             'title' => ' Super Admin',
             'adminInfo' => $adminInfo,
             'admin' => $adminModel->where('role','admin')->findAll(),
+            'userInfo' => $userInfo
         ];
 
         return view('adminView/superAdminPage',$data);

@@ -148,12 +148,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($admin as $row):?>
+                                <?php foreach($userInfo as $row):?>
                                     <tr>
                                         <td><?= $row['firstname'] ?></td>
                                         <td><?= $row['lastname'] ?></td>
                                 <td><?= $row['username'] ?></td>
-                                <td><?= $row['role'] ?></td>
+                                <td><?= $row['status'] ?></td>
                                 <td>
                                     <a href="<?= base_url('AdminController/Admin/editView/'.$row['id']) ?>" class=" btn btn-success btn-sm">Edit</a>
                                     <form action="<?= base_url('AdminController/Admin/delete/'.$row['id']) ?>" method="POST">
