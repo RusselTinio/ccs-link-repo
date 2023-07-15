@@ -18,7 +18,8 @@ class AdminModel extends Model
         'lastname',
         'username',
         'password',
-        'role'
+        'role',
+        'status'
     ];
 
     // Dates

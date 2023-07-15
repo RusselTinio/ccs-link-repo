@@ -45,16 +45,6 @@ class Admin extends BaseController
 
             $adminInfo = $adminModel->where('username', $username)->first();
            $checkpassword = Hash::verify($password, $adminInfo['password']);
-            
-            // if(!$checkpassword){
-            //     session()->setFlashdata('fail','Incorrect password');
-            //     return redirect()->to('Login/Auth/index');
-                
-            // }   else{
-            //     $userId = $userInfo['user_id'];
-            //     session()->set('loggedUser', $userId);
-            //     return redirect()->to('Dash/Dash');
-            // }
             if(!$checkpassword){
                 session()->setFlashdata('fail','Incorrect password');
                 return redirect()->to('AdminController/Admin');
@@ -64,7 +54,7 @@ class Admin extends BaseController
                 $role = $adminInfo['role'];
                 session()->set('loggedAdmin', $adminId);
                 if($role=='superadmin'){
-                    return redirect()->to('adminController/Admin/superAdminView');
+                    return redirect()->to('adminController/SuperAdminController');
                 } else return redirect()->to('adminController/Admin/adminView');
                 
               
@@ -87,116 +77,6 @@ class Admin extends BaseController
         return view('adminView/adminPage',$data);
     }
 
-    public function superAdminView(){
-        $adminModel = new AdminModel();
-        $userModel = new UserModel(); 
-        $loggedUser = session()->get('loggedAdmin');
-        $adminInfo = $adminModel->find($loggedUser);
-        $activeUser = $userModel->where('status','active')->findAll();
-        $disabledUser = $userModel->where('status','disabled')->findAll();
-        $data = [
-            'title' => ' Super Admin',
-            'adminInfo' => $adminInfo,
-            'admin' => $adminModel->where('role','admin')->findAll(),
-            'userInfo' => $activeUser,
-            'disabled' =>  $disabledUser
-        ];
-
-        return view('adminView/superAdminPage',$data);
-    }
-
-    public function addAdmin(){
-        $adminModel = new AdminModel();
-        $loggedUser = session()->get('loggedAdmin');
-        $adminInfo = $adminModel->find($loggedUser);
-      
-
-        $validation =  $this->validate(
-            [
-                'firstname' => [
-                    'rules' => 'required',
-                    'errors' => ['required' => 'First name required',
-                    ],
-                ], 
-
-                'lastname' => [
-                    'rules' => 'required',
-                    'errors' => ['required' => 'Last name required',
-                    ],
-                ],
-
-                'username' => [
-                    'rules' => 'required|is_unique[users.username]',
-                    'errors' => ['required' => 'Username required',
-                                'is_unique' => 'Username already taken'
-                
-                    ],
-                ],
-                'password' => [
-                    'rules' => 'required|min_length[5]',
-                    'errors' => ['required' => 'Password required',
-                                'min_length' => 'minimum of 5 characters',
-                    ],
-                ],  
-                'cpassword' => [
-                    'rules' => 'required|min_length[5]|matches[password]',
-                    'errors' => ['required' => 'Password need confirmation',
-                                'min_length' => 'minimum of 5 characters',
-                                'matches' => 'must be match to the password',
-                    ],
-                ],
-                'role' => [
-                    'rules' => 'required',
-                    'errors' => ['required' => 'Role required',
-                                
-                    ],
-                ],
-
-            ]);
-           
-            $data = [
-                'title' => ' Super Admin',
-                'adminInfo' => $adminInfo,
-                'validation'=>$this->validator,
-                'admin' => $adminModel->where('role','admin')->findAll(),
-            ];
-               
-            if(!$validation){
-               return view('adminView/superAdminPage',$data);
-              
-            } else  {
-                $role = $this->request->getPost('role');
-                $username = $this->request->getPost('username');
-                $password = $this->request->getPost('password');
-                $firstname = $this->request->getPost('firstname');
-                $lastname = $this->request->getPost('lastname');
-
-
-                $data = [
-                    'username' => $username,
-                    'password' => Hash::encrypt($password),
-                    'firstname' => $firstname,
-                    'lastname' => $lastname,
-                    'role' => $role,
-                    
-                ];
-
-                $query = $adminModel->insert($data);
-                if(!$query){
-                    return redirect()->back()->with('fail','Something went wrong');
-                } else {
-                    return redirect()->to('AdminController/Admin/superAdminView')->with('success','User registered successfully');
-                    
-                }
-                
-                
-
-               
-            }
-    }
-
-   
-
     public function logout(){
         if(session()->has('loggedAdmin')){
             session()->remove('loggedAdmin');
@@ -204,14 +84,17 @@ class Admin extends BaseController
         }
     }
 
-    public function delete($acc_num){
-        $user = new AdminModel();
-        $user->delete($acc_num);
-        return redirect()->to(base_url('AdminController/Admin/superAdminView'))->with('status','User Deleted Successfully'); 
-
+    public function delete($id){
+        $adminModel = new AdminModel();
+        $data = [
+            'status' => 'disabled'
+        ];
+        $adminModel-> update($id,$data);
+        return redirect()->to(base_url('AdminController/Admin/superAdminView'))->with('status','Admin Deleted Successfully');
+            
     }
     public function editView($acc_num){
-        $adminModel = new AdminModel();
+        $adminModel = new AdminModel();        
         $accInfo = $adminModel->find($acc_num);
         $data = [
             'title' => 'Update Admin',
@@ -222,34 +105,47 @@ class Admin extends BaseController
     }
     public function update($acc_num){
         $adminModel = new AdminModel();
+        $accInfo = $adminModel->find($acc_num);
+        
        
-       // $accInfo = $adminModel->find($acc_num);
-        $firstname = $this->request->getPost('firstname');
-        $lastname = $this->request->getPost('lastname');
-        $username = $this->request->getPost('username');
-        $password = $this->request->getPost('password');
-        $role = $this->request->getPost('role');
-        $data = [
-            'firstname' => $firstname,
-            'lastname' => $lastname,
-            'username' => $username,
-            'password' => Hash::encrypt($password),
-            'role' => $role,
-         
-        ];
-        $adminModel-> update($acc_num,$data);
-        return redirect()->to(base_url('AdminController/Admin/superAdminView'))->with('status','User Updated Successfully'); 
+        $validation = $this->validate(
+            [
+                'firstname' => [
+                    'rules' => 'required',
+                    'errors' => ['required' => 'First name required',
+                    ],
+                ], 
+                'lastname' => [
+                    'rules' => 'required',
+                    'errors' => ['required' => 'Last name required',
+                    ],
+                ], 
+                'username' => [
+                    'rules' => 'required|is_unique[admin.username]',
+                    'errors' => ['required' => 'Last name required',
+                                 'is_unique' => 'Username already taken'
+                    ],
+                ], 
+                'password' => [
+                    'rules' => 'required',
+                ]
+            ]
+            );
+            $data = [
+                'title' => 'Update Admin',
+                'admin' => $accInfo,
+                'validation' => $this->validator
+            ];
+
+            if(!$validation){
+                return view('adminView/adminUpdate',$data );
+               
+             } else  {
+              
+             }
+       $adminModel-> update($acc_num,$data);
+       return redirect()->to(base_url('AdminController/Admin/superAdminView'))->with('status','User Updated Successfully'); 
     }
 
-    public function announcement(){
-        $adminModel = new AdminModel();
-        $loggedUser = session()->get('loggedAdmin');
-        $adminInfo = $adminModel->find($loggedUser);
-
-        $data = [
-            'title' => 'Announcement'
-        ];
-        return view('adminView/announcement',$data);
     
-    }
 }

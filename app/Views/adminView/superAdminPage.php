@@ -7,7 +7,7 @@
     <title><?= $title ?></title>
 </head>
 <body>
-    <h1><?= $adminInfo['username'] ?></h1>
+    <h1><?= $loggedUser['username'] ?></h1>
     <a href="<?= base_url('AdminController/Admin/logout') ?>" class="btn btn-danger">Logout</a>
 
     <div class="container">
@@ -21,7 +21,7 @@
                         
                         <div class="col-md-12  mt-5" >
                
-                    <form action="<?= base_url('AdminController/Admin/addAdmin') ?>" method="POST"> 
+                    <form action="<?= base_url('AdminController/SuperAdminController/addAdmin') ?>" method="POST"> 
                 <?= csrf_field() ?>
 
                 <?php if(!empty(session()->getFlashdata('fail'))):?>
@@ -36,7 +36,7 @@
                         <label for="">First name</label>
                         <input type="text" class="form-control" name="firstname" value="<?= set_value('firstname') ?>">
                         <span class="text-danger text-sm">
-                            <?= isset($validation) ? display_error($validation, 'firstname'):'' ?>       
+                            <?= isset($validation) ? display_error($validation, 'firstname'):'' ?>      
                         </span>
                     </div>
                     <div class="form-group mb-6">
