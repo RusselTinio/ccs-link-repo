@@ -21,54 +21,36 @@
                         <?= csrf_field() ?>
                         <div class="form-group mb-6">
                             <label for="">First Name</label>
-                            <input type="text" class="form-control" name="firstname" value="<?= $admin['firstname']?>">
-                            <span class="text-danger text-sm">
-                                <?= isset($validation) ? display_error($validation, 'firstname'):'' ?>       
-                            </span>
+                            <input type="text" class="form-control" name="firstname" value="<?= $admin['firstname']?> "readonly style='background:rgb(220, 220, 220)'>
+                           
                         </div>
                         <div class="form-group mb-6">
                             <label for="">last Name</label>
-                            <input type="text" class="form-control" name="lastname" value="<?= $admin['lastname']?>">
-                            <span class="text-danger text-sm">
-                                <?= isset($validation) ? display_error($validation, 'lastname'):'' ?>       
-                            </span>
+                            <input type="text" class="form-control" name="lastname" value="<?= $admin['lastname']?>"readonly style='background:rgb(220, 220, 220)'>
+                           
                         </div>
+                       
+                       
                         <div class="form-group mb-6">
-                            <label for="">Username</label>
-                            <input type="text" class="form-control" name="username" value="<?= $admin['username']?>">
-                            <span class="text-danger text-sm">
-                                <?= isset($validation) ? display_error($validation, 'username'):'' ?>       
-                            </span>
-                        </div>
-                        <div class="form-group mb-6">
-                            <label for="">Password</label>
+                            <label for="">New Password</label>
                             <input type="password" class="form-control" name="password">
                             <span class="text-danger text-sm">
                                 <?= isset($validation) ? display_error($validation, 'password'):'' ?>       
                             </span>
                         </div>
                         <div class="form-group mb-6">
-                            <label for="">Confirm Password</label>
+                            <label for="">Confirm New Password</label>
                             <input type="password" class="form-control" name="cpassword" value="<?= set_value('cpassword') ?>">
                             <span class="text-danger text-sm">
                                 <?= isset($validation) ? display_error($validation, 'cpassword'):'' ?>       
                             </span>
                         </div>
-                        <div class="form-group mb-6">
-                            <label for="">Role</label>
-                            <select name="role" id="" class="form-control">
-                                <option value="" disabled selected>Select Role</option>
-                                <option value="admin">Admin</option>
-                                <option value="superadmin">Super Admin</option>
-                            </select>
-                            <span class="text-danger text-sm">
-                                <?= isset($validation) ? display_error($validation, 'role'):'' ?>       
-                            </span>
-                        </div>
-                        <br>
+                       
+                        
                     
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary  offset-5 mt-3" type="submit" value="Update">
+                            <input type="submit" class="btn btn-primary float-end" type="submit" value="Update">
+                            <a href="<?= base_url('AdminController/SuperAdminController/') ?>" class="btn btn-danger float-end me-3">Back</a>
                         </div>
                     
                     </form>

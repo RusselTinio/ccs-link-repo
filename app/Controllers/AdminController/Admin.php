@@ -7,6 +7,7 @@ use App\Libraries\Hash;
 use App\Models\AdminModel;
 use App\Models\UserModel;
 
+
 class Admin extends BaseController
 {
     public function __construct(){
@@ -90,7 +91,7 @@ class Admin extends BaseController
             'status' => 'disabled'
         ];
         $adminModel-> update($id,$data);
-        return redirect()->to(base_url('AdminController/Admin/superAdminView'))->with('status','Admin Deleted Successfully');
+        return redirect()->to(base_url('AdminController/SuperAdminController'))->with('status','Admin Deleted Successfully');
             
     }
     public function editView($acc_num){
@@ -103,48 +104,45 @@ class Admin extends BaseController
         
         return view('adminView/adminUpdate',$data);
     }
-    public function update($acc_num){
+    public function update($id){
         $adminModel = new AdminModel();
-        $accInfo = $adminModel->find($acc_num);
+        $accInfo = $adminModel->find($id);
         
        
         $validation = $this->validate(
-            [
-                'firstname' => [
-                    'rules' => 'required',
-                    'errors' => ['required' => 'First name required',
-                    ],
-                ], 
-                'lastname' => [
-                    'rules' => 'required',
-                    'errors' => ['required' => 'Last name required',
-                    ],
-                ], 
-                'username' => [
-                    'rules' => 'required|is_unique[admin.username]',
-                    'errors' => ['required' => 'Last name required',
-                                 'is_unique' => 'Username already taken'
-                    ],
-                ], 
+            [ 
+                
+               
                 'password' => [
                     'rules' => 'required',
-                ]
+                    'errors' => ['required' =>'New password required']
+                ],
+                'cpassword' => [
+                    'rules' => 'required|matches[password]',
+                    'errors' => ['required' =>'Password must be confirmed',
+                                'matches[password]' =>'Password need to confirm'],
+                ],
+                
             ]
             );
+            
             $data = [
                 'title' => 'Update Admin',
                 'admin' => $accInfo,
-                'validation' => $this->validator
+                'validation' => $this->validator,
+                'password' =>Hash::encrypt($this->request->getPost('password')), 
+                
             ];
 
             if(!$validation){
                 return view('adminView/adminUpdate',$data );
                
              } else  {
-              
+               
+                $adminModel-> update($id,$data);
+                return redirect()->to(base_url('AdminController/Admin/superAdminView'))->with('status','User Updated Successfully'); 
              }
-       $adminModel-> update($acc_num,$data);
-       return redirect()->to(base_url('AdminController/Admin/superAdminView'))->with('status','User Updated Successfully'); 
+       
     }
 
     
