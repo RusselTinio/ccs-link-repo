@@ -10,9 +10,9 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-4 mt-5" >
-                <h4>Sign Up</h4><hr>
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-md-4  mt-5 p-5 bg-secondary" style="height: 4   0rem;" >
+                <h4 class="text text-light">Sign Up</h4>
                 <form action="<?= base_url('Login/Auth/saveUser') ?>" method="POST"> 
                 <?= csrf_field() ?>
 
@@ -26,51 +26,49 @@
 
 
                     <div class="form-group mb-6">
-                        <label for="">First name</label>
-                        <input type="text" class="form-control" name="firstname" value="<?= set_value('firstname') ?>">
+                        <label for=""></label>
+                        <input type="text" class="form-control" name="firstname" value="<?= set_value('firstname') ?>" placeholder="First Names">
                         <span class="text-danger text-sm">
                             <?= isset($validation) ? display_error($validation, 'firstname'):'' ?>       
                         </span>
                     </div>
                     <div class="form-group mb-6">
-                        <label for="">Last Name</label>
-                        <input type="text" class="form-control" name="lastname" value="<?= set_value('lastname') ?>">
+                        <label for=""></label>
+                        <input type="text" class="form-control" name="lastname" value="<?= set_value('lastname') ?>" placeholder="Last Name">
                         <span class="text-danger text-sm">
                             <?= isset($validation) ? display_error($validation, 'lastname'):'' ?>       
                         </span>
                     </div>
                     <div class="form-group mb-6">
-                        <label for="">Username</label>
-                        <input type="text" class="form-control" name="username" value="<?= set_value('username') ?>">
+                        <label for=""></label>
+                        <input type="text" class="form-control" name="username" value="<?= set_value('username') ?>" placeholder="Username">
                         <span class="text-danger text-sm">
                             <?= isset($validation) ? display_error($validation, 'username'):'' ?>       
                         </span>
                     </div>
                     <div class="form-group mb-6">
-                        <label for="">Password</label>
-                        <input type="password" class="form-control" name="password" value="<?= set_value('password') ?>">
+                        <label for=""></label>
+                        <input type="password" class="form-control" name="password" value="<?= set_value('password') ?>" placeholder="Password">
                         <span class="text-danger text-sm">
                             <?= isset($validation) ? display_error($validation, 'password'):'' ?>       
                         </span>
                     </div>
                     <div class="form-group mb-6">
-                        <label for="">Confirm Password</label>
-                        <input type="password" class="form-control" name="cpassword" value="<?= set_value('cpassword') ?>">
+                        <label for=""></label>
+                        <input type="password" class="form-control" name="cpassword" value="<?= set_value('cpassword') ?>" placeholder="Confirm Password">
                         <span class="text-danger text-sm">
                             <?= isset($validation) ? display_error($validation, 'cpassword'):'' ?>       
                         </span>
                     </div>
                     <br>
-                    <a href="<?= base_url('Login/Auth') ?>">Already Registered? Log in</a>
+                    <a href="<?= base_url('Login/Auth') ?>" class="text text-info text-decoration-none">Already Registered? Log in</a>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary  offset-5 mt-3" type="submit" value="Register">
+                        <input type="submit" class="btn btn-info  offset-5 mt-3 " type="submit" value="Register">
                     </div>
                     
                 </form>
             </div>
-            <div class="col-md-4 offset-4 mt-5" >
-                <a href="<?= base_url('/') ?>" class="btn btn-dark">Index</a>
-            </div>
+          
         </div>
     </div>
 </body>

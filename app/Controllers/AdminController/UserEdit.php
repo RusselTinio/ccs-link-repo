@@ -60,7 +60,7 @@ class UserEdit extends BaseController
             'status' => 'active'  // same as the delete but changing the status to active
         ];
         $userModel-> update($id,$data);
-        return redirect()->to(base_url('AdminController/Admin/superAdminView'))->with('status','Admin Deleted Successfully');
+        return redirect()->to(base_url('AdminController/SuperAdminController'))->with('status','Admin Deleted Successfully');
             
     }
 

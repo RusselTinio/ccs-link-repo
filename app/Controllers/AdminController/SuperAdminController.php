@@ -16,6 +16,7 @@ class SuperAdminController extends BaseController
     }
     public function index()
     {
+        
         $adminModel = new AdminModel();
         $userModel = new UserModel(); 
         $loggedAdminId = session()->get('loggedAdmin');
