@@ -92,7 +92,7 @@
                                         </span>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mt-3">
                                 <div class="col">
                                     <input type="submit" value="Update" class="btn btn-primary float-end ms-3">
                                     <a href="<?= base_url('Dash/Dash/profile') ?>" class="btn btn-danger float-end">Cancel</a>

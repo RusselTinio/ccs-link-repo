@@ -47,74 +47,10 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="text text-center">News and Events</h4>
-                            </div>
-                            <div class="card-body">
-                                <table class="table">
-                                    <tr>
-                                        <th>Events</th>
-                                        <th>Date</th>
-                                        <th>Info</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Sample Event</th>
-                                        <th>July 22,2023</th>
-                                        <th>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                                            <a href="#" class="text text-muted text-decoration-none">more...</a>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
+                        
                     </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                        <div class="card-header">
-                                <h4 class="text text-center">Mentors</h4>
-                            </div>
-                            <div class="card-body">
-                                <table class="table">
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Skills</th>
-                                        <th>Info</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Clark Kent</th>
-                                        <th>Data Analytics</th>
-                                        <th>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                                            <a href="#" class="text text-muted text-decoration-none">more...</a>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-header">
-                                    <h4 class="text text-center">Jobs</h4>
-                            </div>
-                            <div class="card-body">
-                                <table class="table">
-                                    <tr>
-                                        <th>Job</th>
-                                        <th>Location</th>
-                                        <th>Info</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Tech Support</th>
-                                        <th>CSFP</th>
-                                        <th>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                                            <a href="#" class="text text-muted text-decoration-none">more...</a>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                  
+                 
                 </div>
             
  

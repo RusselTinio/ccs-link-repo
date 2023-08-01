@@ -86,14 +86,14 @@
                     <a href="<?= base_url('Dash/Dash/userDeactivate') ?>" class=" text text-decoration-none text-muted">
                         <div class="row border-bottom p-1">
                             <div class="col">
-                                <i class="fa-solid fa-user-xmark"></i> <span class="ms-2">Deactivate</span>
+                                <i class="fa-solid fa-user-xmark"></i> <span class="ms-2">Deactivate Account</span>
                             </div>
                         </div>
                     </a>
                     <a href="<?= base_url('Dash/Dash/userEdit') ?>" class=" text text-decoration-none text-muted">
                         <div class="row border-bottom p-1">
                             <div class="col">
-                            <i class="fa-solid fa-user-pen"></i> <span class="ms-2">Edit</span>
+                            <i class="fa-solid fa-user-pen"></i> <span class="ms-2">Account Settings</span>
                             </div>
                         </div>
                     </a>
@@ -158,11 +158,7 @@
                         </div>
                     </div>
                     <div class="row ms-auto my-2">
-                        <div class="col-md-12">
-                            <!-- <form action="<?= base_url('Dash/Dash/editProfile') ?>" method="POST">
-                                <input type="submit" class="btn btn-outline-primary float-end fs-6" value="Edit">
-                            </form> -->
-                        </div>
+                       
                     </div>
                 </div>
             </div>
