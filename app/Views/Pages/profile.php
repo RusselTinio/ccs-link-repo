@@ -16,6 +16,12 @@
         .btn{
             font-size: .8rem;
         }
+        body{
+            background:rgba(34, 138, 218) url('<?= base_url('assets/images/profile.jpg') ?>');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-blend-mode:multiply;
+        }
        
     </style>
 </head>
@@ -69,7 +75,7 @@
                     </div>
                     <div class="row ms-auto">
                        <div class="col-md-3">
-                            <input type="text" class="form-control" value="<?= $profile['firstname'] ?>" disabled>
+                            <input type="text" class="form-control" value="<?= $userInfo['firstname'] ?>" disabled>
                             <label for="">First Name</label>
                         </div>
                         <div class="col-md-3">
@@ -77,7 +83,7 @@
                             <label for="">Middle Name</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="text" class="form-control" value="<?= $profile['lastname'] ?>" disabled>
+                            <input type="text" class="form-control" value="<?= $userInfo['lastname'] ?>" disabled>
                             <label for="">Last Name</label>
                         </div>
                         <div class="col-md-3">
@@ -130,7 +136,7 @@
     </div>
 
     <div class="row mt-3">
-        <div class="col-md-4 ">
+        <div class="col-md-4 mb-3">
             <div class="card">
                 <h2 class="pt-2 ps-2 pe-2">Contact <a href="<?= base_url('Dash/Dash/contact/') ?>" class="btn btn-outline-dark float-end">Edit</a></h2>
                 <div class="row p-2">
@@ -162,7 +168,7 @@
 
                 <div class="row p-2">
                     <div class="col-md-4">
-                        <i class="fa-brands fa-facebook"></i><span class="ms-2" style="font-weight: bold;">Facebook</span>
+                        <i class="fa-brands fa-facebook"></i><span class="ms-2" style="font-weight: bold; font-size:.9rem">Facebook</span>
                     </div>
                     <div class="col">
                         <span class="text-muted"><?= $contact['facebook'] ?></span>

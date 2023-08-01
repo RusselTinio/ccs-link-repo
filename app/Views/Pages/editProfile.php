@@ -163,6 +163,9 @@
                                 </div>
                             </div>
                             <div class="row mt-4">
+                                <textarea name="description" id=""><?= $profileInfo['description'] ?></textarea>
+                            </div>
+                            <div class="row mt-4">
 
                                 <div class="col">
                                     <input type="submit" class="btn btn-primary float-end" value="submit">

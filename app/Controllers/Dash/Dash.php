@@ -20,11 +20,21 @@ class Dash extends BaseController
         $loggedUser = session()->get('loggedUser');
         $userInfo = $userModel->find($loggedUser);
 
-        $data = [
-            'title' => 'Dashboard',
-            'userInfo' => $userInfo
-        ];
-        return view('Pages/dashboad',$data);
+        if($userInfo['status']=='disabled'){
+            $data = [
+                'title' => 'Dashboard',
+                'userInfo' => $userInfo
+                ];
+            return view('Pages/disabled',$data);
+        } else{
+            
+            $data = [
+                'title' => 'Dashboard',
+                'userInfo' => $userInfo
+                ];
+                return view('Pages/dashboad',$data);
+        }
+
     }
 
     public function profile(){
@@ -284,6 +294,7 @@ class Dash extends BaseController
                 $municipality = $this->request->getPost('municipality');
                 $barangay = $this->request->getPost('barangay');
                 $zip = $this->request->getPost('zip');
+                $description = $this->request->getPost('description');
 
                 $data = [
                     'firstname' => $firstname,
@@ -297,8 +308,10 @@ class Dash extends BaseController
                     'municipality' => $municipality,
                     'barangay' => $barangay,
                     'zip' => $zip,
+                    'description' => $description
                 ];
                 
+            
                 $profileModel -> update($id, $data);
                 $userModel -> update($loggedUser, $data);
                 return redirect()->to(base_url('Dash/Dash/profile'))->with('status','User Updated Successfully'); 

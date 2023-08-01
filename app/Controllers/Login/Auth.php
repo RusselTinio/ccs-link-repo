@@ -126,7 +126,6 @@ class Auth extends BaseController
             $username = $this->request->getPost('username');
             $password = $this->request->getPost('password');
             $userModel = new userModel();
-
             $userInfo = $userModel->where('username', $username)->first();
             $checkpassword = Hash::verify($password, $userInfo['password']);
 
@@ -134,10 +133,12 @@ class Auth extends BaseController
                 session()->setFlashdata('fail','Incorrect password');
                 return redirect()->to('Login/Auth/index');
                 
-            }   else{
-                $userId = $userInfo['id'];
-                session()->set('loggedUser', $userId);
-                return redirect()->to('Dash/Dash');
+            }   else{   
+                    $userId = $userInfo['id'];
+                    session()->set('loggedUser', $userId);
+                    return redirect()->to('Dash/Dash');
+                
+               
             }
         }
     }
