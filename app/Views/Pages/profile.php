@@ -7,6 +7,11 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css' integrity='sha512-Z0kTB03S7BU+JFU0nw9mjSBcRnZm2Bvm0tzOX9/OuOuz01XQfOpa0w/N9u6Jf2f1OAdegdIPWZ9nIZZ+keEvBw==' crossorigin='anonymous'/>
     <title><?= $title ?></title>
     <style>
+
+
+        *{
+            font-family:sans-serif;
+        }
         .fa-brands{
             font-size: 1.5rem;
         }
@@ -22,6 +27,17 @@
             background-size: cover;
             background-blend-mode:multiply;
         }
+        .fa-gear{
+            font-size: .8rem;
+        }
+        .fa-plus{
+            font-size: .8rem;  
+        }
+        .border-bottom:hover{
+            background:rgba(144, 152, 228, 0.21);
+            color:rgba(80, 87, 148, 0.64);
+        }
+       
        
     </style>
 </head>
@@ -63,6 +79,24 @@
                         </p>
                     </blockquote>
                     <a href="" class="btn btn-outline-primary">Print</a>
+                    <a class="btn btn-outline-dark fs-6 p-1" data-toggle="collapse" href="#opt" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-solid fa-gear" ></i></a>
+                </div>
+                <div class="card-body collapse" id="opt">
+                    <h5 class="text text-center">Option</h5>
+                    <a href="<?= base_url('Dash/Dash/userDeactivate') ?>" class=" text text-decoration-none text-muted">
+                        <div class="row border-bottom p-1">
+                            <div class="col">
+                                <i class="fa-solid fa-user-xmark"></i> <span class="ms-2">Deactivate</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="<?= base_url('Dash/Dash/userEdit') ?>" class=" text text-decoration-none text-muted">
+                        <div class="row border-bottom p-1">
+                            <div class="col">
+                            <i class="fa-solid fa-user-pen"></i> <span class="ms-2">Edit</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -71,7 +105,7 @@
             <div class="card px-3" id="skills">
                 <div class="row">
                     <div class="col">
-                        <h4 class="text mt-3">Personal Background</h4>
+                        <h4 class="text mt-3">Personal Background<a href="<?= base_url('Dash/Dash/editProfile') ?>" class="btn btn-outline-primary float-end"><i class="fa-regular fa-pen-to-square"></i></a></h4>
                     </div>
                     <div class="row ms-auto">
                        <div class="col-md-3">
@@ -128,7 +162,6 @@
                             <!-- <form action="<?= base_url('Dash/Dash/editProfile') ?>" method="POST">
                                 <input type="submit" class="btn btn-outline-primary float-end fs-6" value="Edit">
                             </form> -->
-                            <a href="<?= base_url('Dash/Dash/editProfile') ?>" class="btn btn-outline-primary float-end"><i class="fa-regular fa-pen-to-square"></i></a>
                         </div>
                     </div>
                 </div>
@@ -169,7 +202,7 @@
 
                 <div class="row p-2">
                     <div class="col-md-4">
-                        <i class="fa-brands fa-facebook"></i><span class="ms-2" style="font-weight: bold; font-size:.9rem">Facebook</span>
+                        <i class="fa-brands fa-facebook"></i><span class="ms-2" style="font-weight: bold; font-size:.8rem">Facebook</span>
                     </div>
                     <div class="col">
                         <span class="text-muted"><?= $contact['facebook'] ?></span>
@@ -193,7 +226,6 @@
                             <div class="row">
                                 <div class="col">
                                     <span class="text fw-bold">Position: </span><span class="text"><?= $row['position'] ?></span>
-                                    <a class="btn btn-primary float-end p-1" data-toggle="collapse" href="#editExp" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-regular fa-pen-to-square"></i></a>
                                     <a href="<?= base_url('Dash/Dash/deleteExp/' .$row['id']) ?>" class="btn btn-danger float-end p-1 me-1"><i class="fa-solid fa-trash-can" style="font-size:.9rem"></i></a>
                                 </div>
                             </div>
@@ -230,7 +262,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Year Started</label>
-                                    <input type="number"  class="form-control" min="1900" max="2023" step="1" value="" name="startYear" /> 
+                                    <input type="number"  class="form-control" min="1900" max="2023" step="1" value="" name="startYear" required/> 
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -250,43 +282,7 @@
                 </div>
             </div>
 
-            <div class="card my-4  collapse" id="editExp">
-                <div class="card-header">
-                    <span class="text fw-bold">Edit Experience</span>
-                </div>
-                <div class="card-body">
-                    <form action="<?= base_url('Dash/Dash/addExp') ?>" method="post">
-                        <div class="form-group mb-3">
-                            <label for="">Position</label>
-                            <input type="text" class="form-control" name="position">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="">Organization/Company</label>
-                            <input type="text" class="form-control" name="org">
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">Year Started</label>
-                                    <input type="number"  class="form-control" min="1900" max="2023" step="1" value="" name="startYear" /> 
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">Year Ended</label>
-                                    <input type="number"  class="form-control" min="1900" max="2023" step="1" value=" " name="endYear" />
-                                    <p class="text text-muted">leave blank if currently working</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary float-end">Update</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            
         </div>
         <div class="col-md-4 ">
         <div class="card">
@@ -305,8 +301,7 @@
                             <div class="row">
                                 <div class="col">
                                     <span class="text fw-bold">Degree: </span><span class="text"><?= $rowEd['education'] ?></span>
-                                    <a class="btn btn-primary float-end p-1" data-toggle="collapse" href="#editEd" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-regular fa-pen-to-square"></i></a>
-                                    <a href="" class="btn btn-danger float-end p-1 me-1"><i class="fa-solid fa-trash-can" style="font-size:.9rem"></i></a>
+                                    <a href="<?= base_url('Dash/Dash/deleteEd/' .$rowEd['id']) ?>" class="btn btn-danger float-end p-1 me-1"><i class="fa-solid fa-trash-can" style="font-size:.9rem"></i></a>
                                 </div>
                             </div>
                             <div class="row">
@@ -343,13 +338,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Year Started</label>
-                                    <input type="number"  class="form-control" min="1900" max="2023" step="1" value="" name="startYear" /> 
+                                    <input type="number"  class="form-control" min="1900" max="2023" step="1" value="" name="startYear" required/> 
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Year Ended</label>
-                                    <input type="number"  class="form-control" min="1900" max="2023" step="1" value="" name="endYear" />
+                                    <input type="number"  class="form-control" min="1900" max="2023" step="1" value="" name="endYear" required/>
                                     
                                 </div>
                             </div>
@@ -357,42 +352,6 @@
                         <div class="row">
                             <div class="col">
                                 <button type="submit" class="btn btn-primary float-end">Add</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="card mt-4 collapse" id="editEd">
-                <div class="card-header">
-                    <span class="text fw-bold">Edit Education</span>
-                </div>
-                <div class="card-body">
-                    <form action="<?= base_url('Dash/Dash/addExp') ?>" method="post">
-                        <div class="form-group mb-3">
-                            <label for="">Degree</label>
-                            <input type="text" class="form-control" name="education">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="">School/University</label>
-                            <input type="text" class="form-control" name="school">
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">Year Started</label>
-                                    <input type="number"  class="form-control" min="1900" max="2023" step="1" value="2022" name="startYear" /> 
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">Year Ended</label>
-                                    <input type="number"  class="form-control" min="1900" max="2023" step="1" value=" " name="endYear" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary float-end">Update</button>
                             </div>
                         </div>
                     </form>
