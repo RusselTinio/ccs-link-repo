@@ -71,7 +71,7 @@
             <div class="card px-3" id="skills">
                 <div class="row">
                     <div class="col">
-                        <h4 class="text">Personal Background</h4>
+                        <h4 class="text mt-3">Personal Background</h4>
                     </div>
                     <div class="row ms-auto">
                        <div class="col-md-3">
@@ -125,9 +125,10 @@
                     </div>
                     <div class="row ms-auto my-2">
                         <div class="col-md-12">
-                            <form action="<?= base_url('Dash/Dash/editProfile') ?>" method="POST">
+                            <!-- <form action="<?= base_url('Dash/Dash/editProfile') ?>" method="POST">
                                 <input type="submit" class="btn btn-outline-primary float-end fs-6" value="Edit">
-                            </form>
+                            </form> -->
+                            <a href="<?= base_url('Dash/Dash/editProfile') ?>" class="btn btn-outline-primary float-end"><i class="fa-regular fa-pen-to-square"></i></a>
                         </div>
                     </div>
                 </div>
@@ -138,7 +139,7 @@
     <div class="row mt-3">
         <div class="col-md-4 mb-3">
             <div class="card">
-                <h2 class="pt-2 ps-2 pe-2">Contact <a href="<?= base_url('Dash/Dash/contact/') ?>" class="btn btn-outline-dark float-end">Edit</a></h2>
+                <h2 class="pt-2 ps-2 pe-2">Contact <a href="<?= base_url('Dash/Dash/contact/') ?>" class="btn btn-outline-primary float-end"><i class="fa-regular fa-pen-to-square"></i></a></h2>
                 <div class="row p-2">
                     <div class="col-md-4">
                     <i class="fa-solid fa-globe"></i><span class="ms-2" style="font-weight: bold;">Website</span>
@@ -177,8 +178,8 @@
             </div>
         </div>
         <div class="col-md-4 ">
-            <div class="card">
-                <h4 class="p-2">Experiences: <a class="btn btn-outline-dark float-end" data-toggle="collapse" href="#exp" role="button" aria-expanded="false" aria-controls="collapseExample">Add</a></h4>
+            <div class="card mb-3">
+                <h4 class="p-2">Experiences: <a class="btn btn-outline-primary float-end fs-6" data-toggle="collapse" href="#exp" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-solid fa-plus"></i></a></h4>
                 <?php if (!$experience): ?>
                     <div class="row p-2">
                         <div class="col">
@@ -192,8 +193,8 @@
                             <div class="row">
                                 <div class="col">
                                     <span class="text fw-bold">Position: </span><span class="text"><?= $row['position'] ?></span>
-                                    <a class="btn btn-primary float-end p-1" data-toggle="collapse" href="#editExp" role="button" aria-expanded="false" aria-controls="collapseExample">Edit</a>
-                                    <a href="<?= base_url('Dash/Dash/deleteExp/' .$row['id']) ?>" class="btn btn-danger float-end p-1 me-2">Delete</a>
+                                    <a class="btn btn-primary float-end p-1" data-toggle="collapse" href="#editExp" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-regular fa-pen-to-square"></i></a>
+                                    <a href="<?= base_url('Dash/Dash/deleteExp/' .$row['id']) ?>" class="btn btn-danger float-end p-1 me-1"><i class="fa-solid fa-trash-can" style="font-size:.9rem"></i></a>
                                 </div>
                             </div>
                             <div class="row">
@@ -249,7 +250,7 @@
                 </div>
             </div>
 
-            <div class="card mt-4 collapse" id="editExp">
+            <div class="card my-4  collapse" id="editExp">
                 <div class="card-header">
                     <span class="text fw-bold">Edit Experience</span>
                 </div>
@@ -289,7 +290,7 @@
         </div>
         <div class="col-md-4 ">
         <div class="card">
-                 <h4 class="p-2">Education:  <a class="btn btn-outline-dark float-end" data-toggle="collapse" href="#ed" role="button" aria-expanded="false" aria-controls="collapseExample">Add</a></h4>
+                 <h4 class="p-2">Education:  <a class="btn btn-outline-primary float-end" data-toggle="collapse" href="#ed" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-solid fa-plus"></i></a></h4>
                  
                  <?php if (!$education): ?>
                     <div class="row p-2">
@@ -304,8 +305,8 @@
                             <div class="row">
                                 <div class="col">
                                     <span class="text fw-bold">Degree: </span><span class="text"><?= $rowEd['education'] ?></span>
-                                    <a class="btn btn-primary float-end p-1" data-toggle="collapse" href="#editEd" role="button" aria-expanded="false" aria-controls="collapseExample">Edit</a>
-                                    <a href="" class="btn btn-danger float-end p-1 me-1">delete</a>
+                                    <a class="btn btn-primary float-end p-1" data-toggle="collapse" href="#editEd" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-regular fa-pen-to-square"></i></a>
+                                    <a href="" class="btn btn-danger float-end p-1 me-1"><i class="fa-solid fa-trash-can" style="font-size:.9rem"></i></a>
                                 </div>
                             </div>
                             <div class="row">
