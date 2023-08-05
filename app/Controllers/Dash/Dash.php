@@ -178,12 +178,16 @@ class Dash extends BaseController
 
     }
 
+    
+
     public function createProfile(){
         $profileModel = new Profile();
         $userModel = new userModel();
-      
+
         $loggedUser = session()->get('loggedUser');
         $userInfo = $userModel->find($loggedUser);
+
+        
 
         $validation =  $this->validate(
             [
@@ -232,6 +236,8 @@ class Dash extends BaseController
 
             ]);
 
+            
+
             $data = [
                 'title' => 'Profile',
                 'userInfo' => $userInfo,
@@ -252,29 +258,60 @@ class Dash extends BaseController
                $zip = $this->request->getPost('zip');
                $description = $this->request->getPost('description');
 
+               $image = $this->request->getFile('image');
+                if($image->isValid()&& !$image->hasMoved()){
+                $imageName = $image->getRandomName();
+                $image->move('upload/', $imageName);
+
+                $data = [
+                    'userId' => $loggedUser,
+                    'image' => $imageName,
+                    'middlename' => $middleName,
+                    'extension' => $ext,
+                    'gender' => $gender,
+                    'civilStatus' => $civilStatus,
+                    'address' => $address,
+                    'province' => $province,
+                    'municipality' => $municipality,
+                    'barangay' => $barangay,
+                    'zip' => $zip,
+                    'description' => $description,
+                   ];
+    
+                   $query = $profileModel->insert($data);
+                   if(!$query){
+                    return redirect()->back()->with('fail','Something went wrong');
+                } else {
+                    return redirect()->to('Dash/Dash/profile')->with('success','User registered successfully');
+                    
+                }
+            }else{
+                $data = [
+                    'userId' => $loggedUser,
+                    'middlename' => $middleName,
+                    'extension' => $ext,
+                    'gender' => $gender,
+                    'civilStatus' => $civilStatus,
+                    'address' => $address,
+                    'province' => $province,
+                    'municipality' => $municipality,
+                    'barangay' => $barangay,
+                    'zip' => $zip,
+                    'description' => $description,
+                   ];
+    
+                   $query = $profileModel->insert($data);
+                   if(!$query){
+                    return redirect()->back()->with('fail','Something went wrong');
+                } else {
+                    return redirect()->to('Dash/Dash/profile')->with('success','User registered successfully');
+                    
+                }
+            }
+
              
 
-               $data = [
-                'userId' => $loggedUser,
-                'middlename' => $middleName,
-                'extension' => $ext,
-                'gender' => $gender,
-                'civilStatus' => $civilStatus,
-                'address' => $address,
-                'province' => $province,
-                'municipality' => $municipality,
-                'barangay' => $barangay,
-                'zip' => $zip,
-                'description' => $description,
-               ];
-
-               $query = $profileModel->insert($data);
-               if(!$query){
-                return redirect()->back()->with('fail','Something went wrong');
-            } else {
-                return redirect()->to('Dash/Dash/profile')->with('success','User registered successfully');
-                
-            }
+               
                
             }
 
@@ -283,7 +320,6 @@ class Dash extends BaseController
     public function editProfile(){
         $profileModel = new Profile();
         $userModel = new userModel();
-
         
         $loggedUser = session()->get('loggedUser');
         $userInfo = $userModel->find($loggedUser);
@@ -311,6 +347,7 @@ class Dash extends BaseController
         $userInfo = $userModel->find($loggedUser);
         $profileInfo = $profileModel->where('id',$id)->first();
 
+        
         $validation =  $this->validate(
             [   
                 'firstname' => [
@@ -384,7 +421,23 @@ class Dash extends BaseController
                 $zip = $this->request->getPost('zip');
                 $description = $this->request->getPost('description');
 
-                $data = [
+                if(!$profileInfo['image']){
+                    $old_image = 'none';
+                } else $old_image = $profileInfo['image'];
+        
+                $image = $this->request->getFile('image');
+                
+        
+                if($image->isValid()&& !$image->hasMoved()){
+                        
+                    if(file_exists('upload/'.$old_image)){
+                        unlink('upload/'.$old_image);
+                    }
+        
+                    $imageName = $image->getRandomName();
+                    $image ->move('upload/',$imageName);
+        
+                    $data = [
                     'firstname' => $firstname,
                     'lastname' => $lastname,
                     'middlename' => $middlename,
@@ -396,14 +449,35 @@ class Dash extends BaseController
                     'municipality' => $municipality,
                     'barangay' => $barangay,
                     'zip' => $zip,
-                    'description' => $description
-                ];
+                    'description' => $description,
+                    'image' => $imageName
+                    ];
+                    
+                    $profileModel-> update($id,$data);
+                    $userModel -> update($loggedUser, $data);
+                    return redirect()->to(base_url('Dash/Dash/profile'))->with('status','User Updated Successfully'); 
+                }else{
+                    $data = [
+                        'firstname' => $firstname,
+                        'lastname' => $lastname,
+                        'middlename' => $middlename,
+                        'extension' => $ext,
+                        'gender' => $gender,
+                        'civilStatus' => $civilStatus,
+                        'address' => $address,
+                        'province' => $province,
+                        'municipality' => $municipality,
+                        'barangay' => $barangay,
+                        'zip' => $zip,
+                        'description' => $description
+                    ];
+                    
                 
-            
-                $profileModel -> update($id, $data);
-                $userModel -> update($loggedUser, $data);
-                return redirect()->to(base_url('Dash/Dash/profile'))->with('status','User Updated Successfully'); 
-
+                    $profileModel -> update($id, $data);
+                    $userModel -> update($loggedUser, $data);
+                    return redirect()->to(base_url('Dash/Dash/profile'))->with('status','User Updated Successfully'); 
+    
+                 }  
             }
     }
 

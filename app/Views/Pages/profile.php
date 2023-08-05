@@ -61,7 +61,6 @@
                     </div>
                 </div>    
             </nav>
-
             
             </div>
 <div class="container">
@@ -70,7 +69,7 @@
         <div class="col-md-4 mb-3">
             <div class="card">
                 <div class="card-body mx-auto text-center">
-                    <img src="" alt="Profile" class="">
+                    <img src="<?=base_url("upload/".$profile['image'])?>" alt="<?= $profile['image'] ?>" heigh="200" width="200">
                     <h4 class="text"><?= $userInfo['firstname']  ?> <?= $userInfo['lastname']  ?></h4>
                     <p class=" text text-muted"><?= $userInfo['username']?></p>
                     <blockquote class="blockquote fs-6 text-muted">
@@ -78,7 +77,7 @@
                         "<?= $profile['description'] ?>"
                         </p>
                     </blockquote>
-                    <a href="" class="btn btn-outline-primary">Print</a>
+                    <a href="" class="btn btn-outline-primary" onclick="print()">Print</a>
                     <a class="btn btn-outline-dark fs-6 p-1" data-toggle="collapse" href="#opt" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-solid fa-gear" ></i></a>
                 </div>
                 <div class="card-body collapse" id="opt">
@@ -363,6 +362,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Then, include the Bootstrap JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<script src="<?= base_url('script/profile.js') ?>"></script>
 </body>
 </html>
