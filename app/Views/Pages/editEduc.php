@@ -51,7 +51,7 @@
                                     <label for="" class="text text-muted">Degee</label>
                                 </div>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" name="position" value="<?= $educ['education'] ?>" required>
+                                    <input type="text" class="form-control" name="education" value="<?= $educ['education'] ?>" required>
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -59,7 +59,7 @@
                                     <label for="" class="text text-muted">School or University</label>
                                 </div>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" name="org" value="<?= $educ['school'] ?>" required>
+                                    <input type="text" class="form-control" name="school" value="<?= $educ['school'] ?>" required>
                                 </div>
                             </div>
                             <div class="row mt-3">

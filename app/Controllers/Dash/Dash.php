@@ -693,4 +693,27 @@ class Dash extends BaseController
         return view('Pages/editEduc', $data);
         
     }
+
+    public function updateEd($id){
+        $educModel = new Education();
+        $expInfo = $educModel->find($id);
+
+        $education = $this->request->getPost('education');
+        $school = $this->request->getPost('school');
+        $startYear = $this->request->getPost('startYear');
+        $endYear = $this->request->getPost('endYear');
+
+        $data = [
+            'education' => $education,
+            'school' => $school,
+            'startYear' => $startYear,
+            'endYear' => $endYear 
+        ];
+
+        $educModel->update($id, $data);
+        return redirect()->to(base_url('Dash/Dash/profile'))->with('status','User Updated Successfully'); 
+
+
+
+    }
 }
