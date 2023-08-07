@@ -476,8 +476,7 @@ class Dash extends BaseController
                     $profileModel -> update($id, $data);
                     $userModel -> update($loggedUser, $data);
                     return redirect()->to(base_url('Dash/Dash/profile'))->with('status','User Updated Successfully'); 
-    
-                 }  
+                }  
             }
     }
 
@@ -495,16 +494,12 @@ class Dash extends BaseController
             $data = [
                 'title' => 'Profile',
                 'userInfo' => $userInfo,
-               
                 ];
-               
             return view('Pages/newContact',$data);
         } else{
             $data = [
-                'title' => 'Profile',
                 'userInfo' => $userInfo,
                 'contact' => $contactInfo
-               
                 ];
             return view('Pages/updateContact',$data);
         }       
@@ -653,10 +648,49 @@ class Dash extends BaseController
     
     public function deleteEd($id){
         $edModel = new Education();
-
-       
-
         $edModel->delete($id);
         return redirect()->to(base_url('Dash/Dash/profile'))->with('status','User Updated Successfully'); 
+    }
+
+    public function editExp($id){
+        $expModel = new Exp();
+        $expInfo = $expModel->find($id);
+        $data = ['exp' => $expInfo];
+        return view('Pages/editExp', $data);
+        
+    }
+
+    public function updateExp($id){
+        $expModel = new Exp();
+        $expInfo = $expModel->find($id);
+
+        $position = $this->request->getPost('position');
+        $org = $this->request->getPost('org');
+        $startYear = $this->request->getPost('startYear');
+        $endYear = $this->request->getPost('endYear');
+
+        if(!$endYear){
+            $endYear='Currently Working';
+        }
+
+        $data = [
+            'position' => $position,
+            'org' => $org,
+            'startYear' => $startYear,
+            'endYear' => $endYear
+        ];
+
+        $expModel->update($id, $data);
+        return redirect()->to(base_url('Dash/Dash/profile'))->with('status','User Updated Successfully'); 
+
+
+
+    }
+    public function editEd($id){
+        $educModel = new Education();
+        $educInfo = $educModel->find($id);
+        $data = ['educ' => $educInfo];
+        return view('Pages/editEduc', $data);
+        
     }
 }

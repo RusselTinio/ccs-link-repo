@@ -56,7 +56,12 @@
                             </div>
                             <div class="row justify-content-center">
                                 <div class="col-6 d-flex justify-content-center mb-4" >
-                                    <img src="<?= base_url('upload/'.$profileInfo['image']) ?>" alt="image" id="previewImage" class="border" height="150" width="300">
+                                    <!-- note: need to copy in new frontend -->
+                                <?php if (!$profileInfo['image']): ?>
+                                    <img src="<?=base_url("upload/no_profile.jpg")?>" id="previewImage" heigh="200" width="200">
+                                <?php else: ?>
+                                    <img src="<?=base_url("upload/".$profileInfo['image'])?>" alt="<?= $profileInfo['image'] ?>"  id="previewImage" heigh="200" width="200">
+                                <?php endif; ?>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 text-center mb-3" >
