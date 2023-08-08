@@ -257,6 +257,7 @@ class Dash extends BaseController
                $barangay = $this->request->getPost('barangay');
                $zip = $this->request->getPost('zip');
                $description = $this->request->getPost('description');
+               $title = $this->request->getPost('title');
 
                $image = $this->request->getFile('image');
                 if($image->isValid()&& !$image->hasMoved()){
@@ -264,6 +265,7 @@ class Dash extends BaseController
                 $image->move('upload/', $imageName);
 
                 $data = [
+                    'title' => $title,
                     'userId' => $loggedUser,
                     'image' => $imageName,
                     'middlename' => $middleName,
@@ -287,6 +289,7 @@ class Dash extends BaseController
                 }
             }else{
                 $data = [
+                    'title' => $title,
                     'userId' => $loggedUser,
                     'middlename' => $middleName,
                     'extension' => $ext,

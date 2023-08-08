@@ -16,6 +16,7 @@ class Profile extends Model
     protected $allowedFields    = [
         'userId',
         'image',
+        'title',
         'middlename',
         'extension',
         'gender',

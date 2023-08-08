@@ -51,7 +51,7 @@
                         <div class="row">
                             <div class="col-6 m-auto my-3" >
                                 <h4 class="text text-dark text-center"><?= $userInfo['firstname'] ?> <?= $userInfo['lastname'] ?></h4>
-                                <p class="text text-muted text-center"><?= $userInfo['username'] ?></p>
+                                
                             </div>       
                         </div>
                         <div class="row justify-content-center">
@@ -92,12 +92,16 @@
                                     <label for="">Middle Name</label>
                                     <input type="text" class="form-control"  name="middlename" >
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-1">
                                     <label for="">Suffix</label>
-                                    <input type="text" class="form-control w-25"  name="extension" >
+                                    <input type="text" class="form-control "  name="extension" >
                                     <span class="text-danger text-sm">
                                         <?= isset($validation) ? display_error($validation, 'extension'):'' ?>   
                                     </span>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="">Title</label>
+                                    <input type="text" class="form-control"  name="title">
                                 </div>
                             </div>
                             <div class="row mt-4">

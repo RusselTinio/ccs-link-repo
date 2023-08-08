@@ -76,7 +76,7 @@
                     <img src="<?=base_url("upload/".$profile['image'])?>" alt="<?= $profile['image'] ?>" class="mb-3" heigh="200" width="200">
                 <?php endif; ?>
                     <h4 class="text"><?= $userInfo['firstname']  ?> <?= $userInfo['lastname']  ?></h4>
-                    <p class=" text text-muted"><?= $userInfo['username']?></p>
+                    <p class=" text text-muted"><?= $profile['title']?></p>
                     <blockquote class="blockquote fs-6 text-muted">
                         <p>
                         "<?= $profile['description'] ?>"
