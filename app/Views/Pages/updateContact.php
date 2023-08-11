@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <form action="<?= base_url('Dash/Dash/updateContact/'.$contact['id']) ?>" method="POST">
+                        <form action="<?= base_url('Dash/COntactController/updateContact/'.$contact['id']) ?>" method="POST">
                             <div class="row">
                                 <div class="col-md-2">
                                     <label for="" class="text text-muted">Website</label>

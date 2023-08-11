@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <form action="<?= base_url('Dash/Dash/updateEd/'.$educ['id']) ?>" method="POST">
+                        <form action="<?= base_url('Dash/EdController/updateEd/'.$educ['id']) ?>" method="POST">
                             <div class="row">
                                 <div class="col-md-2">
                                     <label for="" class="text text-muted">Degee</label>

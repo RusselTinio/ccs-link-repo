@@ -44,14 +44,14 @@
                 </h1>
             </div>
         </div>
-        <form action="<?= base_url('Dash/Dash/updateProfile/'.$profileInfo['id']) ?>"  method="POST" enctype="multipart/form-data">
+        <form action="<?= base_url('Dash/ProfileController/updateProfile/'.$profileInfo['id']) ?>"  method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-3">
                         <div class="card" >
                             <div class="row">
                                 <div class="col-6 m-auto my-3" >
                                     <h4 class="text text-dark text-center"><?= $userInfo['firstname'] ?> <?= $userInfo['lastname'] ?></h4>
-                                    <p class="text text-muted text-center"><?= $userInfo['username'] ?></p>
+                                    
                                 </div>       
                             </div>
                             <div class="row justify-content-center">
@@ -105,9 +105,13 @@
                                         <?= isset($validation) ? display_error($validation, 'middlename'):'' ?>   
                                     </span>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-1">
                                     <label for="">Suffix</label>
-                                    <input type="text" class="form-control w-25"  name="extension" value="<?= $profileInfo['extension'] ?>" >
+                                    <input type="text" class="form-control"  name="extension" value="<?= $profileInfo['extension'] ?>" >
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="">Title</label>
+                                    <input type="text" class="form-control "  name="title" value="<?= $profileInfo['title'] ?>" >
                                 </div>
                             </div>
                             <div class="row mt-4">

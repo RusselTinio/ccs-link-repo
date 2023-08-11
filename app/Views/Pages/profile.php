@@ -55,7 +55,8 @@
                 <div class="col-md-8">
                     <div class="collapse navbar-collapse float-end me-3" id="navbarNavAltMarkup">
                         <div class="navbar-nav float-end float-end">
-                            <a href="<?= base_url('Dash/Dash/profile') ?>" class="nav-item nav-link text-light">Profile</a>
+                            <a href="<?= base_url('Dash/MentoringController') ?>" class="nav-item nav-link text-light">Mentoring</a>
+                            <a href="<?= base_url('Dash/ProfileController') ?>" class="nav-item nav-link text-light">Profile</a>
                             <a href="<?= base_url('Login/Auth/logout') ?>" class="nav-item nav-link text-light ">Log out</a> 
                         </div>
                     </div>
@@ -110,7 +111,7 @@
             <div class="card px-3" id="skills">
                 <div class="row">
                     <div class="col">
-                        <h4 class="text mt-3">Personal Background<a href="<?= base_url('Dash/Dash/editProfile') ?>" class="btn btn-outline-primary float-end"><i class="fa-regular fa-pen-to-square"></i></a></h4>
+                        <h4 class="text mt-3">Personal Background<a href="<?= base_url('Dash/ProfileController/editProfile') ?>" class="btn btn-outline-primary float-end"><i class="fa-regular fa-pen-to-square"></i></a></h4>
                     </div>
                     <div class="row ms-auto">
                        <div class="col-md-3">
@@ -173,7 +174,7 @@
     <div class="row mt-3">
         <div class="col-md-4 mb-3">
             <div class="card">
-                <h2 class="pt-2 ps-2 pe-2">Contact <a href="<?= base_url('Dash/Dash/contact/') ?>" class="btn btn-outline-primary float-end"><i class="fa-regular fa-pen-to-square"></i></a></h2>
+                <h2 class="pt-2 ps-2 pe-2">Contact <a href="<?= base_url('Dash/ContactController') ?>" class="btn btn-outline-primary float-end"><i class="fa-regular fa-pen-to-square"></i></a></h2>
                 <div class="row p-2">
                     <div class="col-md-4">
                     <i class="fa-solid fa-globe"></i><span class="ms-2" style="font-weight: bold;">Website</span>
@@ -209,6 +210,14 @@
                         <span class="text-muted"><?= $contact['facebook'] ?></span>
                     </div>
                 </div>
+                <div class="row p-2">
+                    <div class="col-md-4">
+                        <i class="fa-solid fa-mobile-screen-button"></i><span class="ms-2" style="font-weight: bold; font-size:.9rem">Contact#</span>
+                    </div>
+                    <div class="col">
+                        <span class="text-muted"><?= $contact['number'] ?></span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-4 ">
@@ -228,8 +237,8 @@
                             <div class="row">
                                 <div class="col">
                                     <span class="text fw-bold">Position: </span><span class="text"><?= $row['position'] ?></span>
-                                    <a href="<?= base_url('Dash/Dash/deleteExp/' .$row['id']) ?>" class="btn btn-danger float-end p-1 me-1 rounded-0"><i class="fa-solid fa-trash-can " style="font-size:.9rem"></i></a>
-                                    <a href="<?= base_url('Dash/Dash/editExp/' .$row['id']) ?>" class="btn btn-primary float-end p-1 me-1 rounded-0"><i class="fa-regular fa-pen-to-square" style="font-size:.9rem"></i></a>
+                                    <a href="<?= base_url('Dash/ExpController/deleteExp/' .$row['id']) ?>" class="btn btn-danger float-end p-1 me-1 rounded-0"><i class="fa-solid fa-trash-can " style="font-size:.9rem"></i></a>
+                                    <a href="<?= base_url('Dash/ExpController/editExp/' .$row['id']) ?>" class="btn btn-primary float-end p-1 me-1 rounded-0"><i class="fa-regular fa-pen-to-square" style="font-size:.9rem"></i></a>
                                 </div>
                             </div>
                             <div class="row">
@@ -253,7 +262,7 @@
                     <span class="text fw-bold">Add Experience</span>
                 </div>
                 <div class="card-body">
-                    <form action="<?= base_url('Dash/Dash/addExp') ?>" method="post">
+                    <form action="<?= base_url('Dash/ExpController') ?>" method="post">
                         <div class="form-group mb-3">
                             <label for="">Position</label>
                             <input type="text" class="form-control" name="position">
@@ -305,8 +314,8 @@
                             <div class="row">
                                 <div class="col">
                                     <span class="text fw-bold">Degree: </span><span class="text"><?= $rowEd['education'] ?></span>
-                                    <a href="<?= base_url('Dash/Dash/deleteEd/' .$rowEd['id']) ?>" class="btn btn-danger float-end p-1 me-1"><i class="fa-solid fa-trash-can" style="font-size:.9rem"></i></a>
-                                    <a href="<?= base_url('Dash/Dash/editEd/' .$rowEd['id']) ?>" class="btn btn-primary float-end p-1 me-1 rounded-0"><i class="fa-regular fa-pen-to-square" style="font-size:.9rem"></i></a>
+                                    <a href="<?= base_url('Dash/EdController/deleteEd/' .$rowEd['id']) ?>" class="btn btn-danger float-end p-1 me-1"><i class="fa-solid fa-trash-can" style="font-size:.9rem"></i></a>
+                                    <a href="<?= base_url('Dash/EdController/editEd/' .$rowEd['id']) ?>" class="btn btn-primary float-end p-1 me-1 rounded-0"><i class="fa-regular fa-pen-to-square" style="font-size:.9rem"></i></a>
                                 </div>
                             </div>
                             <div class="row">
@@ -331,7 +340,7 @@
                     <span class="text fw-bold">Eduational Background</span>
                 </div>
                 <div class="card-body">
-                    <form action="<?= base_url('Dash/Dash/addEd') ?>" method="post">
+                    <form action="<?= base_url('Dash/EdController') ?>" method="post">
                         <div class="form-group mb-3">
                             <label for="">Degree</label>
                             <input type="text" class="form-control" name="education">

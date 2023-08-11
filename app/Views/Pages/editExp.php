@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <form action="<?= base_url('Dash/Dash/updateExp/'.$exp['id']) ?>" method="POST">
+                        <form action="<?= base_url('Dash/ExpController/updateExp/'.$exp['id']) ?>" method="POST">
                             <div class="row">
                                 <div class="col-md-2">
                                     <label for="" class="text text-muted">Position</label>
@@ -86,7 +86,7 @@
                             <div class="row mt-3">
                                 <div class="col">
                                     <input type="submit" value="Save" class="btn btn-primary float-end">
-                                    <a href="<?= base_url('Dash/Dash/profile') ?>" class="btn btn-danger float-end me-2">Cancel</a>
+                                    <a href="<?= base_url('Dash/ProfileController') ?>" class="btn btn-danger float-end me-2">Cancel</a>
                                 </div>
                             </div>
 

@@ -44,7 +44,7 @@
                 </h1>
             </div>
         </div>
-        <form action="<?= base_url('Dash/Dash/createProfile') ?>" method="POST" enctype="multipart/form-data">
+        <form action="<?= base_url('Dash/ProfileController/createProfile')?>" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-3">
                 <div class="card">

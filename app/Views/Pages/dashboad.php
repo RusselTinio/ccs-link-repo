@@ -27,13 +27,14 @@
                          <span class="navbar-toggler-icon"></span>
                     </button>
                     <a class="navbar-brand ms-3" href="<?= base_url('Dash/Dash') ?>">
-                     <img src="<?= base_url('assets/logo/logo.png') ?>" alt="" class="logo" style="height:4rem ">
+                     <img src="<?= base_url('assets/logo/logo.png')?>" alt="" class="logo" style="height:4rem ">
                     </a>
                 </div> 
                 <div class="col-md-8">
                     <div class="collapse navbar-collapse float-end me-3" id="navbarNavAltMarkup">
                         <div class="navbar-nav float-end float-end">
-                            <a href="<?= base_url('Dash/Dash/profile') ?>" class="nav-item nav-link text-light">Profile</a>
+                            <a href="<?= base_url('Dash/MentoringController') ?>" class="nav-item nav-link text-light">Mentoring</a>
+                            <a href="<?= base_url('Dash/ProfileController') ?>" class="nav-item nav-link text-light">Profile</a>
                             <a href="<?= base_url('Login/Auth/logout') ?>" class="nav-item nav-link text-light ">Log out</a> 
                         </div>
                     </div>
@@ -42,7 +43,7 @@
             
                 <div class="jumbotron jumbotron-fluid p-5  d-grid align-items-center" >
                         <h1 class="text text-end text-light ">-Welcome
-                        <?= $userInfo['firstname'] ?>
+                        <?= $userInfo['firstname']?>
                         <?= $userInfo['lastname'] ?></h1>
                 </div>
                 <div class="row mt-3">
