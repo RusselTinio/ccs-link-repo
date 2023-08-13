@@ -9,6 +9,7 @@ use App\Models\Profile\Education;
 use App\Models\Profile\Exp;
 use App\Models\Profile\Profile;
 use App\Models\Profile\Skills;
+use App\Models\Profile\Mentoring;   
 use App\Libraries\Hash;
 
 class ProfileController extends BaseController
@@ -225,6 +226,8 @@ class ProfileController extends BaseController
         $profileModel = new Profile();
         $contactModel = new Contact();
         $userModel = new userModel();
+        $mentorModel = new Mentoring();
+        
 
         
         $loggedUser = session()->get('loggedUser');
@@ -341,6 +344,7 @@ class ProfileController extends BaseController
                     
                     $profileModel-> update($id,$data);
                     $userModel -> update($loggedUser, $data);
+                    $mentorModel -> where('userId', $loggedUser)->update($data);
                     return redirect()->to(base_url('Dash/ProfileController'))->with('status','User Updated Successfully'); 
                 }else{
                     $data = [

@@ -34,7 +34,8 @@ $routes->get('/', 'Home');
 
 $routes->group('',['filter' =>'AuthCheck'], function($routes){
     $routes->get('/Dash/Dash', 'Dash\Dash::index');
-    $routes->get('Dash/Dash/profile', 'Dash\Dash::profile');
+    $routes->get('Profile', 'Dash\ProfileController::index');
+
 });
 
 $routes->group('',['filter' =>'LogFilter'], function($routes){

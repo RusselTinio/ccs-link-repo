@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.css' integrity='sha512-lp6wLpq/o3UVdgb9txVgXUTsvs0Fj1YfelAbza2Kl/aQHbNnfTYPMLiQRvy3i+3IigMby34mtcvcrh31U50nRw==' crossorigin='anonymous'/>
+    <link rel='stylesheet' href='<?= base_url('bootstrap/css/bootstrap.css') ?>' integrity='sha512-lp6wLpq/o3UVdgb9txVgXUTsvs0Fj1YfelAbza2Kl/aQHbNnfTYPMLiQRvy3i+3IigMby34mtcvcrh31U50nRw==' crossorigin='anonymous'/>
     <title>Dahsboard</title>
     <style>
         .jumbotron{
@@ -34,7 +34,7 @@
                     <div class="collapse navbar-collapse float-end me-3" id="navbarNavAltMarkup">
                         <div class="navbar-nav float-end float-end">
                             <a href="<?= base_url('Dash/MentoringController') ?>" class="nav-item nav-link text-light">Mentoring</a>
-                            <a href="<?= base_url('Dash/ProfileController') ?>" class="nav-item nav-link text-light">Profile</a>
+                            <a href="<?= base_url('Profile') ?>" class="nav-item nav-link text-light">Profile</a>
                             <a href="<?= base_url('Login/Auth/logout') ?>" class="nav-item nav-link text-light ">Log out</a> 
                         </div>
                     </div>
@@ -60,5 +60,9 @@
             
         </div>
     </div>
+    <!-- Make sure jQuery is loaded first -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Then, include the Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
