@@ -32,11 +32,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <a class="link" data-toggle="collapse" href="#form" role="button">Become a Mentor</a>
+                <a class="btn btn-outline-primary" data-toggle="collapse" href="#form" role="button">Become a Mentor</a>
             </div>
             <div class="col-md-12">
                 <div class="card mt-4 collapse px-2" id="form">
+                <?php if (!$mentorProfile): ?>
                     <form action="<?= base_url('Dash/MentoringController/addMentor') ?>" method="post">
+                <?php else:?>
+                    <form action="<?= base_url('Dash/MentoringController/updateMentor') ?>" method="post">
+                <?php endif?>
+                    
                         <div class="row">
                             <div class="col-md-3 ">
                                 <div class="form-group">
@@ -85,7 +90,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="">Degree</label>
-                                    <input type="text" name="degree" class="form-control">
+                                    <input type="text" name="degree" class="form-control" value="<?= $mentorProfile['degree']?>">
                                 </div>
                             </div>
                         </div>
@@ -94,11 +99,19 @@
                                 <textarea name="description" class="form-control"  rows="5"> <?= $profileData['description'] ?></textarea>
                             </div>
                         </div>
-                        <div class="row my-2">
-                            <div class="col-md-12">
-                                <input type="submit" value="Submit" class="btn btn-primary float-end">
+                        <?php if (!$mentorProfile): ?>
+                            <div class="row my-2">
+                                <div class="col-md-12">
+                                    <input type="submit" value="Submit" class="btn btn-primary float-end">
+                                </div>
+                        <?php else:?>
+                            <div class="row my-2">
+                                <div class="col-md-12">
+                                    <input type="submit" value="Update" class="btn btn-primary float-end">
+                                </div>
                             </div>
-                        </div>
+                        <?php endif?>
+                        
                     </form>
                 </div>
             </div>

@@ -10,7 +10,6 @@ use App\Models\Profile\Exp;
 use App\Models\Profile\Profile;
 use App\Models\Profile\Skills;
 use App\Models\Profile\Mentoring;   
-use App\Libraries\Hash;
 
 class ProfileController extends BaseController
 {   
@@ -362,11 +361,11 @@ class ProfileController extends BaseController
                         'zip' => $zip,
                         'description' => $description
                     ];
-                    
-                
+        
                     $profileModel -> update($id, $data);
                     $userModel -> update($loggedUser, $data);
                     return redirect()->to(base_url('Dash/ProfileController'))->with('status','User Updated Successfully'); 
+                  
                 }  
             }
     }

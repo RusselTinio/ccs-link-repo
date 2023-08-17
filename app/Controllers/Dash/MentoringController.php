@@ -29,11 +29,13 @@ class MentoringController extends BaseController
         $contactData = $contactModel->where('userId',$loggedUser)->first();
         $profileData = $profileModel->where('userId',$loggedUser)->first();
         $mentorData = $mentorModel->where('status','active')->findAll();
+        $mentorProfile = $mentorModel->where('userId',$loggedUser)->first();
         $data = [
             'userData' => $userData,
             'contactData' => $contactData,
             'profileData' => $profileData,
             'mentorData' => $mentorData,
+            'mentorProfile' => $mentorProfile
         ];
 
         
@@ -77,8 +79,42 @@ class MentoringController extends BaseController
         
     }
 
+    }
 
+    public function updateMentor(){
+        $userModel = new userModel();
+        $mentorModel = new Mentoring();
+        $loggedUser = session()->get('loggedUser');
+        $userData = $userModel->find($loggedUser);
 
-        
+        $firstname = $this->request->getPost('firstname');
+        $lastname  = $this->request->getPost('lastname');
+        $title = $this->request->getPost('title');
+        $contactNum = $this->request->getPost('contact');
+        $facebook = $this->request->getPost('facebook');
+        $linkin = $this->request->getPost('linkin');
+        $gmail = $this->request->getPost('gmail');
+        $description = $this->request->getPost('description');
+        $degree = $this->request->getPost('degree');
+
+        $data = [
+            'userId' => $loggedUser,
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'title' => $title,
+            'contactNumber' => $contactNum,
+            'facebook' => $facebook,
+            'linkin' => $linkin,
+            'gmail'=> $gmail,
+            'description' => $description,
+            'degree' => $degree
+        ];
+
+       
+        if($mentorModel->set($data)->where('userId', $loggedUser)->update()){
+            return redirect()->to(base_url('Dash/MentoringController'))->with('status','User Updated Successfully'); 
+        } else{
+            echo "error";
+        }
     }
 }
