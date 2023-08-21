@@ -26,7 +26,8 @@ class Profile extends Model
         'barangay',
         'zip',
         'description',
-        'status'
+        'status',
+        'mentor'
 
     ];
 

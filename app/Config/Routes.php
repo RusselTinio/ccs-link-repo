@@ -48,16 +48,6 @@ $routes->group('',['filter' =>'AdminCheckFilter'], function($routes){
     $routes->get('AdminController/Admin/adminView', 'AdminController\Admin::adminView');
     $routes->get('adminController/Admin/superAdminView', 'AdminController\Admin::superAdminView');
     $routes->get('adminController/Admin/addAdmin', 'AdminController\Admin::addAdmin');
-   # $routes->get('adminController/JobController/jobposting', 'AdminController\JobController::jobposting');
-    #$routes->get('adminController/NewsController/newsevent', 'AdminController\NewsController::newsevent');
-   
-});
-
- 
-
-$routes->group('', function($routes){
-    $routes->get('AdminController/NewsController/newsevent', 'AdminController\NewsController::newsevent');
-   
 });
 
 /*
