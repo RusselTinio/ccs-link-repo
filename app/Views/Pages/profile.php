@@ -55,13 +55,13 @@
                 <div class="col-md-8">
                     <div class="collapse navbar-collapse float-end me-3" id="navbarNavAltMarkup">
                         <div class="navbar-nav float-end float-end">
-                            <a href="<?= base_url('Dash/Dash/profile') ?>" class="nav-item nav-link text-light">Profile</a>
+                            <a href="<?= base_url('Dash/MentoringController') ?>" class="nav-item nav-link text-light">Mentoring</a>
+                            <a href="<?= base_url('Dash/ProfileController') ?>" class="nav-item nav-link text-light">Profile</a>
                             <a href="<?= base_url('Login/Auth/logout') ?>" class="nav-item nav-link text-light ">Log out</a> 
                         </div>
                     </div>
                 </div>    
             </nav>
-
             
             </div>
 <div class="container">
@@ -70,15 +70,21 @@
         <div class="col-md-4 mb-3">
             <div class="card">
                 <div class="card-body mx-auto text-center">
-                    <img src="" alt="Profile" class="">
+                    <!-- need to copy in new frontend -->
+                <?php if (!$profile['image']): ?>
+                    <img src="<?=base_url("upload/no_profile.jpg")?>" heigh="200" width="200" class="mb-3">
+                <?php else: ?>
+                    <img src="<?=base_url("upload/".$profile['image'])?>" alt="<?= $profile['image'] ?>" class="mb-3" heigh="200" width="200">
+                <?php endif; ?>
                     <h4 class="text"><?= $userInfo['firstname']  ?> <?= $userInfo['lastname']  ?></h4>
-                    <p class=" text text-muted"><?= $userInfo['username']?></p>
+                    <p class=" text text-muted"><?= $profile['title']?></p>
                     <blockquote class="blockquote fs-6 text-muted">
                         <p>
                         "<?= $profile['description'] ?>"
                         </p>
                     </blockquote>
-                    <a href="" class="btn btn-outline-primary">Print</a>
+                    <a href="" class="btn btn-outline-primary" onclick="print()">Print</a>
+                    <!-- might be needed in new frontend -->
                     <a class="btn btn-outline-dark fs-6 p-1" data-toggle="collapse" href="#opt" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-solid fa-gear" ></i></a>
                 </div>
                 <div class="card-body collapse" id="opt">
@@ -105,7 +111,7 @@
             <div class="card px-3" id="skills">
                 <div class="row">
                     <div class="col">
-                        <h4 class="text mt-3">Personal Background<a href="<?= base_url('Dash/Dash/editProfile') ?>" class="btn btn-outline-primary float-end"><i class="fa-regular fa-pen-to-square"></i></a></h4>
+                        <h4 class="text mt-3">Personal Background<a href="<?= base_url('Dash/ProfileController/editProfile') ?>" class="btn btn-outline-primary float-end"><i class="fa-regular fa-pen-to-square"></i></a></h4>
                     </div>
                     <div class="row ms-auto">
                        <div class="col-md-3">
@@ -168,7 +174,7 @@
     <div class="row mt-3">
         <div class="col-md-4 mb-3">
             <div class="card">
-                <h2 class="pt-2 ps-2 pe-2">Contact <a href="<?= base_url('Dash/Dash/contact/') ?>" class="btn btn-outline-primary float-end"><i class="fa-regular fa-pen-to-square"></i></a></h2>
+                <h2 class="pt-2 ps-2 pe-2">Contact <a href="<?= base_url('Dash/ContactController') ?>" class="btn btn-outline-primary float-end"><i class="fa-regular fa-pen-to-square"></i></a></h2>
                 <div class="row p-2">
                     <div class="col-md-4">
                     <i class="fa-solid fa-globe"></i><span class="ms-2" style="font-weight: bold;">Website</span>
@@ -204,11 +210,20 @@
                         <span class="text-muted"><?= $contact['facebook'] ?></span>
                     </div>
                 </div>
+                <div class="row p-2">
+                    <div class="col-md-4">
+                        <i class="fa-solid fa-mobile-screen-button"></i><span class="ms-2" style="font-weight: bold; font-size:.9rem">Contact#</span>
+                    </div>
+                    <div class="col">
+                        <span class="text-muted"><?= $contact['number'] ?></span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-4 ">
             <div class="card mb-3">
                 <h4 class="p-2">Experiences: <a class="btn btn-outline-primary float-end fs-6" data-toggle="collapse" href="#exp" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-solid fa-plus"></i></a></h4>
+              <!-- copy this in the new frontend -->
                 <?php if (!$experience): ?>
                     <div class="row p-2">
                         <div class="col">
@@ -222,7 +237,8 @@
                             <div class="row">
                                 <div class="col">
                                     <span class="text fw-bold">Position: </span><span class="text"><?= $row['position'] ?></span>
-                                    <a href="<?= base_url('Dash/Dash/deleteExp/' .$row['id']) ?>" class="btn btn-danger float-end p-1 me-1"><i class="fa-solid fa-trash-can" style="font-size:.9rem"></i></a>
+                                    <a href="<?= base_url('Dash/ExpController/deleteExp/' .$row['id']) ?>" class="btn btn-danger float-end p-1 me-1 rounded-0"><i class="fa-solid fa-trash-can " style="font-size:.9rem"></i></a>
+                                    <a href="<?= base_url('Dash/ExpController/editExp/' .$row['id']) ?>" class="btn btn-primary float-end p-1 me-1 rounded-0"><i class="fa-regular fa-pen-to-square" style="font-size:.9rem"></i></a>
                                 </div>
                             </div>
                             <div class="row">
@@ -239,13 +255,14 @@
                     </div>
                 <?php endforeach;?>
                 <?php endif; ?>
+                <!-- until in this part -->
             </div>
             <div class="card mt-4 collapse" id="exp">
                 <div class="card-header">
                     <span class="text fw-bold">Add Experience</span>
                 </div>
                 <div class="card-body">
-                    <form action="<?= base_url('Dash/Dash/addExp') ?>" method="post">
+                    <form action="<?= base_url('Dash/ExpController') ?>" method="post">
                         <div class="form-group mb-3">
                             <label for="">Position</label>
                             <input type="text" class="form-control" name="position">
@@ -283,7 +300,7 @@
         <div class="col-md-4 ">
         <div class="card">
                  <h4 class="p-2">Education:  <a class="btn btn-outline-primary float-end" data-toggle="collapse" href="#ed" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-solid fa-plus"></i></a></h4>
-                 
+                    <!-- copy this on new frontend -->
                  <?php if (!$education): ?>
                     <div class="row p-2">
                         <div class="col">
@@ -296,8 +313,14 @@
                         <div class="col">
                             <div class="row">
                                 <div class="col">
-                                    <span class="text fw-bold">Degree: </span><span class="text"><?= $rowEd['education'] ?></span>
-                                    <a href="<?= base_url('Dash/Dash/deleteEd/' .$rowEd['id']) ?>" class="btn btn-danger float-end p-1 me-1"><i class="fa-solid fa-trash-can" style="font-size:.9rem"></i></a>
+                                    <span class="text fw-bold">Degree: </span><span class="text"><?= $rowEd['degree'] ?></span>
+                                    <a href="<?= base_url('Dash/EdController/deleteEd/' .$rowEd['id']) ?>" class="btn btn-danger float-end p-1 me-1"><i class="fa-solid fa-trash-can" style="font-size:.9rem"></i></a>
+                                    <a href="<?= base_url('Dash/EdController/editEd/' .$rowEd['id']) ?>" class="btn btn-primary float-end p-1 me-1 rounded-0"><i class="fa-regular fa-pen-to-square" style="font-size:.9rem"></i></a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <span class="text fw-bold">Program: </span> <span class="text"><?= $rowEd['program'] ?></span>
                                 </div>
                             </div>
                             <div class="row">
@@ -315,16 +338,26 @@
                             
                 <?php endforeach;?>
                 <?php endif; ?>
+                <!-- until this part -->
             </div>
             <div class="card mt-4 collapse" id="ed">
                 <div class="card-header">
                     <span class="text fw-bold">Eduational Background</span>
                 </div>
                 <div class="card-body">
-                    <form action="<?= base_url('Dash/Dash/addEd') ?>" method="post">
+                    <form action="<?= base_url('Dash/EdController') ?>" method="post">
                         <div class="form-group mb-3">
                             <label for="">Degree</label>
-                            <input type="text" class="form-control" name="education">
+                            <select name="degree" id="" class="form-control">
+                                <option value="" selected disabled>Select</option>
+                                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                <option value="Master's Degree">Master's Degree</option>
+                                <option value="Doctorate Degree">Doctorate Degree</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="">Program</label>
+                            <input type="text" class="form-control" name="program" id="" class="form-control">
                         </div>
                         <div class="form-group mb-3">
                             <label for="">School/University</label>
@@ -334,13 +367,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Year Started</label>
-                                    <input type="number"  class="form-control" min="1900" max="2023" step="1" value="" name="startYear" required/> 
+                                    <input type="number"  class="form-control" min="1900" max="2030" step="1" value="" name="startYear" required/> 
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Year Ended</label>
-                                    <input type="number"  class="form-control" min="1900" max="2023" step="1" value="" name="endYear" required/>
+                                    <input type="number"  class="form-control" min="1900" max="2030" step="1" value="" name="endYear" required/>
                                     
                                 </div>
                             </div>
@@ -363,6 +396,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Then, include the Bootstrap JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="<?= base_url('script/profile.js') ?>"></script>
 
 </body>
 </html>

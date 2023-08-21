@@ -4,32 +4,21 @@ namespace App\Models\Profile;
 
 use CodeIgniter\Model;
 
-class Profile extends Model
+class Mentoring extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'profile';
+    protected $table            = 'mentoring';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'userId',
-        'image',
-        'title',
-        'middlename',
-        'extension',
-        'gender',
-        'civilStatus',
-        'address',
-        'province',
-        'municipality',
-        'barangay',
-        'zip',
-        'description',
-        'status',
-        'mentor'
-
+     'userId',
+     'profileId',
+     'contactId',
+     'expId',
+     'educId'
     ];
 
     // Dates
@@ -55,4 +44,14 @@ class Profile extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    public function getMentorsWithInfo(){
+        return $this->select('mentoring.*,users.*, profile.*, contact.*,mentoring.id AS id,users.id AS userId, profile.id AS profileId, contact.id AS contactId')
+        ->join('users', 'users.id = mentoring.userid')
+        ->join('profile', 'profile.id = mentoring.profileid')
+        ->join('contact', 'contact.id = mentoring.contactid')
+        ->where('mentoring.status', 'pending') // Assuming there's a column indicating mentor status
+        ->findAll();
+    }
 }
