@@ -343,7 +343,6 @@ class ProfileController extends BaseController
                     
                     $profileModel-> update($id,$data);
                     $userModel -> update($loggedUser, $data);
-                    $mentorModel -> where('userId', $loggedUser)->update($data);
                     return redirect()->to(base_url('Dash/ProfileController'))->with('status','User Updated Successfully'); 
                 }else{
                     $data = [

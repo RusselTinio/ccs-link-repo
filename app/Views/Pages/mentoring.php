@@ -32,88 +32,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <a class="btn btn-outline-primary" data-toggle="collapse" href="#form" role="button">Become a Mentor</a>
+                <form action="<?= base_url('Dash/MentoringController/addMentor') ?>" method="post">
+                    <?php if(!$mentorProfile): ?>
+                        <input type="submit" class="btn btn-outline-primary  mt-4" value="Apply to be a Mentor">
+                    <?php else: ?>
+                        <input type="submit" class="btn btn-outline-primary  mt-4 disabled" value="Apply to be a Mentor">
+                    <?php endif; ?>        
+                </form>
             </div>
             <div class="col-md-12">
-                <div class="card mt-4 collapse px-2" id="form">
-                <?php if (!$mentorProfile): ?>
-                    <form action="<?= base_url('Dash/MentoringController/addMentor') ?>" method="post">
-                <?php else:?>
-                    <form action="<?= base_url('Dash/MentoringController/updateMentor') ?>" method="post">
-                <?php endif?>
-                    
-                        <div class="row">
-                            <div class="col-md-3 ">
-                                <div class="form-group">
-                                    <label for="">First name</label>
-                                    <input type="text" name="firstname" class="form-control" value="<?= $userData['firstname'] ?>">
-                                </div>
-                            </div>
-                            <div class="col-md-3 ">
-                                <div class="form-group">
-                                    <label for="">Last name</label>
-                                    <input type="text" name="lastname" class="form-control" value="<?= $userData['lastname'] ?>">
-                                </div>
-                            </div>
-                            <div class="col-md-3 ">
-                                <div class="form-group">
-                                    <label for="">Title</label>
-                                    <input type="text" name="title" class="form-control" value="<?= $profileData['title'] ?>">
-                                </div>
-                            </div>
-                            <div class="col-md-3 ">
-                                <div class="form-group">
-                                    <label for="">Contact Number</label>
-                                    <input type="text" name="contact" class="form-control" value="<?= $contactData['number'] ?>">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 ">
-                                <div class="form-group">
-                                    <label for="">Facebook</label>
-                                    <input type="text" name="facebook" class="form-control" value="<?= $contactData['facebook'] ?>">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="">LinkIn</label>
-                                    <input type="text" name="linkin" class="form-control" value="<?= $contactData['linkin'] ?>">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="">Gmail</label>
-                                    <input type="text" name="gmail" class="form-control" value="<?= $contactData['email'] ?>">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="">Degree</label>
-                                    <input type="text" name="degree" class="form-control" value="<?= $mentorProfile['degree']?>">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row my-2">
-                            <div class="col-md-12">
-                                <textarea name="description" class="form-control"  rows="5"> <?= $profileData['description'] ?></textarea>
-                            </div>
-                        </div>
-                        <?php if (!$mentorProfile): ?>
-                            <div class="row my-2">
-                                <div class="col-md-12">
-                                    <input type="submit" value="Submit" class="btn btn-primary float-end">
-                                </div>
-                        <?php else:?>
-                            <div class="row my-2">
-                                <div class="col-md-12">
-                                    <input type="submit" value="Update" class="btn btn-primary float-end">
-                                </div>
-                            </div>
-                        <?php endif?>
-                        
-                    </form>
-                </div>
+                
             </div>
         </div>
         <div class="row mt-5">
@@ -124,10 +52,10 @@
                     </div>
                 </div>
             <?php else: ?>
-                <?php foreach($mentorData as $row):?>
+                <?php foreach($mentorData as $data):?>
                     <div class="col-md-4 mb-4">
                         <div class="card p-5">
-                            <h1 class="text"><?= $row['firstname'] ?> <?= $row['lastname'] ?> </h1>
+                            <a href="<?= base_url('Dash/MentoringController/displayMentor/'.$data['id']) ?>" class="btn btn-outline-secondary"><?= $data['firstname']?> <?= $data['lastname']?></a>
                         </div>
                     </div>
                 <?php endforeach;?>

@@ -22,19 +22,17 @@ class EdController extends BaseController
         $userInfo = $userModel->find($loggedUser);
 
         $educationModel = new Education();
-        $education = $this->request->getPost('education');
+        $program = $this->request->getPost('program');
         $school = $this->request->getPost('school');
         $startYear = $this->request->getPost('startYear');
         $endYear = $this->request->getPost('endYear');
-
-        if(!$endYear){
-            $endYear='Currently Working';
-        }
+        $degree = $this->request->getPost('degree');
      
 
         $data = [
             'userId' => $loggedUser,
-            'education' => $education,
+            'program' => $program,
+            'degree' => $degree,
             'school' => $school,
             'startYear' => $startYear,
             'endYear' => $endYear

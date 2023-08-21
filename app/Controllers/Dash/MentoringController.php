@@ -18,103 +18,58 @@ class MentoringController extends BaseController
         helper(['url', 'form']);
     }
     public function index()
-    {   
+    {   $userModel = new UserModel();
+        $loggedUser = session()->get('loggedUser');
+        $userData = $userModel->find($loggedUser);
+
+       $mentorModel = new Mentoring();
+       $mentorData = $mentorModel->getMentorsWithInfo();
+       $mentorProfile = $mentorModel->where('userId',$loggedUser)->first();
+       $data = [
+        'mentorData' => $mentorData,
+        'mentorProfile' => $mentorProfile
+       ];
+
+       
+        //var_dump($data['mentorData']);
+        return view('Pages/mentoring',$data);
+    }
+    public function addMentor(){
         $contactModel = new Contact();  
         $profileModel = new Profile();
         $userModel = new userModel();
         $mentorModel = new Mentoring();
-        
+
         $loggedUser = session()->get('loggedUser');
         $userData = $userModel->find($loggedUser);
         $contactData = $contactModel->where('userId',$loggedUser)->first();
         $profileData = $profileModel->where('userId',$loggedUser)->first();
-        $mentorData = $mentorModel->where('status','active')->findAll();
-        $mentorProfile = $mentorModel->where('userId',$loggedUser)->first();
-        $data = [
-            'userData' => $userData,
-            'contactData' => $contactData,
-            'profileData' => $profileData,
-            'mentorData' => $mentorData,
-            'mentorProfile' => $mentorProfile
-        ];
-
-        
-        return view('Pages/mentoring',$data);
-    }
-    public function addMentor(){
-        $userModel = new userModel();
-        $mentorModel = new Mentoring();
-        $loggedUser = session()->get('loggedUser');
-        $userData = $userModel->find($loggedUser);
-
-        $firstname = $this->request->getPost('firstname');
-        $lastname  = $this->request->getPost('lastname');
-        $title = $this->request->getPost('title');
-        $contactNum = $this->request->getPost('contact');
-        $facebook = $this->request->getPost('facebook');
-        $linkin = $this->request->getPost('linkin');
-        $gmail = $this->request->getPost('gmail');
-        $description = $this->request->getPost('description');
-        $degree = $this->request->getPost('degree');
 
         $data = [
             'userId' => $loggedUser,
-            'firstname' => $firstname,
-            'lastname' => $lastname,
-            'title' => $title,
-            'contactNumber' => $contactNum,
-            'facebook' => $facebook,
-            'linkin' => $linkin,
-            'gmail'=> $gmail,
-            'description' => $description,
-            'degree' => $degree
+            'profileId' => $profileData['id'],
+            'contactId' => $contactData['id'],
         ];
-        
+
         $query = $mentorModel->insert($data);
-        
         if(!$query){
-        return redirect()->back()->with('fail','Something went wrong');
-    } else {
-        return redirect()->to('Dash/MentoringController')->with('success','Mentorship registered successfully');
+            return redirect()->back()->with('fail','Something went wrong');
+        } else {
+            return redirect()->to('Dash/MentoringController')->with('success','Education registered successfully');
+            
+        }
+
         
     }
 
-    }
-
-    public function updateMentor(){
-        $userModel = new userModel();
+    public function displayMentor($id){
         $mentorModel = new Mentoring();
-        $loggedUser = session()->get('loggedUser');
-        $userData = $userModel->find($loggedUser);
-
-        $firstname = $this->request->getPost('firstname');
-        $lastname  = $this->request->getPost('lastname');
-        $title = $this->request->getPost('title');
-        $contactNum = $this->request->getPost('contact');
-        $facebook = $this->request->getPost('facebook');
-        $linkin = $this->request->getPost('linkin');
-        $gmail = $this->request->getPost('gmail');
-        $description = $this->request->getPost('description');
-        $degree = $this->request->getPost('degree');
+        $mentorData = $mentorModel->where('mentoring.id',$id)->getMentorsWithInfo();
 
         $data = [
-            'userId' => $loggedUser,
-            'firstname' => $firstname,
-            'lastname' => $lastname,
-            'title' => $title,
-            'contactNumber' => $contactNum,
-            'facebook' => $facebook,
-            'linkin' => $linkin,
-            'gmail'=> $gmail,
-            'description' => $description,
-            'degree' => $degree
+            'mentorData' => $mentorData,
         ];
 
-       
-        if($mentorModel->set($data)->where('userId', $loggedUser)->update()){
-            return redirect()->to(base_url('Dash/MentoringController'))->with('status','User Updated Successfully'); 
-        } else{
-            echo "error";
-        }
-    }
+        return view('Pages/mentorDisplay',$data);
+    }    
 }

@@ -14,17 +14,11 @@ class Mentoring extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'userId',
-        'lastname',
-        'firstname',
-        'title',
-        'contactNumber',
-        'facebook',
-        'linkin',
-        'gmail',
-        'description',
-        'degree',
-        'status'
+     'userId',
+     'profileId',
+     'contactId',
+     'expId',
+     'educId'
     ];
 
     // Dates
@@ -50,4 +44,14 @@ class Mentoring extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    public function getMentorsWithInfo(){
+        return $this->select('mentoring.*,users.*, profile.*, contact.*,mentoring.id AS id,users.id AS userId, profile.id AS profileId, contact.id AS contactId')
+        ->join('users', 'users.id = mentoring.userid')
+        ->join('profile', 'profile.id = mentoring.profileid')
+        ->join('contact', 'contact.id = mentoring.contactid')
+        ->where('mentoring.status', 'pending') // Assuming there's a column indicating mentor status
+        ->findAll();
+    }
 }

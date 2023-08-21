@@ -313,9 +313,14 @@
                         <div class="col">
                             <div class="row">
                                 <div class="col">
-                                    <span class="text fw-bold">Degree: </span><span class="text"><?= $rowEd['education'] ?></span>
+                                    <span class="text fw-bold">Degree: </span><span class="text"><?= $rowEd['degree'] ?></span>
                                     <a href="<?= base_url('Dash/EdController/deleteEd/' .$rowEd['id']) ?>" class="btn btn-danger float-end p-1 me-1"><i class="fa-solid fa-trash-can" style="font-size:.9rem"></i></a>
                                     <a href="<?= base_url('Dash/EdController/editEd/' .$rowEd['id']) ?>" class="btn btn-primary float-end p-1 me-1 rounded-0"><i class="fa-regular fa-pen-to-square" style="font-size:.9rem"></i></a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <span class="text fw-bold">Program: </span> <span class="text"><?= $rowEd['program'] ?></span>
                                 </div>
                             </div>
                             <div class="row">
@@ -343,7 +348,16 @@
                     <form action="<?= base_url('Dash/EdController') ?>" method="post">
                         <div class="form-group mb-3">
                             <label for="">Degree</label>
-                            <input type="text" class="form-control" name="education">
+                            <select name="degree" id="" class="form-control">
+                                <option value="" selected disabled>Select</option>
+                                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                <option value="Master's Degree">Master's Degree</option>
+                                <option value="Doctorate Degree">Doctorate Degree</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="">Program</label>
+                            <input type="text" class="form-control" name="program" id="" class="form-control">
                         </div>
                         <div class="form-group mb-3">
                             <label for="">School/University</label>
@@ -353,13 +367,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Year Started</label>
-                                    <input type="number"  class="form-control" min="1900" max="2023" step="1" value="" name="startYear" required/> 
+                                    <input type="number"  class="form-control" min="1900" max="2030" step="1" value="" name="startYear" required/> 
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Year Ended</label>
-                                    <input type="number"  class="form-control" min="1900" max="2023" step="1" value="" name="endYear" required/>
+                                    <input type="number"  class="form-control" min="1900" max="2030" step="1" value="" name="endYear" required/>
                                     
                                 </div>
                             </div>
