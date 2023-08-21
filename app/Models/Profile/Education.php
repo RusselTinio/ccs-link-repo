@@ -15,8 +15,7 @@ class Education extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'userId',
-        'program',
-        'degree',
+        'education',
         'school',
         'startYear',
         'endYear'
