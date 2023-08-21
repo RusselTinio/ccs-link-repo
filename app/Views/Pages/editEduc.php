@@ -4,15 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.css' integrity='sha512-lp6wLpq/o3UVdgb9txVgXUTsvs0Fj1YfelAbza2Kl/aQHbNnfTYPMLiQRvy3i+3IigMby34mtcvcrh31U50nRw==' crossorigin='anonymous'/>
-    <title>Contact</title>
+    <title>Experience</title>
     <style>
-        .border-none{
-            border:none;
-            
-        }
-        body{
-         }
-       
+
     </style>
 </head>
 <body>
@@ -38,60 +32,51 @@
     </div>
     <div class="container">
         <div class="row mt-5">
-            <div class="col-md-6 mx-auto">
+            <div class="col-md-7 mx-auto">
                 <div class="card p-3">
                     <h4 class="text">
-                        Contact Info
+                        Education
                     </h4>
                     <div class="row">
                         <div class="col-md-8">
                             <p class="text text-muted fs-6">
-                                You can create your contact info here
+                                You can update your educational info here
                             </p>
                         </div>
                     </div>
                     <div class="row">
-                        <form action="<?= base_url('Dash/COntactController/updateContact/'.$contact['id']) ?>" method="POST">
+                        <form action="<?= base_url('Dash/EdController/updateEd/'.$educ['id']) ?>" method="POST">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <label for="" class="text text-muted">Website</label>
+                                    <label for="" class="text text-muted">Degee</label>
                                 </div>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" name="website" value="<?= $contact['website'] ?>">
+                                    <input type="text" class="form-control" name="education" value="<?= $educ['education'] ?>" required>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-2">
-                                    <label for="" class="text text-muted">Email</label>
+                                    <label for="" class="text text-muted">School or University</label>
                                 </div>
                                 <div class="col-md-10">
-                                    <input type="email" class="form-control" name="email" value="<?= $contact['email'] ?>">
+                                    <input type="text" class="form-control" name="school" value="<?= $educ['school'] ?>" required>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-2">
-                                    <label for="" class="text text-muted">LinkIn</label>
+                                    <label for="" class="text text-muted">Start Year</label>
                                 </div>
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control" name="linkin" value="<?= $contact['linkin'] ?>">
+                                <div class="col-md-4">
+                                    <input type="number" class="form-control" name="startYear" value="<?= $educ['startYear'] ?>" min="1900" max="2050" step="1" required>
                                 </div>
-                            </div>
-                            <div class="row mt-3">
                                 <div class="col-md-2">
-                                    <label for="" class="text text-muted">Facebook</label>
+                                    <label for="" class="text text-muted">End Year</label>
                                 </div>
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control" name="facebook" value="<?= $contact['facebook'] ?>">
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-2">
-                                    <label for="" class="text text-muted">Contact Number</label>
-                                </div>
-                                <div class="col-md-10">
-                                    <input type="tel" class="form-control" name="number" value="<?= $contact['number'] ?>"   pattern="[0-9()+- ]+">
+                                <div class="col-md-4">
+                                    <input type="number" class="form-control" name="endYear" value="<?= $educ['endYear'] ?>" min="1900" max="2050" step="1" required>
                                 </div>
                             </div>
+                           
                             <div class="row mt-3">
                                 <div class="col">
                                     <input type="submit" value="Save" class="btn btn-primary float-end">

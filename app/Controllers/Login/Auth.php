@@ -51,13 +51,13 @@ class Auth extends BaseController
                     ],
                 ],
                 'password' => [
-                    'rules' => 'required|min_length[5]',
+                    'rules' => 'required|min_length[8]',
                     'errors' => ['required' => 'Password required',
                                 'min_length' => 'minimum of 5 characters',
                     ],
                 ],  
                 'cpassword' => [
-                    'rules' => 'required|min_length[5]|matches[password]',
+                    'rules' => 'required|min_length[8]|matches[password]',
                     'errors' => ['required' => 'Password need confirmation',
                                 'min_length' => 'minimum of 5 characters',
                                 'matches' => 'must be match to the password',
