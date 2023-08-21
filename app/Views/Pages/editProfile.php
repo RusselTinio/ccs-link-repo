@@ -44,44 +44,33 @@
                 </h1>
             </div>
         </div>
-        <form action="<?= base_url('Dash/ProfileController/updateProfile/'.$profileInfo['id']) ?>"  method="POST" enctype="multipart/form-data">
+        <form action="" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-3">
-                        <div class="card" >
-                            <div class="row">
-                                <div class="col-6 m-auto my-3" >
-                                    <h4 class="text text-dark text-center"><?= $userInfo['firstname'] ?> <?= $userInfo['lastname'] ?></h4>
-                                    
-                                </div>       
+                    <div class="card" style="height:25rem">
+                        <div class="row">
+                            <div class="col-6 m-auto my-3" >
+                                <h4><?= $userInfo['firstname'] ?> <?= $userInfo['lastname'] ?></h4>
+                                <p class="text text-muted text-center"><?= $userInfo['username'] ?></p>
+                            </div>       
+                        </div>
+                        <div class="row">
+                            <div class="col-6 m-auto border mb-4" style="height:10rem" >
+                                <img src="" alt="profile" >
                             </div>
-                            <div class="row justify-content-center">
-                                <div class="col-6 d-flex justify-content-center mb-4" >
-                                    <!-- note: need to copy in new frontend -->
-                                <?php if (!$profileInfo['image']): ?>
-                                    <img src="<?=base_url("upload/no_profile.jpg")?>" id="previewImage" heigh="200" width="200">
-                                <?php else: ?>
-                                    <img src="<?=base_url("upload/".$profileInfo['image'])?>" alt="<?= $profileInfo['image'] ?>"  id="previewImage" heigh="200" width="200">
-                                <?php endif; ?>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 text-center mb-3" >
-                                        <div class="row mb-2">
-                                            <div class="col">
-                                                <input type="file" name="image" id="userfile" accept="image/jpeg" onchange="preview(event)" style="display:none">
-                                                <label for="userfile" class="btn btn-success rounded-0">Upload</label>
-                                            </div>
-                                        </div>
-                                        
-                                        
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-12 mx-auto" >
+                                    <input type="file" class="form-control " name="image" id="image">
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div> 
                     <!-- card -->
-        
-                <div class="col-md-9">              
-                        <div class="card p-5 mb-3">
+        </form>
+                <div class="col-md-9">
+                    <form action="<?= base_url('Dash/Dash/updateProfile/'.$profileInfo['id']) ?>" method="POST">                 
+                        <div class="card p-5">
                             <h4>Profile Account</h4>
                             <div class="row">
                                 <div class="col-md-3">
@@ -105,13 +94,9 @@
                                         <?= isset($validation) ? display_error($validation, 'middlename'):'' ?>   
                                     </span>
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-md-3">
                                     <label for="">Suffix</label>
-                                    <input type="text" class="form-control"  name="extension" value="<?= $profileInfo['extension'] ?>" >
-                                </div>
-                                <div class="col-md-2">
-                                    <label for="">Title</label>
-                                    <input type="text" class="form-control "  name="title" value="<?= $profileInfo['title'] ?>" >
+                                    <input type="text" class="form-control w-25"  name="extension" value="<?= $profileInfo['extension'] ?>" >
                                 </div>
                             </div>
                             <div class="row mt-4">
@@ -194,6 +179,5 @@
                 
             </div>
         </div>
-        <script src="<?= base_url('script/profile.js') ?>"></script>
 </body>
 </html>

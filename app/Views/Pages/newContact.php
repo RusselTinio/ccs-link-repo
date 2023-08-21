@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <form action="<?= base_url('Dash/ContactController/createContact') ?>" method="POST">
+                        <form action="<?= base_url('Dash/Dash/createContact') ?>" method="POST">
                             <div class="row">
                                 <div class="col-md-2">
                                     <label for="" class="text text-muted">Website</label>

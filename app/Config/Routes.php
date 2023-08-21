@@ -34,9 +34,7 @@ $routes->get('/', 'Home');
 
 $routes->group('',['filter' =>'AuthCheck'], function($routes){
     $routes->get('/Dash/Dash', 'Dash\Dash::index');
-    $routes->get('Profile', 'Dash\ProfileController::index');
-    
-
+    $routes->get('Dash/Dash/profile', 'Dash\Dash::profile');
 });
 
 $routes->group('',['filter' =>'LogFilter'], function($routes){
@@ -50,6 +48,16 @@ $routes->group('',['filter' =>'AdminCheckFilter'], function($routes){
     $routes->get('AdminController/Admin/adminView', 'AdminController\Admin::adminView');
     $routes->get('adminController/Admin/superAdminView', 'AdminController\Admin::superAdminView');
     $routes->get('adminController/Admin/addAdmin', 'AdminController\Admin::addAdmin');
+   # $routes->get('adminController/JobController/jobposting', 'AdminController\JobController::jobposting');
+    #$routes->get('adminController/NewsController/newsevent', 'AdminController\NewsController::newsevent');
+   
+});
+
+ 
+
+$routes->group('', function($routes){
+    $routes->get('AdminController/NewsController/newsevent', 'AdminController\NewsController::newsevent');
+   
 });
 
 /*

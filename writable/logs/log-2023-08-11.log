@@ -1,0 +1,246 @@
+INFO - 2023-08-11 04:51:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 04:51:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:14:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-11 05:14:44 --> Undefined variable $events
+in APPPATH\Views\newsevent\MainPage.php on line 86.
+ 1 APPPATH\Views\newsevent\MainPage.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $events', 'C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\MainPage.php', 86)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\MainPage.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('newsevent/MainPage', [], true)
+ 5 APPPATH\Controllers\AdminController\NewsController.php(20): view('newsevent/MainPage', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\AdminController\NewsController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController\NewsController))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\joshu\\Downloads\\ccs-link\\public\\index.php')
+ERROR - 2023-08-11 05:16:04 --> mysqli_sql_exception: Unknown column 'Status' in 'where clause' in C:\Users\joshu\Downloads\ccs-link\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\Users\joshu\Downloads\ccs-link\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Users\joshu\Downloads\ccs-link\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Users\joshu\Downloads\ccs-link\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Users\joshu\Downloads\ccs-link\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\joshu\Downloads\ccs-link\vendor\codeigniter4\framework\system\Model.php(241): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\joshu\Downloads\ccs-link\vendor\codeigniter4\framework\system\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\joshu\Downloads\ccs-link\app\Controllers\AdminController\EventsController.php(14): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\joshu\Downloads\ccs-link\vendor\codeigniter4\framework\system\CodeIgniter.php(932): App\Controllers\AdminController\EventsController->index()
+#8 C:\Users\joshu\Downloads\ccs-link\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController\EventsController))
+#9 C:\Users\joshu\Downloads\ccs-link\vendor\codeigniter4\framework\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\joshu\Downloads\ccs-link\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\joshu\Downloads\ccs-link\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\Users\\joshu\\...')
+#12 {main}
+CRITICAL - 2023-08-11 05:16:04 --> Unknown column 'Status' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *
+FROM `tbl_events`
+WHERE `Status` = \'active\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_events`
+WHERE `Status` = \'active\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_events`
+WHERE `Status` = \'active\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_events`
+WHERE `Status` = :Status:', [...], false)
+ 5 SYSTEMPATH\Model.php(241): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\AdminController\EventsController.php(14): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\AdminController\EventsController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController\EventsController))
+10 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\joshu\\Downloads\\ccs-link\\public\\index.php')
+INFO - 2023-08-11 05:16:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-11 05:16:50 --> Undefined variable $news
+in APPPATH\Views\newsevent\MainPage.php on line 24.
+ 1 APPPATH\Views\newsevent\MainPage.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $news', 'C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\MainPage.php', 24)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\MainPage.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('newsevent/MainPage', [], true)
+ 5 APPPATH\Controllers\AdminController\EventsController.php(18): view('newsevent/MainPage', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\AdminController\EventsController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController\EventsController))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\joshu\\Downloads\\ccs-link\\public\\index.php')
+CRITICAL - 2023-08-11 05:19:33 --> Undefined variable $fetchEvents
+in APPPATH\Controllers\AdminController\NewsController.php on line 20.
+ 1 APPPATH\Controllers\AdminController\NewsController.php(20): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fetchEvents', 'C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Controllers\\AdminController\\NewsController.php', 20)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\AdminController\NewsController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController\NewsController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\joshu\\Downloads\\ccs-link\\public\\index.php')
+INFO - 2023-08-11 05:20:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-11 05:20:01 --> Undefined variable $evearch
+in APPPATH\Views\newsevent\MainPage.php on line 118.
+ 1 APPPATH\Views\newsevent\MainPage.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $evearch', 'C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\MainPage.php', 118)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\MainPage.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('newsevent/MainPage', [], true)
+ 5 APPPATH\Controllers\AdminController\NewsController.php(25): view('newsevent/MainPage', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\AdminController\NewsController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController\NewsController))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\joshu\\Downloads\\ccs-link\\public\\index.php')
+INFO - 2023-08-11 05:20:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-11 05:20:05 --> Undefined variable $evearch
+in APPPATH\Views\newsevent\MainPage.php on line 118.
+ 1 APPPATH\Views\newsevent\MainPage.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $evearch', 'C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\MainPage.php', 118)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\MainPage.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('newsevent/MainPage', [], true)
+ 5 APPPATH\Controllers\AdminController\NewsController.php(25): view('newsevent/MainPage', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\AdminController\NewsController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController\NewsController))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\joshu\\Downloads\\ccs-link\\public\\index.php')
+INFO - 2023-08-11 05:20:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:21:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-11 05:26:05 --> Undefined variable $ImageName
+in APPPATH\Controllers\AdminController\NewsController.php on line 75.
+ 1 APPPATH\Controllers\AdminController\NewsController.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ImageName', 'C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Controllers\\AdminController\\NewsController.php', 75)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\AdminController\NewsController->storeNews()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController\NewsController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\joshu\\Downloads\\ccs-link\\public\\index.php')
+INFO - 2023-08-11 05:30:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:30:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-11 05:30:13 --> Undefined array key "Status"
+in APPPATH\Views\newsevent\MainPage.php on line 94.
+ 1 APPPATH\Views\newsevent\MainPage.php(94): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Status"', 'C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\MainPage.php', 94)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\MainPage.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('newsevent/MainPage', [], true)
+ 5 APPPATH\Controllers\AdminController\NewsController.php(25): view('newsevent/MainPage', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\AdminController\NewsController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController\NewsController))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\joshu\\Downloads\\ccs-link\\public\\index.php')
+INFO - 2023-08-11 05:30:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:34:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:34:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-11 05:34:57 --> Undefined variable $news
+in APPPATH\Views\newsevent\EventsEdit.php on line 7.
+ 1 APPPATH\Views\newsevent\EventsEdit.php(7): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $news', 'C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\EventsEdit.php', 7)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\EventsEdit.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('newsevent/EventsEdit', [], true)
+ 5 APPPATH\Controllers\AdminController\NewsController.php(53): view('newsevent/EventsEdit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\AdminController\NewsController->editEvents('1')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController\NewsController))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\joshu\\Downloads\\ccs-link\\public\\index.php')
+INFO - 2023-08-11 05:38:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:38:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:38:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:38:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-11 05:38:32 --> Undefined variable $updateNews
+in APPPATH\Controllers\AdminController\NewsController.php on line 185.
+ 1 APPPATH\Controllers\AdminController\NewsController.php(185): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $updateNews', 'C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Controllers\\AdminController\\NewsController.php', 185)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\AdminController\NewsController->updateEvents('1')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController\NewsController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\joshu\\Downloads\\ccs-link\\public\\index.php')
+INFO - 2023-08-11 05:40:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:40:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:40:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:42:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:42:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:42:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:44:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:44:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:44:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:44:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:45:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:45:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:46:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:57:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:58:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:58:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 05:58:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-11 05:58:54 --> Undefined array key "Status"
+in APPPATH\Views\newsevent\MainPage.php on line 126.
+ 1 APPPATH\Views\newsevent\MainPage.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Status"', 'C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\MainPage.php', 126)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\MainPage.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('newsevent/MainPage', [], true)
+ 5 APPPATH\Controllers\AdminController\NewsController.php(25): view('newsevent/MainPage', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\AdminController\NewsController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController\NewsController))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\joshu\\Downloads\\ccs-link\\public\\index.php')
+INFO - 2023-08-11 05:59:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-11 05:59:04 --> Undefined array key "Status"
+in APPPATH\Views\newsevent\MainPage.php on line 126.
+ 1 APPPATH\Views\newsevent\MainPage.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Status"', 'C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\MainPage.php', 126)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\joshu\\Downloads\\ccs-link\\app\\Views\\newsevent\\MainPage.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('newsevent/MainPage', [], true)
+ 5 APPPATH\Controllers\AdminController\NewsController.php(25): view('newsevent/MainPage', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\AdminController\NewsController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController\NewsController))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\joshu\\Downloads\\ccs-link\\public\\index.php')
+INFO - 2023-08-11 05:59:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-11 06:00:11 --> Cannot redeclare App\Controllers\AdminController\NewsController::restore()
+in APPPATH\Controllers\AdminController\NewsController.php on line 235.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2023-08-11 06:00:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:00:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:00:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:00:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:01:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:01:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:01:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:02:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:02:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:02:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:02:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:04:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:04:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:05:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:06:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:06:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:06:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:06:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:12:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:12:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:12:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:12:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:12:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:12:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:12:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:12:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:12:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:12:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:12:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:12:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:13:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:13:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:14:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:14:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:14:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:15:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:15:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:16:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:18:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:18:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:18:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:18:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:19:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:19:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:19:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:19:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:19:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:19:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:20:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-11 06:22:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
