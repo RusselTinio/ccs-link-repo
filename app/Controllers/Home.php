@@ -10,8 +10,11 @@ class Home extends BaseController
     }
     public function index()
     {
-        $data = ['title' => 'CCS-LINK Log In'];
-        return view('loginView/login',$data);
+       
+        return view('home');
         
+    }
+    public function aboutUs(){
+        return view('about-us');
     }
 }

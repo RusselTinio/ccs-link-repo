@@ -41,7 +41,7 @@ class ProfileController extends BaseController
                 'userInfo' => $userInfo,
                 ];
 
-                return view('Pages/newProfile',$data);
+                return view('user/profile',$data);
             }
 
         else{
@@ -62,7 +62,7 @@ class ProfileController extends BaseController
                     'education' => $education
                     ];
                   
-                return view('Pages/profile',$data);
+                return view('user/profile',$data);
             }
             
             }

@@ -14,7 +14,7 @@ class Auth extends BaseController
     }
     public function index()
     {
-        return view('loginView/login');
+        return view('user/loginform');
     }
 
     public function viewRegister(){
@@ -121,7 +121,7 @@ class Auth extends BaseController
         ]);
 
         if(!$validation){
-            return view('loginView/login', ['validation'=>$this->validator]);
+            return view('user/loginform', ['validation'=>$this->validator]);
         } else{
             $username = $this->request->getPost('username');
             $password = $this->request->getPost('password');

@@ -33,7 +33,7 @@ class Dash extends BaseController
                 'title' => 'Dashboard',
                 'userInfo' => $userInfo
                 ];
-                return view('Pages/dashboad',$data);
+                return view('user/home',$data);
         }
 
     }
@@ -125,5 +125,15 @@ class Dash extends BaseController
         return redirect()->to(base_url('Login/Auth/logout')); 
     }
 
-   
+    public function news(){
+
+        return view('user/news');
+    }
+
+    public function job(){
+        return view('user/job');
+    }
+    
 }
+
+
