@@ -55,7 +55,7 @@ class Mentorship extends BaseController
         if(!$query){
             return redirect()->back()->with('fail','Something went wrong');
         } else {
-            return redirect()->to('Dash/MentoringController')->with('success','Education registered successfully');
+            return redirect()->to('Dash/Mentorship')->with('success','Education registered successfully');
             
         }
 

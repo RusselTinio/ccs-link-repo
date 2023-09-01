@@ -40,11 +40,11 @@
                   </div>
                   <nav id="nav-menu-container">
                     <ul class="nav-menu">
-                      <li class="menu-active"><a href="landingpage.html">Home</a></li>
-                      <li><a href=" ">About Us</a></li> 
+                      <li class="menu-active"><a href="<?=base_url('Home')?>">Home</a></li>
+                      <li><a href=" <?= base_url('Home/aboutUs') ?>">About Us</a></li> 
 					  <li><a href="loginform.html">Log In</a></li>  
 					  <li><a href=>|</a></li>     
-					  <li><a href="registrationforUser.html">Sign Up</a></li> 
+					  <li><a href="<?= base_url('Login/Auth/Register') ?>">Sign Up</a></li> 
                       <li><a href="loginform-admin.html"><i class="fa fa-user" style="font-size:20px;"></i></a></li>         				          
                     </ul>
                   </nav>	    		
@@ -73,7 +73,7 @@
                     <div class="row">
                         <div class="col-xl-6 offset-xl-3">
                             <div class="text-box mt-5 mb-5">
-                                <p class="mb-4">You don't have an account? Click <a class="blue" href="registrationforUser.html">Sign Up.</a></p>
+                                <p class="mb-4">You don't have an account? Click <a class="blue" href="<?= base_url('Login/Auth/Register') ?>">Sign Up.</a></p>
                                 <form action="<?= base_url('Login/Auth/check') ?>" method="POST">
                                     <?= csrf_field() ?>
                                     <?php if(!empty(session()->getFlashdata('fail'))):?>

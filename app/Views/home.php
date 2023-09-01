@@ -41,7 +41,7 @@
 					  <li><a href="<?= base_url('Home/aboutUs') ?>">About Us</a></li> 
 					  <li><a href="<?= base_url('Login/Auth') ?>">Log In</a></li>  
 					  <li><a href=>|</a></li>     
-					  <li><a href="registrationforUser.html">Sign Up</a></li>     				          
+					  <li><a href="<?= base_url('Login/Auth/Register') ?>">Sign Up</a></li>     				          
 					</ul>
 				  </nav>	    		
 				</div>

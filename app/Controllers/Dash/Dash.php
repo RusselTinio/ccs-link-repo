@@ -9,6 +9,9 @@ use App\Models\Profile\Education;
 use App\Models\Profile\Exp;
 use App\Models\Profile\Profile;
 use App\Models\Profile\Skills;
+use App\Models\JobModel;
+use App\Models\NewsModel;
+
 use App\Libraries\Hash;
 
 class Dash extends BaseController
@@ -126,12 +129,26 @@ class Dash extends BaseController
     }
 
     public function news(){
+        $newsModel = new newsModel();
 
-        return view('user/news');
+        $newsData = $newsModel->findAll();
+
+        $data = [
+            'newsData' => $newsData
+        ];
+
+        return view('user/news', $data);
     }
 
     public function job(){
-        return view('user/job');
+        $jobModel = new jobModel();
+
+        $jobData = $jobModel->findAll();
+
+        $data = [
+            'jobdata' => $jobData
+        ];
+        return view('user/job', $data);
     }
     
 }

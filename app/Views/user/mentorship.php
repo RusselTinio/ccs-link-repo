@@ -56,170 +56,63 @@
 						<h1 class="mb-10">MENTORS</h1>
 						<br><br>
 					</div>
+					
 					<!--Card Profile Container-->
 						<div class="container">
 							<div class="row">
+							<?php if (!$mentorData): ?>
+								<div class="row p-2">
+									<div class="col">
+										<span class="text">No data yet</span>
+									</div>
+								</div>
+							<?php else: ?>
+                				<?php foreach($mentorData as $data):?>
 							<div class="col-12 col-sm-12 col-md-6 col-lg-4">
 								<div class="our-team">
 								<div class="picture">
-									<img class="img-fluid" src="https://picsum.photos/130/130?image=1027">
+									<img class="img-fluid" src="<?= base_url('upload/').$data['image'] ?>"/>
 								</div>
 								<div class="team-content">
-									<h3 class="name">Michele Miller</h3>
+									<h3 class="name"><?= $data['firstname'] ?> <?= $data['lastname'] ?> </h3>
 									<h4 class="title">Mentor</h4>
-									<h6 class="content title"><i class="fa fa-phone" id="num"> 0922-345-6789 </i></h6>
+									<h6 class="content title"><i class="fa fa-phone" id="num"> <?= $data['number'] ?></i></h6>
 								</div>
 								<div class="content">
 									<h6 class="title"> Degree: </h6>
 									<h6 class="label"> Software Engineering </h6>
-									<h6 class="title"> Job: </h6>
-									<h6 class="label"> Tech Lead/ Senior Engineer II</h6>
-									<h6 class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at porta metus. Aliquam et purus convallis, aliquet diam a, imperdiet odio. Nunc vel felis eget velit malesuada faucibus. Nunc congue elementum lectus, non ultrices ante pellentesque ac. Etiam tristique porta consequat. Donec sit amet tincidunt sem. Cras non auctor sem. Donec sed nibh scelerisque, feugiat ligula sit amet, bibendum lectus.</h6>
+									<h6 class="title"> Title: </h6>
+									<h6 class="label"> <?= $data['title'] ?></h6>
+									<h6 class="description"><?= $data['description'] ?></h6>
 								    
 										
 									
 								</div>
 								<ul class="social">
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-github" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google" aria-hidden="true"></a></li>
+									<li><a href="<?= $data['facebook'] ?>" class="fa fa-facebook" aria-hidden="true"></a></li>
+									<li><a href="" class="fa fa-linkedin" aria-hidden="true"></a></li>
+									<li><a href="" class="fa fa-github" aria-hidden="true"></a></li>
+									<li><a href="mailto:<?= $data['email']?>" class="fa fa-google" aria-hidden="true"></a></li>
 									
 								</ul>
 								</div>
 							</div>
-							<div class="col-12 col-sm-12 col-md-6 col-lg-4">
-								<div class="our-team">
-								<div class="picture">
-									<img class="img-fluid" src="https://picsum.photos/130/130?image=839">
-								</div>
-								<div class="team-content">
-									<h3 class="name">Patricia Knott</h3>
-									<h4 class="title">Mentor</h4>
-									<h6 class="title"><i class="fa fa-phone" id="num"> 0922-345-6789 </i></h6>
-								</div>
-								<div class="content">
-									<h6 class="title"> Degree: </h6>
-									<h6 class="label"> Software Engineering </h6>
-									<h6 class="title"> Job: </h6>
-									<h6 class="label"> Tech Lead/ Senior Engineer II</h6>
-									<h6 class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at porta metus. Aliquam et purus convallis, aliquet diam a, imperdiet odio. Nunc vel felis eget velit malesuada faucibus. Nunc congue elementum lectus, non ultrices ante pellentesque ac. Etiam tristique porta consequat. Donec sit amet tincidunt sem. Cras non auctor sem. Donec sed nibh scelerisque, feugiat ligula sit amet, bibendum lectus.</h6>
-								</div>
-								<ul class="social">
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-github" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google" aria-hidden="true"></a></li>									
-								</ul>
-								</div>
-							</div>
-							<div class="col-12 col-sm-12 col-md-6 col-lg-4">
-								<div class="our-team">
-								<div class="picture">
-									<img class="img-fluid" src="https://picsum.photos/130/130?image=856">
-								</div>
-								<div class="team-content">
-									<h3 class="name">Justin Ramos</h3>
-									<h4 class="title">Mentor</h4>
-									<h6 class="title"><i class="fa fa-phone" id="num"> 0922-345-6789 </i></h6>
-								</div>
-								<div class="content">
-									<h6 class="title"> Degree: </h6>
-									<h6 class="label"> Software Engineering </h6>
-									<h6 class="title"> Job: </h6>
-									<h6 class="label"> Tech Lead/ Senior Engineer II</h6>
-									<h6 class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at porta metus. Aliquam et purus convallis, aliquet diam a, imperdiet odio. Nunc vel felis eget velit malesuada faucibus. Nunc congue elementum lectus, non ultrices ante pellentesque ac. Etiam tristique porta consequat. Donec sit amet tincidunt sem. Cras non auctor sem. Donec sed nibh scelerisque, feugiat ligula sit amet, bibendum lectus.</h6>
-								</div>
-								<ul class="social">
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-github" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google" aria-hidden="true"></a></li>									
-								</ul>
-								</div>
-							</div>
-							<div class="col-12 col-sm-12 col-md-6 col-lg-4">
-								<div class="our-team">
-								<div class="picture">
-									<img class="img-fluid" src="https://picsum.photos/130/130?image=836">
-								</div>
-								<div class="team-content">
-									<h3 class="name">Mary Huntley</h3>
-									<h4 class="title">Mentor</h4>
-									<h6 class="title"><i class="fa fa-phone" id="num"> 0922-345-6789 </i></h6>
-								</div>
-								<div class="content">
-									<h6 class="title"> Degree: </h6>
-									<h6 class="label"> Software Engineering </h6>
-									<h6 class="title"> Job: </h6>
-									<h6 class="label"> Tech Lead/ Senior Engineer II</h6>
-									<h6 class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at porta metus. Aliquam et purus convallis, aliquet diam a, imperdiet odio. Nunc vel felis eget velit malesuada faucibus. Nunc congue elementum lectus, non ultrices ante pellentesque ac. Etiam tristique porta consequat. Donec sit amet tincidunt sem. Cras non auctor sem. Donec sed nibh scelerisque, feugiat ligula sit amet, bibendum lectus.</h6>
-								</div>
-								<ul class="social">
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-github" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google" aria-hidden="true"></a></li>									
-								</ul>
-								</div>
-							</div>
-							<div class="col-12 col-sm-12 col-md-6 col-lg-4">
-								<div class="our-team">
-								<div class="picture">
-									<img class="img-fluid" src="https://picsum.photos/130/130?image=1027">
-								</div>
-								<div class="team-content">
-									<h3 class="name">Michele Miller</h3>
-									<h4 class="title">Mentor</h4>
-									<h6 class="title"><i class="fa fa-phone" id="num"> 0922-345-6789 </i></h6>
-								</div>
-								<div class="content">
-									<h6 class="title"> Degree: </h6>
-									<h6 class="label"> Software Engineering </h6>
-									<h6 class="title"> Job: </h6>
-									<h6 class="label"> Tech Lead/ Senior Engineer II</h6>
-									<h6 class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at porta metus. Aliquam et purus convallis, aliquet diam a, imperdiet odio. Nunc vel felis eget velit malesuada faucibus. Nunc congue elementum lectus, non ultrices ante pellentesque ac. Etiam tristique porta consequat. Donec sit amet tincidunt sem. Cras non auctor sem. Donec sed nibh scelerisque, feugiat ligula sit amet, bibendum lectus.</h6>
-								</div>
-								<ul class="social">
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-github" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google" aria-hidden="true"></a></li>									
-								</ul>
-								</div>
-							</div>
-							<div class="col-12 col-sm-12 col-md-6 col-lg-4">
-								<div class="our-team">
-								<div class="picture">
-									<img class="img-fluid" src="https://picsum.photos/130/130?image=839">
-								</div>
-								<div class="team-content">
-									<h3 class="name">Patricia Knott</h3>
-									<h4 class="title">Mentor</h4>
-									<h6 class="title"><i class="fa fa-phone" id="num"> 0922-345-6789 </i></h6>
-								</div>
-								<div class="content">
-									<h6 class="title"> Degree: </h6>
-									<h6 class="label"> Software Engineering </h6>
-									<h6 class="title"> Job: </h6>
-									<h6 class="label"> Tech Lead/ Senior Engineer II</h6>
-									<h6 class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at porta metus. Aliquam et purus convallis, aliquet diam a, imperdiet odio. Nunc vel felis eget velit malesuada faucibus. Nunc congue elementum lectus, non ultrices ante pellentesque ac. Etiam tristique porta consequat. Donec sit amet tincidunt sem. Cras non auctor sem. Donec sed nibh scelerisque, feugiat ligula sit amet, bibendum lectus.</h6>
-								</div>
-								<ul class="social">
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-github" aria-hidden="true"></a></li>
-									<li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google" aria-hidden="true"></a></li>
-									
-								</ul>
-								</div>
-							</div>
+								<?php endforeach;?>
+							<?php endif; ?>
 
 							</div>
 						</div>
 					<!--end of card profile container-->
+							
 					<div class="buttons-container">
-						<a href="index.html"><button class="button-arounder">Apply as MENTOR</button></a>
+						
+						<form action="<?= base_url('Dash/Mentorship/addMentor') ?>" method="post">
+							<?php if(!$mentorProfile): ?>
+								<input type="submit" class="button-arounder  mt-4" value="Apply to be a Mentor">
+							<?php else: ?>
+								<input type="submit" class="button-arounder  mt-4 disabled" value="Already a mentor" disabled>
+							<?php endif; ?>        
+						</form>
 					  </div>
 					</div>
 			   </section>			

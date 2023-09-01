@@ -41,7 +41,7 @@ class ProfileController extends BaseController
                 'userInfo' => $userInfo,
                 ];
 
-                return view('user/profile',$data);
+                return view('Pages/Newprofile',$data);
             }
 
         else{
@@ -62,7 +62,8 @@ class ProfileController extends BaseController
                     'education' => $education
                     ];
                   
-                return view('user/profile',$data);
+               return view('user/profile',$data);
+               
             }
             
             }
@@ -149,7 +150,7 @@ class ProfileController extends BaseController
                $image = $this->request->getFile('image');
                 if($image->isValid()&& !$image->hasMoved()){
                 $imageName = $image->getRandomName();
-                $image->move('upload/', $imageName);
+                $image->move('upload/profile', $imageName);
 
                 $data = [
                     'title' => $title,
@@ -317,12 +318,12 @@ class ProfileController extends BaseController
         
                 if($image->isValid()&& !$image->hasMoved()){
                         
-                    if(file_exists('upload/'.$old_image)){
-                        unlink('upload/'.$old_image);
+                    if(file_exists('upload/profile'.$old_image)){
+                        unlink('upload/profile'.$old_image);
                     }
         
                     $imageName = $image->getRandomName();
-                    $image ->move('upload/',$imageName);
+                    $image ->move('upload/profile',$imageName);
         
                     $data = [
                     'firstname' => $firstname,

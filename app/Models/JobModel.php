@@ -14,7 +14,17 @@ class JobModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'job_title', 'job_company', 'job_description', 'job_category', 'job_address', 'job_salary', 'job_email', 'job_contacts', 'job_website', 'job_cover', 'Status'
+        'job_title', 
+        'job_company', 
+        'job_description', 
+        'job_category', 
+        'job_address', 
+        'job_salary', 
+        'job_email', 
+        'job_contacts', 
+        'job_website', 
+        'job_cover', 
+        'Status'
     ];
 
     // Dates

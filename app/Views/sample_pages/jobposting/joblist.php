@@ -42,7 +42,7 @@
                 <td><?= $job['job_email']; ?></td>
                 <td><?= $job['job_contacts']; ?></td>
                 <td><?= $job['job_website']; ?></td>
-                <td><img src="/uploads/<?= $job['job_cover']; ?>" alt="" width="100"></td>
+                <td><img src="/upload/<?= $job['job_cover']; ?>" alt="" width="100"></td>
                 <td><?= $job['Status']; ?></td>
                 <td>
                     <a href="<?= base_url('AdminController/JobController/editJob/') ?><?= $job['id']; ?>" class="btn btn-primary">Edit</a>
@@ -84,7 +84,7 @@
                 <td><?= $arc['job_email']; ?></td>
                 <td><?= $arc['job_contacts']; ?></td>
                 <td><?= $arc['job_website']; ?></td>
-                <td><img src="/uploads/<?= $arc['job_cover']; ?>" alt="" width="100"></td>
+                <td><img src="<?= base_url('upload/').$arc['job_cover']; ?>" alt="" width="100"></td>
                 <td><?= $arc['Status']; ?></td>
                 <td>
                     <a href="<?= base_url('AdminController/JobController/restore/') ?><?= $arc['id']; ?>" class="btn btn-success">Restore</a>

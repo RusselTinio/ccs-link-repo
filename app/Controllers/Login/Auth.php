@@ -17,8 +17,8 @@ class Auth extends BaseController
         return view('user/loginform');
     }
 
-    public function viewRegister(){
-        return view('loginView/register');
+    public function Register(){
+        return view('user/registration');
     }
 
     public function saveUser(){
@@ -64,14 +64,18 @@ class Auth extends BaseController
                     ],
                 ],
 
+                'privacy' => [
+                    'rules' => 'required',
+                    'errors' => ['required' => 'must agree to privacy policy and terms and conditions']
+                ]
+
             ]);
             // var_dump($validation);
 
                
             if(!$validation){
-                return view('loginView/register', ['validation'=>$this->validator]);
+                return view('user/registration', ['validation'=>$this->validator]);
             } else  {
-                $firstname = $this->request->getPost('firstname');
                 $lastname = $this->request->getPost('lastname');
                 $firstname = $this->request->getPost('firstname');
                 $username = $this->request->getPost('username');

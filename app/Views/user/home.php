@@ -46,7 +46,7 @@
                       <li><a href="<?= base_url('Dash/Mentorship') ?>">Mentoring</a></li>
                       <li><a href="form.html">Survey</a></li>
                       <li><a href="<?= base_url('Dash/profileController') ?>">Profile</a></li>
-                      <img class="d-flex pl-3" src="<?=  base_url('style/landingPage/img/profile.png')?>" alt="Profile" />
+                     <a href="<?= base_url('Login/Auth/logout') ?>"><img class="d-flex pl-3" src="<?=  base_url('style/landingPage/img/profile.png')?>" alt="Profile" /></a> 
                     </ul>
                   </nav>	    		
                 </div>
@@ -70,7 +70,7 @@
                 <div class="carousel-item active" style="background-image: url(<?= base_url('style/landingPage/image/CCSLINK-logo-bg.png') ?>);">
                   <div class="carousel-container">
                     <div class="carousel-content animate__animated animate__fadeInUp">
-                      <h2>Welcome to <span>CCSLINK</span></h2>
+                      <h2>Welcome, <span><?= $userInfo['firstname'] ?>  <?= $userInfo['lastname'] ?></span></h2>
                       <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
                     </div>
                   </div>

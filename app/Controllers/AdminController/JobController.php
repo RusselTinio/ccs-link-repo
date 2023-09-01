@@ -43,7 +43,7 @@ class JobController extends BaseController
         if($img = $this->request->getFile('jobCover')){
             if($img->isValid() && ! $img->hasMoved()){
                 $ImageName = $img->getRandomName();
-                $img->move('uploads/', $ImageName);
+                $img->move('upload/', $ImageName);
         }
         
     }
@@ -73,7 +73,7 @@ class JobController extends BaseController
         if($img=$this->request->getfile('jobCover')){
             if($img->isValid() &&! $img->hasMoved()){
                 $imageName=$img->getRandomName();
-                $img->move('uploads/',$imageName);
+                $img->move('upload/',$imageName);
             }
         }
 
