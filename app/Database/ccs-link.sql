@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2023 at 03:37 AM
+-- Generation Time: Sep 09, 2023 at 07:55 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -89,8 +89,14 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `userId`, `website`, `email`, `linkin`, `facebook`, `number`) VALUES
-(1, 1, 'sample website', 'sample@gmail.com', 'rulice@mailinator.com', 'sample facebook', '09566339356'),
-(2, 2, 'sample website', 'sample@gmail.com', 'rulice@mailinator.com', 'sa', '09566339356');
+(1, 1, 'sample website', 'sample@gmail.com', 'rulice@mailinator.com', 'https://www.facebook.com/', '09566339356'),
+(2, 2, 'sample website', 'sample@gmail.com', 'rulice@mailinator.com', 'https://www.facebook.com/', '09566339356'),
+(3, 3, 'sample website', 'sample@gmail.com', 'rulice@mailinator.com', 'sample facebook', '09566339356'),
+(4, 5, 'sample website', 'sample@gmail.com', 'rulice@mailinator.com', 'sample facebook', '09566339356'),
+(5, 4, 'sample website', 'sample@gmail.com', 'rulice@mailinator.com', 'https://www.facebook.com/', '09566339356'),
+(10, 6, 'sample website', 'sample@gmail.com', 'rulice@mailinator.com', '', '09566339356'),
+(11, 7, 'lujy@mailinator.com', 'xiviqa@mailinator.com', 'qecytu@mailinator.com', 'maqu@mailinator.com', '+1 (258) 404-9572'),
+(12, 9, 'vodoxemiri@mailinator.com', 'gezer@mailinator.com', 'tigim@mailinator.com', 'pymul@mailinator.com', '+1 (715) 734-4778');
 
 -- --------------------------------------------------------
 
@@ -101,12 +107,21 @@ INSERT INTO `contact` (`id`, `userId`, `website`, `email`, `linkin`, `facebook`,
 CREATE TABLE `education` (
   `id` int(11) NOT NULL,
   `userId` int(11) DEFAULT NULL,
-  `education` varchar(255) DEFAULT NULL,
+  `program` varchar(255) DEFAULT NULL,
   `school` varchar(255) DEFAULT NULL,
   `startYear` int(11) DEFAULT NULL,
   `endYear` int(11) DEFAULT NULL,
   `status` enum('active','disabled') NOT NULL DEFAULT 'active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `education`
+--
+
+INSERT INTO `education` (`id`, `userId`, `program`, `school`, `startYear`, `endYear`, `status`) VALUES
+(12, 3, 'BS in Information Technology', 'DHVSU', 2020, 2024, 'active'),
+(13, 3, 'BS in Information Technology', 'Elementary School', 2020, 2024, 'active'),
+(14, 9, 'Beau Macdonald', 'Consequat Autem nis', 2001, 1991, 'active');
 
 -- --------------------------------------------------------
 
@@ -119,6 +134,7 @@ CREATE TABLE `experience` (
   `userId` int(11) DEFAULT NULL,
   `position` varchar(255) DEFAULT NULL,
   `org` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
   `startYear` varchar(11) DEFAULT NULL,
   `endYear` varchar(255) DEFAULT NULL,
   `status` enum('active','disabled') NOT NULL DEFAULT 'active'
@@ -128,11 +144,38 @@ CREATE TABLE `experience` (
 -- Dumping data for table `experience`
 --
 
-INSERT INTO `experience` (`id`, `userId`, `position`, `org`, `startYear`, `endYear`, `status`) VALUES
-(1, 1, 'Mara', 'Rooney', '2021', '2021', 'disabled'),
-(2, 1, 'Kagawad', 'sample org', '2012', 'Currently Working', 'disabled'),
-(3, 2, 'Data enntry', 'sample org', '2019', '2023', 'active'),
-(4, 2, 'Norman', 'Karyn', '2010', '2011', 'active');
+INSERT INTO `experience` (`id`, `userId`, `position`, `org`, `description`, `startYear`, `endYear`, `status`) VALUES
+(1, 1, 'Mara', 'Rooney', NULL, '2021', '2021', 'disabled'),
+(2, 1, 'Kagawad', 'sample org', NULL, '2012', 'Currently Working', 'disabled'),
+(4, 2, 'Jr web designer', 'sample org', 'Providing assistance in developement of various software', '2010', '2011', 'active'),
+(5, 3, 'Jr web designer', 'sample org', 'Providing assistance in developement of various software', '2019', 'Currently Working', 'disabled'),
+(8, 3, ' web designer', 'CCPD', NULL, '2012', 'Currently Working', 'active'),
+(12, 6, 'Carl', 'sss', NULL, '2021', '2023', 'active'),
+(14, 3, 'Jr web designer', 'sample org', 'Providing assistance in developement of various software', '2019', 'Currently Working', 'active'),
+(15, 9, 'Raven Mueller', 'Expedita quis aut mo', NULL, '1996', '2013', 'active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mentoring`
+--
+
+CREATE TABLE `mentoring` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) DEFAULT NULL,
+  `profileId` int(11) DEFAULT NULL,
+  `contactId` int(11) DEFAULT NULL,
+  `status` enum('approve','pending','reject','') NOT NULL DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `mentoring`
+--
+
+INSERT INTO `mentoring` (`id`, `userId`, `profileId`, `contactId`, `status`) VALUES
+(9, 7, 11, 11, 'pending'),
+(10, 3, 3, 3, 'pending'),
+(11, 4, 7, 5, 'pending');
 
 -- --------------------------------------------------------
 
@@ -174,17 +217,8 @@ CREATE TABLE `profile` (
   `id` int(11) NOT NULL,
   `userId` int(11) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `lastname` varchar(255) DEFAULT NULL,
-  `firstname` varchar(255) DEFAULT NULL,
-  `middlename` varchar(255) DEFAULT NULL,
-  `extension` varchar(10) DEFAULT NULL,
-  `gender` varchar(255) DEFAULT NULL,
-  `civilStatus` varchar(255) DEFAULT NULL,
+  `title` varchar(2555) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
-  `province` varchar(255) DEFAULT NULL,
-  `municipality` varchar(255) DEFAULT NULL,
-  `barangay` varchar(255) DEFAULT NULL,
-  `zip` int(11) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `status` enum('active','disabled') NOT NULL DEFAULT 'active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -193,8 +227,12 @@ CREATE TABLE `profile` (
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`id`, `userId`, `image`, `lastname`, `firstname`, `middlename`, `extension`, `gender`, `civilStatus`, `address`, `province`, `municipality`, `barangay`, `zip`, `description`, `status`) VALUES
-(2, 2, NULL, NULL, NULL, 'Lopez', '', 'Male', 'single', '#17,Nueva Victoria', 'Pampanga', 'Mexico', 'Nueva Victoria', 2021, 'This ', 'active');
+INSERT INTO `profile` (`id`, `userId`, `image`, `title`, `address`, `description`, `status`) VALUES
+(3, 3, '1692921661_1b7dbb97f31c4798e98d.jpg', 'godess', 'sample address', 'Happy now', 'active'),
+(7, 4, '1691244814_2ed9492b58195426eb5c.jpg', NULL, 'Bianca', 'Explicabo Libero mi', 'active'),
+(10, 6, '1691665437_a2f88fd3edcb91decbb2.jpg', 'journalist', 'sample address', 'its a bird, its a plane, its superman', 'active'),
+(11, 7, '1692539661_374cc8af7a2169ec1be4.png', 'Malcolm', 'Macaulay', 'Nam doloremque persp', 'active'),
+(14, 9, '1693530754_f831a857ed44ca2a41ea.jpg', 'Germaine', 'Sacha', 'Cupiditate reiciendi', 'active');
 
 -- --------------------------------------------------------
 
@@ -211,6 +249,117 @@ CREATE TABLE `skills` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_events`
+--
+
+CREATE TABLE `tbl_events` (
+  `id` int(11) NOT NULL,
+  `events_title` varchar(255) DEFAULT NULL,
+  `events_desc` varchar(255) DEFAULT NULL,
+  `events_date` varchar(255) DEFAULT NULL,
+  `events_time` varchar(255) DEFAULT NULL,
+  `events_image` varchar(255) DEFAULT NULL,
+  `events_status` enum('active','disbabled') NOT NULL DEFAULT 'active',
+  `Approved/Pending` enum('approved','pending','rejected','') NOT NULL DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_events`
+--
+
+INSERT INTO `tbl_events` (`id`, `events_title`, `events_desc`, `events_date`, `events_time`, `events_image`, `events_status`, `Approved/Pending`) VALUES
+(1, 'Quasi non necessitat', 'Ex laborum in quidem', '2004-12-26', '20:43', '1692924318_1166c7e8736e92e819f5.png', 'active', 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_fund`
+--
+
+CREATE TABLE `tbl_fund` (
+  `id` int(11) NOT NULL,
+  `fund_title` varchar(255) DEFAULT NULL,
+  `fund_enddate` varchar(255) DEFAULT NULL,
+  `fund_desc` varchar(255) DEFAULT NULL,
+  `fund_contactperson` varchar(255) DEFAULT NULL,
+  `fund_contactinfo` varchar(255) DEFAULT NULL,
+  `fund_othercontact` varchar(255) DEFAULT NULL,
+  `status` enum('active','disabled') NOT NULL DEFAULT 'active',
+  `fund_cover` varchar(255) DEFAULT NULL,
+  `Approved/Pending` enum('approved','pending','reject') NOT NULL DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_fund`
+--
+
+INSERT INTO `tbl_fund` (`id`, `fund_title`, `fund_enddate`, `fund_desc`, `fund_contactperson`, `fund_contactinfo`, `fund_othercontact`, `status`, `fund_cover`, `Approved/Pending`) VALUES
+(1, 'spare a peace of bread', '2023-09-08', 'A charity for the people who are affected of typhoon ', 'Abel Batongbakal', '099919191', 'Sergio Sinermunan', 'active', '1692262821_afcb2e9e9646c0995342.jpg', 'reject'),
+(2, 'Dolor dolor et natus', '1989-12-14', 'Ea exercitationem al', 'Aut distinctio Rem ', 'Expedita adipisci co', 'Deserunt laudantium', 'active', '1692923951_32f1bd1f06514ee16309.jpg', 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_jobs`
+--
+
+CREATE TABLE `tbl_jobs` (
+  `id` int(11) NOT NULL,
+  `job_title` varchar(255) DEFAULT NULL,
+  `job_company` varchar(255) DEFAULT NULL,
+  `job_description` varchar(255) DEFAULT NULL,
+  `job_category` varchar(255) DEFAULT NULL,
+  `job_address` varchar(255) DEFAULT NULL,
+  `job_salary` varchar(255) DEFAULT NULL,
+  `job_email` varchar(255) DEFAULT NULL,
+  `job_contacts` varchar(255) DEFAULT NULL,
+  `job_website` varchar(255) DEFAULT NULL,
+  `job_cover` varchar(255) DEFAULT NULL,
+  `Status` enum('active','disabled') DEFAULT 'active',
+  `Approved/Pending` enum('approved','pending','reject') NOT NULL DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_jobs`
+--
+
+INSERT INTO `tbl_jobs` (`id`, `job_title`, `job_company`, `job_description`, `job_category`, `job_address`, `job_salary`, `job_email`, `job_contacts`, `job_website`, `job_cover`, `Status`, `Approved/Pending`) VALUES
+(2, 'Esse nihil architec', 'Romero Shepherd Plc', 'Molestiae nihil mini', 'part-time', 'Mabalacat', 'Aliquam deserunt dis', 'huzyz@mailinator.com', 'Ut enim cumque ab ut', 'https://www.vocovihumu.me.uk', '1692924025_97ac50e70aa011ed45f8.jpg', 'active', 'pending'),
+(3, 'new title', 'Howell Brock Associates', 'Est magna excepturi', 'fulltime', 'Mexico', 'Laboris officiis nih', 'masecun@mailinator.com', 'Voluptatum suscipit ', 'https://www.bezy.ws', '1693129632_3fbc791d2953f9074512.jpeg', 'active', 'pending'),
+(4, 'sample', 'Sample Company', 'Nesciunt distinctio fbseiuf ifubsfies fbseyifise fbisf sbfiuesf besfuies fbsieuf sebfiusef bseiu fbuesf', 'part-time', 'Angeles', 'Amet nihil aut ut d', 'ryromusez@mailinator.com', 'Culpa veniam invent', 'https://www.zesibazyku.cc', '1693129959_386385c5761e7e20d275.jpg', 'active', 'pending'),
+(5, 'Senior Web DEv', 'Daugherty and Sawyer Plc', 'Blanditiis enim dign', 'intern', 'Lubao', 'Consequat Nostrud n', 'ryfyc@mailinator.com', 'Enim officia qui cup', 'https://www.fibexapic.biz', '1693915653_a14585c65d7820fe6687.jpg', 'active', 'pending'),
+(6, 'IT tech', 'Huber and Peters Co', 'Qui id adipisicing o', 'intern', 'San Fernando', 'Sint accusantium su', 'lykomaxunu@mailinator.com', 'Qui ullamco in non n', 'https://www.rahex.cm', '1693915686_83a8aa88739b59f130a8.jpg', 'active', 'pending'),
+(7, 'Admin Work', 'Chase Lindsay Plc', 'Amet et eos rerum v', 'full-time', 'Mexico', 'Ex qui eum quasi nis', 'rilawo@mailinator.com', 'Nemo voluptas esse ', 'https://www.rivopup.ca', '1693915710_33aa5cf94965896bb6eb.jpg', 'active', 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_news`
+--
+
+CREATE TABLE `tbl_news` (
+  `id` int(11) NOT NULL,
+  `news_title` varchar(255) DEFAULT NULL,
+  `news_desc` varchar(255) DEFAULT NULL,
+  `news_date` date DEFAULT NULL,
+  `news_image` varchar(255) DEFAULT NULL,
+  `Status` enum('active','disabled') DEFAULT 'active',
+  `Approved/Pending` enum('approved','pending','reject') NOT NULL DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_news`
+--
+
+INSERT INTO `tbl_news` (`id`, `news_title`, `news_desc`, `news_date`, `news_image`, `Status`, `Approved/Pending`) VALUES
+(1, 'hahahahha', 'ewewwewewew', '2023-08-08', '1692924231_0ee92d4d8b14026adc94.jpg', 'active', 'approved'),
+(2, 'Beauty is not definite', 'We define it!', '2023-09-08', '1692084941_2cecc0af861a4a23fc9e.jpg', 'disabled', 'reject'),
+(3, 'edit news express', 'di ko alam san kang galing', '2023-08-02', '1691425799_d781f24d52b5be8a71f9.jpg', 'active', 'pending'),
+(4, 'hello', 'everyone', '2023-08-14', '1692019120_c718c60d2ca63b67a051.png', 'active', 'pending');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -218,6 +367,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `firstname` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
+  `suffix` int(10) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `status` enum('active','disabled') NOT NULL DEFAULT 'active'
@@ -227,10 +377,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `status`) VALUES
-(2, 'Russel', 'Tinio', '202010', '$2y$10$41kA1sFl8/.nId5ktTu38efnWFcl40GfKsF3b7HiCB286H41elmLG', 'disabled'),
-(3, 'Barry', 'Allen', '202011', '$2y$10$YzjWs3Nxa6oRZJquSAQ50OlU8I1gBMhQETUuOZ0dLvBETe7M8N57O', 'active'),
-(4, 'Bruce', 'Wayne', '202012', '$2y$10$auBNo7XiWn/LXqV1nkHQ6OhoR2qI9XQfox0qcPRUxN4y1yQ5pQ3JW', 'active');
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `suffix`, `username`, `password`, `status`) VALUES
+(3, 'Shouko', 'Komi', NULL, '202011', '$2y$10$DO8Gyaluus0LhSQEUb3HleEX0JVa8F4a55Tff2OJgaLawZjKzqPSa', 'active'),
+(4, 'Bruce', 'Wayne', NULL, '202012', '$2y$10$auBNo7XiWn/LXqV1nkHQ6OhoR2qI9XQfox0qcPRUxN4y1yQ5pQ3JW', 'active'),
+(6, 'Clark', 'Kent', NULL, '202013', '$2y$10$7TWFcZSxLBela0fGDkIA..20SPaELp4m282jPTKmqTLDqgJxLPZD.', 'active'),
+(7, 'Oliver', 'Queen', NULL, '202020', '$2y$10$LmDICMI5pWa90aOQNOzzLexDONJNlPL9poFpPt7PuXSLmT/TqD9wW', 'active'),
+(8, 'John', 'Johns', NULL, '202015', '$2y$10$NUbJQqjVhfcRd190MUviNOXVg6jMTMI0yMyT2lHdLSL.rL9gpgMri', 'active'),
+(9, 'Russel', 'Tinio', NULL, '202010', '$2y$10$C1lovUzc2Ap1EjQxi4WrWOPXJqCdLGltrEstdHNqBovipsA37jvVu', 'active');
 
 --
 -- Indexes for dumped tables
@@ -267,6 +420,12 @@ ALTER TABLE `experience`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mentoring`
+--
+ALTER TABLE `mentoring`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `predata`
 --
 ALTER TABLE `predata`
@@ -282,6 +441,30 @@ ALTER TABLE `profile`
 -- Indexes for table `skills`
 --
 ALTER TABLE `skills`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_events`
+--
+ALTER TABLE `tbl_events`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_fund`
+--
+ALTER TABLE `tbl_fund`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_jobs`
+--
+ALTER TABLE `tbl_jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_news`
+--
+ALTER TABLE `tbl_news`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -310,19 +493,25 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `experience`
 --
 ALTER TABLE `experience`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `mentoring`
+--
+ALTER TABLE `mentoring`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `predata`
@@ -334,7 +523,7 @@ ALTER TABLE `predata`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `skills`
@@ -343,10 +532,34 @@ ALTER TABLE `skills`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tbl_events`
+--
+ALTER TABLE `tbl_events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_fund`
+--
+ALTER TABLE `tbl_fund`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_jobs`
+--
+ALTER TABLE `tbl_jobs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tbl_news`
+--
+ALTER TABLE `tbl_news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
