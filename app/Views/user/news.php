@@ -54,13 +54,7 @@
 							<?= $data['news_title'] ?>	
 						</h2>
 		  
-						<div class="entry-meta">
-						  <ul>
-							<ul>
-								<li class="d-flex align-items-center"><?= $data['news_date'] ?></li>
-							  </ul>
-						  </ul>
-						</div>
+						
 		  
 						<div class="entry-content">
 						  <p>

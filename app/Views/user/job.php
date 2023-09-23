@@ -85,14 +85,14 @@
 						<div class="col-lg-8 post-list">
 							<ul class="cat-list">
 								<li><a href="#">Recent</a></li>
-								<li><a href="<?= base_url('Dash/Dash/jobFilter?category=fulltime') ?>">Full Time</a></li>
+								<li><a href="<?= base_url('Dash/Dash/jobFilter?category=full-time') ?>">Full Time</a></li>
 								<li><a href="<?= base_url('Dash/Dash/jobFilter?category=intern') ?>">Intern</a></li>
 								<li><a href="<?= base_url('Dash/Dash/jobFilter?category=part-time') ?>">part Time</a></li>
 							</ul>		
 							<?php foreach($jobdata as $data): ?>														
 							<div class="single-post d-flex flex-row">
 								<div class="thumb">
-									<img src="<?= base_url('upload/').$data['job_cover'] ?>" alt="" height="100" width="100" class="m-2">
+									<img src="<?= base_url('upload/jobs/').$data['job_cover'] ?>" alt="" height="100" width="100" class="m-2">
 								</div>
 								<div class="details">
 									<div class="title d-flex flex-row justify-content-between">
@@ -105,8 +105,11 @@
 										<?= $data['job_description'] ?>	
 									</p>
 									<h5 id="job-catogory">Job Nature:<?=  $data['job_category']?></h5>
-									<p class="address"><span class="lnr lnr-map"></span> <?=$data['job_address'] ?> </p>
+									<p class="address"><span class="lnr lnr-map"></span> <?=$data['city'] ?> </p>
 									<p class="address"><span class="lnr lnr-database"></span> <?= $data['job_salary'] ?></p>
+									<p class="address"><span class="lnr lnr-database"></span> <?= $data['job_email'] ?></p>
+									<p class="address"><span class="lnr lnr-database"></span> <?= $data['job_contacts'] ?></p>
+									<p class="address"><span class="lnr lnr-database"></span> <?= $data['job_website'] ?></p>
 								</div>
 							</div>	
 							<?php endforeach; ?>
@@ -118,14 +121,11 @@
 								<h4>Jobs by Location</h4>
 								<ul class="cat-list">
 									<?php foreach($jobAddress as $job):?>
-									<li><a class="justify-content-between d-flex" href="<?= base_url('Dash/Dash/jobFilter?area=').$job['job_address'] ?>"><p><?= $job['job_address'] ?></p><span><?=$job['addressCount']?></span></a></li>
+									<li><a class="justify-content-between d-flex" href="<?= base_url('Dash/Dash/jobFilter?area=').$job['city'] ?>"><p><?= $job['city'] ?></p><span><?=$job['addressCount']?></span></a></li>
 									<?php endforeach; ?>
 								</ul>
 							</div>									
-			</section>
-			
-			
-				
+			</section>	
 			<footer class="footer-area">
 				<div class="container">
 					<div class="row">

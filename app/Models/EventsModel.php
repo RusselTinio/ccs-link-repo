@@ -14,7 +14,12 @@ class EventsModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'events_title', 'events_desc', 'events_date', 'events_time', 'events_image', 'events_status'
+        'events_title',
+        'events_desc',
+        'events_date',
+        'events_time', 
+        'events_image', 
+        'status'
     ];
 
     // Dates
@@ -40,4 +45,12 @@ class EventsModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getRecentEvents(){
+        return $this->select('*')
+        ->orderBy('timestamp','DESC')
+        ->limit(5)
+        ->get()
+        ->getResultArray();
+    }
 }

@@ -56,7 +56,7 @@
 						  <?php endif; ?>
 							
 							<div class="mt-3">
-							  <h4><?= $userInfo['firstname']?>  <?= $userInfo['lastname'] ?></h4>
+							  <h4><?= $userInfo['firstname']?>  <?= $userInfo['lastname'] ?> <?= $userInfo['suffix'] ?></h4>
 							  <p class="text-secondary mb-1"><?= $profile['title'] ?></p>
 							  <p class="text-secondary mb-1"><?= $profile['address']?></p>
 							  <details class="dropdown">
@@ -69,6 +69,7 @@
 								<ul>
 								  <li><a href="#deactivate" data-toggle="modal">Deactivate</a></li>
 								  <li><a href="#edit-profile" data-toggle="modal">Edit Info</a></li>
+								  <li><a href="<?= base_url('AuditTrailController/userActivities/').$userInfo['id']?>">Activity Log</a></li>
 							  </ul>
 							</details>
 							 
@@ -115,7 +116,9 @@
 						  <hr>
 						  <div class="row">
 							<div class="col-sm-12 text-secondary">
-								<h5>Skills</h5>
+								<h5>Skills <a href="" class="btn btn-primary float-end">add</a></h5>
+								
+								
 							</div>
 						  </div>
 						  <hr>
@@ -123,7 +126,7 @@
 						</div>
 						
 							<div id="edit-profile" class="modal fade">
-								<form action="" method="post">
+								<form action="<?= base_url('Dash/ProfileController/updateProfile/'.$profile['id']) ?>" method="post" enctype="multipart/form-data">
 									<div class="modal-dialog modal-confirm">
 									<div class="modal-content">
 										<div class="header">
@@ -131,22 +134,29 @@
 												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 										</div>
 										<div class="modal-body">
-											<div class="formbold-mb-5">
-											<label for="name" class="formbold-form-label"> Full name </label>
-											<input type="text"name="firstname" id="name" placeholder="Enter First Name" value="<?= $userInfo['firstname'] ?>" class="formbold-form-input mb-5"/>
-											<input type="text"name="lastname" id="name" placeholder="Enter Last Name" value="<?= $userInfo['lastname'] ?>" class="formbold-form-input mb-5"/> 
+											<div class="formbold-mb">
+												<img src="<?= base_url('upload/profile/').$profile['image']?>" alt="" id="previewImage" style="margin: 0 auto" width="150" height="150">
+												<div class="button mt-4">
+													<input type="file" name="image" id="userfile" accept="image/*" onchange="preview(event)" style="display:none">
+													<label for="userfile" class="btn btn-primary rounded">Upload</label>
+												</div>
+												
 											</div>
-
+											<div class="formbold-mb ">
+											<label for="name" class="formbold-form-label"> Full name </label>
+												<input type="text" name="firstname" id="name"  value="<?= $userInfo['firstname'] ?>" class="formbold-form-input mb-2" />
+												<input type="text" name="lastname" id="name"  value="<?= $userInfo['lastname'] ?>" class="formbold-form-input mb-2"/>
+												<input type="text" name="suffix" id="suffix"  value="<?= $userInfo['suffix'] ?>" class="formbold-form-input mb-2" placeholder="Enter Suffix" /> 
+											</div>
 											<div class="formbold-mb-5">
-												<label for="phone" class="formbold-form-label"> Address </label>
-												<input
-												type="text"
-												name="address"
-												id="description"
-												placeholder="Enter Address"
-												class="formbold-form-input"
-												value="<?= $profile['address'] ?>"
-												/>
+												<label for="" class="formbold-form-label"> Title </label>
+												<input type="text" name="title" id="description" class="formbold-form-input" value="<?= $profile['title'] ?>"/>
+
+												<label for="" class="formbold-form-label"> Address </label>
+												<input type="text" name="address" id="description" class="formbold-form-input" value="<?= $profile['address'] ?>"/>
+
+												<label for="" class="formbold-form-label"> Description </label>
+												<textarea  name="description" id="description" class="formbold-form-input"><?= $profile['description'] ?> </textarea>
 											</div>
 											
 												<div class="modal-footer justify-content-center">
@@ -303,16 +313,6 @@
 										  />
 										</div>
 										<div class="formbold-mb-5">
-										  <label for="name" class="formbold-form-label"> Degree </label>
-										  <input
-											type="text"
-											name="degree"
-											id="name"
-											placeholder="Enter Position"
-											class="formbold-form-input"
-										  />
-										</div>
-										<div class="formbold-mb-5">
 										  <label for="phone" class="formbold-form-label"> School </label>
 										  <input
 											type="text"
@@ -461,8 +461,9 @@
 		<script src="<?= base_url('style/profilePage/js/main.js') ?>"></script>  
 		<script src="<?= base_url('style/profilePage/js/swiper-bundle.min.js') ?>"></script> 
 		<script src="<?= base_url('style/profilePage/js/script.js') ?>"></script>
-		<script src="js/parallax.min.js"></script>
-		<script src="js/mail-script.js"></script>
+		<script src="<?= base_url('style/js/parallax.min.js')?>"></script>
+		<script src="<?= base_url('style/js/mail-script.js')?>"></script>
+		<script src="<?= base_url('script/profile.js')?>"></script>
 		
 	</body>
 </html>

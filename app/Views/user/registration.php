@@ -109,7 +109,7 @@
                                     </div>
                                     <div class="mb-2 form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1" name="privacy">
-                                        <label class="form-check-label" for="exampleCheck1">I agree with the site's stated <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms & Conditions</a></label><br>
+                                        <label class="form-check-label" for="exampleCheck1">I agree with the site's stated <a href="privacy.html" data-toggle="modal" data-target="#myModalPrivacy">Privacy Policy</a> and <a href="terms.html" data-toggle="modal" data-target="#myModalTerm">Terms & Conditions</a></label><br>
 										<span class="text-danger text-sm">
                                             <?= isset($validation) ? display_error($validation, 'privacy'):'' ?>       
                                         </span>
@@ -125,6 +125,135 @@
             </div> <!-- end of ex-basic-1 -->
             <!-- end of basic -->
         </section>
+  <!-- Privacy policy modal -->
+  <div id="myModalPrivacy" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+      </div>
+      <div class="modal-body">
+        <h1>Privacy Agreement </h1><br>
+		<p>Last Update: September 2023</p>
+		<p>1. Introduction
+Welcome to “CCSLINK: DATA-DRIVEN ALUMNI TRACER WEB APPLICATION”. 
+This Privacy Agreement outlines how we collect, use, and protect your personal information when 
+you use our services. By accessing or using the System, you consent to the practices described in this Privacy Agreement.</p><br>
+<p>2. Information We Collect
+2.1. Personal Information: We may collect personal information, including but not limited to names, contact information (email addresses, phone numbers, mailing addresses), academic history, employment history, and other data provided voluntarily by users.
+2.2. Automatically Collected Information: We may collect certain information automatically when you use the System, including IP addresses, browser type, device information, and usage data. We may use cookies and similar tracking technologies to collect this information.</p><br>
+<p>3. How We Use Your Information
+3.1. Alumni Services: We use your personal information to provide alumni-related services, including alumni directories, news and events updates, career or job opportunities, and communication with fellow alumni.
+3.2. System Improvement: We may use aggregated and anonymized data to improve the System's features, functionality, and user experience.</p><br>
+<p>4. Data Security
+We implement reasonable security measures to protect your personal information from unauthorized access, disclosure, or alteration. However, no method of data transmission over the Internet or electronic storage is entirely secure, so we cannot guarantee absolute security.</p><br>
+<p>5. Your Privacy Choices
+5.1. Access and Update: You may access, update, or correct your personal information through your account settings.</p><br>
+<p>6. Changes to this Privacy Agreement
+We may update this Privacy Agreement from time to time. We will notify you of any material changes by email or through the System. Your continued use of the System after such modifications constitutes your acceptance of the updated Privacy Agreement.</p><br>
+<p>7. Contact Information
+If you have any questions or concerns about this Privacy Agreement or our data practices, please contact us at dhvsuccslink@gmail.com.</p><br>
+<p>8. Governing Law
+This Privacy Agreement is governed by and construed in accordance with the laws of The Data Privacy Act of 2012, without regard to its conflict of law principles.
+By using the System, you agree to the terms of this Privacy Agreement.</p><br>
+
+
+    <!-- Modal terms and conditions-->
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="myModalTerm" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+      </div>
+      <div class="modal-body">
+        <h1>Terms and Conditions </h1><br>
+		<p>Last Update: September 2023</p>
+		<p>1. Acceptance of Terms
+1.1. Welcome to “CCSLINK: DATA-DRIVEN ALUMNI TRACER WEB APPLICATION”. By accessing or using the System, you agree to comply with and be bound by these Terms and Conditions and receive an email for a survey every 3 months. If you do not agree to these terms, please do not use the System.</p><br>
+<p>2. Eligibility
+2.1. You must be an Alumnus of the college and use your own Student ID/Number as your username.
+2.2. You must be a registered user of the System and meet the eligibility criteria to access and use certain features and services.</p><br>
+<p>3. User Registration
+3.1. You may be required to register your DHVSU account to access specific features of the System. You agree to provide accurate, current, and complete information during the registration process.
+3.2. You are responsible for maintaining the confidentiality of your account credentials and for any activities conducted through your account.</p><br>
+<p>4. Use of the System
+4.1. You agree to use the System in compliance with all applicable laws, regulations, and these Terms and Conditions.
+4.2. You may not use the System for any unlawful, harmful, or unauthorized purposes, including but not limited to harassment, spamming, or distributing malware.</p><br>
+<p>5. User Content
+5.1. By submitting User Content, you grant CCSLINK a non-exclusive, royalty-free, worldwide, perpetual, and sublicensable right to use, reproduce, modify, adapt, publish, translate, distribute, and display your User Content.
+5.3. You are solely responsible for the accuracy, legality, and appropriateness of your User Content.</p><br>
+<p>6. Privacy
+6.1. Your use of the System is subject to our Privacy Agreement, which governs the collection, use, and protection of your personal information.</p><br>
+<p>7. Intellectual Property
+7.1. The System and its content, including but not limited to text, graphics, logos, icons, images, audio, and video, are protected by intellectual property laws. You may not reproduce, distribute, or use any of the content without prior written consent.</p><br>
+<p>8. Termination
+8.1. CCSLINK reserves the right to suspend or terminate your access to the System at its discretion, without notice, if you violate these Terms and Conditions.</p><br>
+<p>9. Disclaimers
+9.1. The System is provided "as is" without warranties of any kind, either express or implied.</p><br>
+<p>10. Limitation of Liability
+10.1. CCSLINK shall not be liable for any direct, indirect, incidental, special, or consequential damages arising out of or in connection with your use of the System.</p><br>
+<p>11. Changes to Terms and Conditions
+<p>12. Governing Law
+12.1. These Terms and Conditions are governed by and construed in accordance with the laws of The Data Privacy Act of 2012, without regard to its conflict of law principles.</p><br>
+<p>13. Contact Information
+13.1. If you have any questions or concerns about these Terms and Conditions, please contact us at dhvsuccslink@gmail.com</p><br>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				
 			<footer class="footer-area">
 				<div class="container">

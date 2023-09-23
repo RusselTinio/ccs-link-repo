@@ -47,7 +47,7 @@
 					  <li><a href="<?= base_url('Login/Auth') ?>">Log In</a></li>  
 					  <li class="text text-light">|</li>      
 					  <li><a href="<?= base_url('Login/Auth/Register') ?>">Sign Up</a></li> 
-                      <li><a href="loginform-admin.html"><i class="fa fa-user" style="font-size:20px;"></i></a></li>         				          
+                      <li><a href="<?= base_url('AdminController/admin') ?>"><i class="fa fa-user" style="font-size:20px;"></i></a></li>         				          
                     </ul>
                   </nav>	    		
                 </div>

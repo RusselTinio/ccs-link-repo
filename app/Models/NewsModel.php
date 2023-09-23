@@ -14,7 +14,12 @@ class NewsModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'news_title', 'news_desc', 'news_date', 'news_image', 'Status'
+        'news_title',
+        'news_desc', 
+        'date_posted', 
+        'news_image', 
+        'timestamp', 
+        'status'
     ];
 
     // Dates
@@ -40,4 +45,12 @@ class NewsModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getRecentNews(){
+        return $this->select('*')
+        ->orderBy('timestamp','DESC')
+        ->limit(5)
+        ->get()
+        ->getResultArray();
+    }
 }

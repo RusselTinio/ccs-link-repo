@@ -18,17 +18,9 @@ class Profile extends Model
         'image',
         'title',
         'middlename',
-        'extension',
-        'gender',
-        'civilStatus',
         'address',
-        'province',
-        'municipality',
-        'barangay',
-        'zip',
         'description',
         'status',
-        'mentor'
 
     ];
 

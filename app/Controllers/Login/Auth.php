@@ -3,6 +3,7 @@
 namespace App\Controllers\Login;
 
 use App\Controllers\BaseController;
+use App\Controllers\AuditTrailController;
 use App\Models\UserModel;
 use App\Models\Predata;
 use App\Libraries\Hash;
@@ -137,8 +138,11 @@ class Auth extends BaseController
                 session()->setFlashdata('fail','Incorrect password');
                 return redirect()->to('Login/Auth/index');
                 
-            }   else{   
+            }   else{  
+                
                     $userId = $userInfo['id'];
+                    $audit = new AuditTrailController();
+                    $audit->index($userId,$username,'User login');
                     session()->set('loggedUser', $userId);
                     return redirect()->to('Dashboard');
                 
@@ -149,7 +153,12 @@ class Auth extends BaseController
 
     
     public function logout(){
+        $userModel = new userModel();
+        $audit = new AuditTrailController();
+        $loggedUser = session()->get('loggedUser');
+        $userInfo = $userModel->find($loggedUser);
         if(session()->has('loggedUser')){
+            $audit->index($userInfo['id'],$userInfo['username'],'User logout');
             session()->remove('loggedUser');
             return redirect()->to('Login/Auth/index?access=out')->with('fail','You are logged out');
         }

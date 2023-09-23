@@ -19,12 +19,15 @@ class JobModel extends Model
         'job_description', 
         'job_category', 
         'job_address', 
+        'city', 
         'job_salary', 
         'job_email', 
         'job_contacts', 
         'job_website', 
         'job_cover', 
-        'Status'
+        'date',
+        'approval',
+        'status'
     ];
 
     // Dates
@@ -52,8 +55,9 @@ class JobModel extends Model
     protected $afterDelete    = [];
 
     public function jobAddressCount(){
-        return $this->SELECT('job_address, COUNT(*) AS addressCount')
-        ->groupBy('job_address')
+        return $this->SELECT('city, COUNT(*) AS addressCount')
+        ->where('approval','approved')
+        ->groupBy('city')
         ->get()
         ->getResultArray();
     }

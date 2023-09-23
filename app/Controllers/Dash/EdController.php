@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Dash;
 
+use App\Controllers\AuditTrailController;
 use App\Controllers\BaseController;
 use App\Models\userModel;
 use App\Models\Profile\Contact;
@@ -17,6 +18,7 @@ class EdController extends BaseController
         helper(['url', 'form']);
     }
     public function index(){
+        $audit = new AuditTrailController();
         $userModel = new userModel();
         $loggedUser = session()->get('loggedUser');
         $userInfo = $userModel->find($loggedUser);
@@ -32,7 +34,6 @@ class EdController extends BaseController
         $data = [
             'userId' => $loggedUser,
             'program' => $program,
-            'degree' => $degree,
             'school' => $school,
             'startYear' => $startYear,
             'endYear' => $endYear
@@ -43,6 +44,7 @@ class EdController extends BaseController
             if(!$query){
             return redirect()->back()->with('fail','Something went wrong');
         } else {
+            $audit->index($loggedUser,$userInfo['username'],'Educational history recorded');
             return redirect()->to('Dash/ProfileController')->with('success','Education registered successfully');
             
         }

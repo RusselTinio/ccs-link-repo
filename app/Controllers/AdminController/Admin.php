@@ -16,7 +16,7 @@ class Admin extends BaseController
     public function index()
     {   
        
-        return view('adminView/adminLogin');
+        return view('admin/loginform_admin');
     }
 
     public function check(){
@@ -55,7 +55,7 @@ class Admin extends BaseController
                 $role = $adminInfo['role'];
                 session()->set('loggedAdmin', $adminId);
                 if($role=='superadmin'){
-                    return redirect()->to('adminController/SuperAdminController');
+                    return redirect()->to('adminController/SuperAdminFolder/SuperAdminController');
                 } else return redirect()->to('adminController/Admin/adminView');
                 
               
@@ -75,7 +75,7 @@ class Admin extends BaseController
             'userInfo' => $userInfo
         ];
 
-        return view('adminView/adminPage',$data);
+        return view('admin/admin/admin',$data);
     }
 
     public function logout(){

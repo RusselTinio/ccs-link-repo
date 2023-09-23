@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Dash;
 
+use App\Controllers\AuditTrailController;
 use App\Controllers\BaseController;
 use App\Models\userModel;
 use App\Models\Profile\Contact;
@@ -18,6 +19,7 @@ class ExpController extends BaseController
         helper(['url', 'form']);
     }
     public function index(){
+        $audit = new AuditTrailController();
         $userModel = new userModel();
         $loggedUser = session()->get('loggedUser');
         $userInfo = $userModel->find($loggedUser);
@@ -45,6 +47,7 @@ class ExpController extends BaseController
         if(!$query){
          return redirect()->back()->with('fail','Something went wrong');
      } else {
+        $audit->index($loggedUser,$userInfo['username'],'Experience history recorded');
          return redirect()->to('Dash/ProfileController')->with('success','Experience registered successfully');
          
      }

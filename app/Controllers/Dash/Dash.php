@@ -143,9 +143,11 @@ class Dash extends BaseController
         $newsModel = new newsModel();
 
         $newsData = $newsModel->findAll();
+        $newsRecent = $newsModel->getRecentNews();
 
         $data = [
-            'newsData' => $newsData
+            'newsData' => $newsData, 
+            'newsRecent' => $newsRecent
         ];
 
         return view('user/news', $data);
@@ -154,7 +156,7 @@ class Dash extends BaseController
     public function job(){
         $jobModel = new jobModel();
 
-        $jobData = $jobModel->findAll();
+        $jobData = $jobModel->where('approval','approved')->findAll();
         $jobAddress = $jobModel->jobAddressCount();
 
         $data = [
@@ -187,7 +189,7 @@ class Dash extends BaseController
       
         
         if(!empty($keyword)&&!empty($area)&&!empty($category)){
-            $jobCondition = array('job_title'=>$keyword, 'job_address'=>$area, 'job_category'=>$category);
+            $jobCondition = array('job_title'=>$keyword, 'city'=>$area, 'job_category'=>$category, 'approval'=>'approved');
             $jobData = $jobModel->like($jobCondition)->findAll();
             $data = [
                 'jobdata' => $jobData,
@@ -196,7 +198,7 @@ class Dash extends BaseController
             return view('user/job', $data);
 
         } else if(!empty($keyword)&&!empty($area)&&empty($category)){
-            $jobCondition = array('job_title'=>$keyword, 'job_address'=>$area,);
+            $jobCondition = array('job_title'=>$keyword, 'city'=>$area, 'approval'=>'approved');
             $jobData = $jobModel->like($jobCondition)->findAll();
             $data = [
                 'jobdata' => $jobData,
@@ -205,7 +207,7 @@ class Dash extends BaseController
             return view('user/job', $data);
 
         } else if(!empty($keyword)&&empty($area)&&!empty($category)){
-            $jobCondition = array('job_title'=>$keyword, 'job_category'=>$category);
+            $jobCondition = array('job_title'=>$keyword, 'job_category'=>$category, 'approval'=>'approved');
             $jobData = $jobModel->like($jobCondition)->findAll();
             $data = [
                 'jobdata' => $jobData,
@@ -213,7 +215,7 @@ class Dash extends BaseController
             ];
             return view('user/job', $data);
         } else if(empty($keyword)&&!empty($area)&&!empty($category)){
-            $jobCondition = array('job_address'=>$area, 'job_category'=>$category);
+            $jobCondition = array('city'=>$area, 'job_category'=>$category, 'approval'=>'approved');
             $jobData = $jobModel->like($jobCondition)->findAll();
             $data = [
                 'jobdata' => $jobData,
@@ -221,21 +223,21 @@ class Dash extends BaseController
             ];
             return view('user/job', $data);
         } else if(!empty($keyword)&&empty($area)&&empty($category)){
-            $jobData = $jobModel->like('job_title',$keyword)->findAll();
+            $jobData = $jobModel->like('job_title',$keyword)->where('approval','approved')->findAll();
             $data = [
                 'jobdata' => $jobData,
                 'jobAddress' => $jobAddress
             ];
             return view('user/job', $data);
         } else if(empty($keyword)&&!empty($area)&&empty($category)){
-            $jobData = $jobModel->like('job_address',$area)->findAll();
+            $jobData = $jobModel->like('city',$area)->where('approval','approved')->findAll();
             $data = [
                 'jobdata' => $jobData,
                 'jobAddress' => $jobAddress
             ];
             return view('user/job', $data);
         } else if(empty($keyword)&&empty($area)&&!empty($category)){
-            $jobData = $jobModel->like('job_category',$category)->findAll();
+            $jobData = $jobModel->like('job_category',$category)->where('approval','approved')->findAll();
             $data = [
                 'jobdata' => $jobData,
                 'jobAddress' => $jobAddress
